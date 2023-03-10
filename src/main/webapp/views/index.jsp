@@ -605,14 +605,12 @@
 
 
             <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-            <script src="assets/js/vendor/vendor.min.js"></script>
-            <script src="assets/js/plugins/plugins.min.js"></script>
+            <script src="../assets/js/vendor/vendor.min.js"></script>
+            <script src="../assets/js/plugins/plugins.min.js"></script>
 
             <!-- Main JS -->
-            <script src="assets/js/main.js"></script>
-            <script src="views/script.js"></script>
+            <script src="../assets/js/main.js"></script>
+            <script src="script.js"></script>
         </body>
-
-
 
         </html>

@@ -22,9 +22,9 @@ $(document).ready(function () {
             products += `<div class="product-default-single-item product-color--pink swiper-slide">
             <div class="image-box">
                 <a href="product-details-default.html" class="image-link">
-                    <img src="assets/images/product/default/home-3/`+ val.images + `"
+                    <img src="../assets/images/product/default/home-3/`+ val.images + `"
                         alt="">
-                    <img src="assets/images/product/default/home-3/default-2.jpg"
+                    <img src="../assets/images/product/default/home-3/default-2.jpg"
                         alt="">
                 </a>
                 <div class="tag">
