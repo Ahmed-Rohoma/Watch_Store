@@ -25,6 +25,7 @@ public class News extends HttpServlet {
         System.out.println("welcome from servlet");
 
         List<Product> pro = new ArrayList<>();
+
         pro.add(new Product(0, "MyWatch1", "default-2.jpg", 2220, 4, true,
                 5, "description"));
         pro.add(new Product(0, "MyWatch2", "default-2.jpg", 2220, 4, true,

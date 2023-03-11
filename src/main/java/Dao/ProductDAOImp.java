@@ -2,21 +2,23 @@ package Dao;
 
 import java.util.List;
 
+import DataBase.Connection;
 import jakarta.persistence.*;
 import model.Product;
 
 public class ProductDAOImp implements ProductDaoInterface {
     private EntityManager entityManager;
-    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
 
     public ProductDAOImp() {
-        entityManager = entityManagerFactory.createEntityManager();
+        entityManager = Connection.getInstance().createEntityManager();
     }
 
     @Override
     public List<Product> getAllProducts() {
         Query query = entityManager.createQuery("SELECT p FROM Product p");
-        return query.getResultList();
+        System.out.println("dao 2");
+        List<Product> pro = query.getResultList();        
+        return pro;
     }
 
     @Override
@@ -46,7 +48,6 @@ public class ProductDAOImp implements ProductDaoInterface {
             return true;
         }
         return false;
-
     }
 
     @Override

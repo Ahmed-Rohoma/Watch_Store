@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     console.log("welcome....");
 
-    $.get("getnew", function (data) {
+    $.get("/admin/products", function (data) {
         var prod = JSON.parse(data);
         console.log(prod);
         var products = '';

@@ -1,7 +1,11 @@
 package controller.adminControllers.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.google.gson.Gson;
 
 import Dao.ProductDAOImp;
 import jakarta.servlet.ServletException;
@@ -19,48 +23,36 @@ public class ProductServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
+
+    response.setContentType("text/event-stream");
+    response.setCharacterEncoding("UTF-8");
+    PrintWriter out = response.getWriter();
+    System.out.println("welcome from servlet");
+
+    List<Product> pro = new ArrayList<>();
+
+    pro = productDAO.getAllProducts();
+
     System.out.println("////////////////////////////");
-    List<Product> products = productDAO.getAllProducts();
-    System.out.println("////////////////////////////");
-    for (Product product : products) {
+
+    for (Product product : pro) {
       System.out.println(product.toString());
     }
+    System.out.println("////////////////////////////");
 
-    // request.setAttribute("products", products);
-    // request.getRequestDispatcher("/admin/products.jsp").forward(request,
-    // response);
+    Gson gson = new Gson();
+    String msg = gson.toJson(pro);
+    System.out.println(" " + msg);
+
+    out.write(msg);
+    out.flush();
+    out.close();
+
   }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String action = request.getParameter("action");
 
-    if ("create".equals(action)) {
-      String name = request.getParameter("name");
-      double price = Double.parseDouble(request.getParameter("price"));
-      String description = request.getParameter("description");
-      Product product = new Product();
-      product.setName(name);
-      product.setPrice(price);
-      product.setDescription(description);
-      productDAO.addProduct(product);
-    } else if ("update".equals(action)) {
-      int id = Integer.parseInt(request.getParameter("id"));
-      String name = request.getParameter("name");
-      double price = Double.parseDouble(request.getParameter("price"));
-      String description = request.getParameter("description");
-      Product product = new Product();
-      product.setId(id);
-      product.setName(name);
-      product.setPrice(price);
-      product.setDescription(description);
-      productDAO.updateProduct(product);
-    } else if ("delete".equals(action)) {
-      int id = Integer.parseInt(request.getParameter("id"));
-      productDAO.deleteProductById(id);
-    }
-
-    response.sendRedirect(request.getContextPath() + "/admin/products");
+      // handling add,update and remove product 
   }
 }
