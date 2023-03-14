@@ -610,7 +610,7 @@
 
             <!-- Main JS -->
             <script src="assets/js/main.js"></script>
-            <script src="views/script.js"></script>
+            <script src="views/indexscript.js"></script>
         </body>
 
 
