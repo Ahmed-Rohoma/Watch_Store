@@ -1,4 +1,4 @@
-package controller.adminControllers.servlets;
+package gov.iti.jets.presentation.controller.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,11 +7,11 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import Dao.ProductDAOImp;
+import gov.iti.jets.service.Dao.ProductDAOImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import model.Product;
+import gov.iti.jets.repository.entity.Product;
 
 @WebServlet("/admin/products")
 public class ProductServlet extends HttpServlet {

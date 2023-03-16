@@ -1,4 +1,4 @@
-package DataBase;
+package gov.iti.jets.service.DataBase;
 
 import jakarta.persistence.*;
 

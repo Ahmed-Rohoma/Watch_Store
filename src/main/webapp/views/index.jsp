@@ -1,4 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
+
     <%@taglib prefix="c" uri="jakarta.tags.core" %>
 
         <!DOCTYPE html>
@@ -42,6 +43,7 @@
         </head>
 
         <body>
+            <%@ include file="header.jsp" %>
             <!-- Start Hero Slider Section-->
             <div class="hero-slider-section">
                 <!-- Slider main container -->
@@ -327,7 +329,7 @@
                                                         </a>
                                                         <div class="action-link">
                                                             <div class="action-link-left">
-                                                                <a href="#" data-bs-toggle="modal"
+                                                                <a href="${pageContext.request.contextPath}/caet.jsp" data-bs-toggle="modal"
                                                                     data-bs-target="#modalAddcart">Add to Cart</a>
                                                             </div>
                                                             <div class="action-link-right">
@@ -601,17 +603,16 @@
             </div>
             <!-- End Blog Slider Section -->
 
+            <%@ include file="footer.jsp" %>
 
 
             <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-            <script src="assets/js/vendor/vendor.min.js"></script>
-            <script src="assets/js/plugins/plugins.min.js"></script>
+            <script src="../assets/js/vendor/vendor.min.js"></script>
+            <script src="../assets/js/plugins/plugins.min.js"></script>
 
             <!-- Main JS -->
-            <script src="assets/js/main.js"></script>
-            <script src="views/script.js"></script>
+            <script src="../assets/js/main.js"></script>
+            <script src="script.js"></script>
         </body>
-
-
 
         </html>

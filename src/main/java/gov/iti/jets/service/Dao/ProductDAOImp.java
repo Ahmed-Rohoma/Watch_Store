@@ -1,10 +1,10 @@
-package Dao;
+package gov.iti.jets.service.Dao;
 
 import java.util.List;
 
-import DataBase.Connection;
+import gov.iti.jets.service.DataBase.Connection;
 import jakarta.persistence.*;
-import model.Product;
+import gov.iti.jets.repository.entity.Product;
 
 public class ProductDAOImp implements ProductDaoInterface {
     private EntityManager entityManager;

@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     console.log("welcome....");
 
-    $.get("/admin/products", function (data) {
+    $.get("http://localhost:9090/getnew", function (data) {
         var prod = JSON.parse(data);
         console.log(prod);
         var products = '';
@@ -16,23 +16,26 @@ $(document).ready(function () {
         //                             <div class="swiper-container product-default-slider-4grid-2row">
         //                                 <!-- Additional required wrapper -->
         //                                 <div class="swiper-wrapper">`;
+        // console.log("welcome...."+${pageContext.request.contextPath});
 
         $.each(prod, function (key, val) {
 
             products += `<div class="product-default-single-item product-color--pink swiper-slide">
             <div class="image-box">
-                <a href="product-details-default.html" class="image-link">
-                    <img src="assets/images/product/default/home-3/`+ val.images + `"
+                <a href="product-details.jsp" class="image-link">
+                    <img src="../assets/images/product/default/home-3/`+ val.images + `"
                         alt="">
-                    <img src="assets/images/product/default/home-3/default-2.jpg"
+                    <img src="../assets/images/product/default/home-3/default-2.jpg"
                         alt="">
                 </a>
                 <div class="tag">
                     <span>sale</span>
                 </div>
                 <div class="action-link">
-                    <div class="action-link-left">
-                        <a href="#" data-bs-toggle="modal"
+                <div class="action-link-left">
+                        <a href="`+ 'http://localhost:9090/add-to-cart?action=add&productId='+val.productId
+
+                        +`&action=add"
                             data-bs-target="#modalAddcart">Add to Cart</a>
                     </div>
                     <div class="action-link-right">
@@ -47,7 +50,7 @@ $(document).ready(function () {
             <div class="content">
                 <div class="content-left">
                     <h6 class="title"><a
-                            href="product-details-default.html">`+ val.productName + `</a></h6>
+                            href="product-details.jsp">`+ val.productName + `</a></h6>
                     <ul class="review-star">
                         <li class="fill"><i class="ion-android-star"></i></li>
                         <li class="fill"><i class="ion-android-star"></i></li>
@@ -79,3 +82,4 @@ $(document).ready(function () {
     });
 });
 
+// ${pageContext.request.contentPath}

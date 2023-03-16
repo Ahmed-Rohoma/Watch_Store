@@ -1,4 +1,4 @@
-package model;
+package gov.iti.jets.repository.entity;
 
 import jakarta.persistence.*;
 
