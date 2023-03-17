@@ -1,4 +1,4 @@
-package gov.iti.jets.service.Dao;
+package gov.iti.jets.persistance.Dao;
 
 //public interface IUser {
 //    public User

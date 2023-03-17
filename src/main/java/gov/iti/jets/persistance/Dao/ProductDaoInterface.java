@@ -1,4 +1,4 @@
-package gov.iti.jets.service.Dao;
+package gov.iti.jets.persistance.Dao;
 import java.util.List;
 import gov.iti.jets.repository.entity.Product;
 

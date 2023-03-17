@@ -12,7 +12,7 @@ $(document).ready(function () {
             products += `<div class="product-default-single-item product-color--pink swiper-slide">
             <div class="image-box">
                 <a href="product-details.jsp" class="image-link">
-                    <img src="../assets/images/product/default/home-3/`+ val.images + `"
+                    <img src="../assets/images/product/default/home-3/default-2.jpg"
                         alt="">
                     <img src="../assets/images/product/default/home-3/default-2.jpg"
                         alt="">

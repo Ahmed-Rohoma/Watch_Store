@@ -1,4 +1,4 @@
-package gov.iti.jets.service.DataBase;
+package gov.iti.jets.persistance.DBManager;
 
 import jakarta.persistence.*;
 

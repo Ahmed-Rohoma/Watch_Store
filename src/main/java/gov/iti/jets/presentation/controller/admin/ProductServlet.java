@@ -8,7 +8,7 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import gov.iti.jets.presentation.dtos.Product;
-import gov.iti.jets.service.Dao.ProductDAOImp;
+import gov.iti.jets.persistance.Dao.ProductDAOImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
