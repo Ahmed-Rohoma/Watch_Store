@@ -5,6 +5,7 @@
 package gov.iti.jets.repository.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -63,7 +64,7 @@ public class User implements Serializable {
     @Column(name = "isAdmin")
     private Integer isAdmin;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
-    private List<Order1> order1List;
+    private List<Order1> order1List = new ArrayList<>();
 
     public User() {
     }
