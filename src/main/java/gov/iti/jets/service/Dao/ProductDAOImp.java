@@ -1,5 +1,6 @@
 package gov.iti.jets.service.Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gov.iti.jets.service.DataBase.Connection;
@@ -14,11 +15,16 @@ public class ProductDAOImp implements ProductDaoInterface {
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public List<gov.iti.jets.presentation.dtos.Product> getAllProducts() {
         Query query = entityManager.createQuery("SELECT p FROM Product p");
         System.out.println("dao 2");
-        List<Product> pro = query.getResultList();        
-        return pro;
+        List<Product> pro = query.getResultList();
+        List<gov.iti.jets.presentation.dtos.Product> result = new ArrayList<>();
+        for (Product p:pro) {
+            result.add(new gov.iti.jets.presentation.dtos.Product(p.getProductId(),p.getProductName(),p.getPrice()
+            ,p.getQuantity(),p.getDescription(),p.getBrandId(),p.getImagePath()));
+        }
+        return result;
     }
 
     @Override

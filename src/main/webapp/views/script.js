@@ -2,22 +2,11 @@ $(document).ready(function () {
 
     console.log("welcome....");
 
-    $.get("http://localhost:9090/getnew", function (data) {
-        var prod = JSON.parse(data);
+    $.get("admin/products", function (data) {
+       var prod = JSON.parse(data);
+
         console.log(prod);
         var products = '';
-
-        // var products = `<div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
-        //             <div class="container">
-        //                 <div class="row">
-        //                     <div class="col-12">
-        //                         <div class="product-slider-default-2rows default-slider-nav-arrow">
-        //                             <!-- Slider main container -->
-        //                             <div class="swiper-container product-default-slider-4grid-2row">
-        //                                 <!-- Additional required wrapper -->
-        //                                 <div class="swiper-wrapper">`;
-        // console.log("welcome...."+${pageContext.request.contextPath});
-
         $.each(prod, function (key, val) {
 
             products += `<div class="product-default-single-item product-color--pink swiper-slide">
@@ -66,18 +55,6 @@ $(document).ready(function () {
             </div>
         </div>`;
         });
-
-//         products += `</div>
-//     </div>
-//     <!-- If we need navigation buttons -->
-//     <div class="swiper-button-prev"></div>
-//     <div class="swiper-button-next"></div>
-// </div>
-// </div>
-// </div>
-// </div>
-// </div>
-// </div>`;
         $('#newproducts').html(products);
     });
 });

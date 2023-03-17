@@ -3,6 +3,8 @@ package gov.iti.jets.presentation.controller.customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import gov.iti.jets.presentation.dtos.CartDto;
+import gov.iti.jets.presentation.dtos.Item;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

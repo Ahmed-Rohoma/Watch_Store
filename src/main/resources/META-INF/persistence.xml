@@ -13,9 +13,9 @@
             <property name="jakarta.persistence.jdbc.url"
                 value="jdbc:mysql://localhost:3306/watchstore" />
 
-            <property name="jakarta.persistence.jdbc.user" value="yourDataBase_User" />
+            <property name="jakarta.persistence.jdbc.user" value="root" />
 
-            <property name="jakarta.persistence.jdbc.password" value="yourDataBase_Password" />
+            <property name="jakarta.persistence.jdbc.password" value="dina2023" />
 
             <property name="hibernate.hbm2ddl.auto" value="update" />
 

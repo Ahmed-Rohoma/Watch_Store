@@ -1,14 +1,26 @@
 package gov.iti.jets.presentation.dtos;
 
 
+import java.math.BigDecimal;
+
 public class Product {
     private int productId;
     private String productName;
-    private Integer price;
+    private BigDecimal price;
     private Integer quantity;
     private String description;
     private Integer brandId;
     private String imagePath;
+
+    public Product(int productId, String productName, BigDecimal price, Integer quantity, String description, Integer brandId, String imagePath) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.brandId = brandId;
+        this.imagePath = imagePath;
+    }
 
     public int getProductId() {
         return productId;
@@ -26,11 +38,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

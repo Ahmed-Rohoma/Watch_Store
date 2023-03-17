@@ -7,11 +7,11 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import gov.iti.jets.presentation.dtos.Product;
 import gov.iti.jets.service.Dao.ProductDAOImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import gov.iti.jets.repository.entity.Product;
 
 @WebServlet("/admin/products")
 public class ProductServlet extends HttpServlet {
@@ -29,7 +29,7 @@ public class ProductServlet extends HttpServlet {
     PrintWriter out = response.getWriter();
     System.out.println("welcome from servlet");
 
-    List<Product> pro = new ArrayList<>();
+    List<gov.iti.jets.presentation.dtos.Product> pro = new ArrayList<>();
 
     pro = productDAO.getAllProducts();
 
@@ -42,12 +42,11 @@ public class ProductServlet extends HttpServlet {
 
     Gson gson = new Gson();
     String msg = gson.toJson(pro);
-    System.out.println(" " + msg);
+    System.out.println("********* " + msg);
 
     out.write(msg);
     out.flush();
     out.close();
-
   }
 
   @Override
