@@ -10,30 +10,30 @@
     <title>HONO - Multi Purpose HTML Template</title>
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
-    <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
-    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css"> -->
+    <!-- <link rel="stylesheet" href="../assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/vendor/ionicons.css">
+    <link rel="stylesheet" href="../assets/css/vendor/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css"> -->
 
     <!-- Plugin CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-    <link rel="stylesheet" href="assets/css/plugins/venobox.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/jquery.lineProgressbar.css">
-    <link rel="stylesheet" href="assets/css/plugins/aos.min.css"> -->
+    <!-- <link rel="stylesheet" href="../assets/css/plugins/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/plugins/venobox.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="../assets/css/plugins/aos.min.css"> -->
 
     <!-- Main CSS -->
-    <!-- <link rel="stylesheet" href="assets/sass/style.css"> -->
+    <!-- <link rel="stylesheet" href="../assets/sass/style.css"> -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="../assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
 
 </head>
 
@@ -72,22 +72,22 @@
                         <div class="product-large-image product-large-image-horaizontal swiper-container">
                             <div class="swiper-wrapper">
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="assets/images/product/default/home-1/default-1.jpg" alt="">
+                                    <img src="../assets/images/product/default/home-1/default-1.jpg" alt="">
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="assets/images/product/default/home-1/default-2.jpg" alt="">
+                                    <img src="../assets/images/product/default/home-1/default-2.jpg" alt="">
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="assets/images/product/default/home-1/default-3.jpg" alt="">
+                                    <img src="../assets/images/product/default/home-1/default-3.jpg" alt="">
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="assets/images/product/default/home-1/default-4.jpg" alt="">
+                                    <img src="../assets/images/product/default/home-1/default-4.jpg" alt="">
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="assets/images/product/default/home-1/default-5.jpg" alt="">
+                                    <img src="../assets/images/product/default/home-1/default-5.jpg" alt="">
                                 </div>
                                 <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                    <img src="assets/images/product/default/home-1/default-6.jpg" alt="">
+                                    <img src="../assets/images/product/default/home-1/default-6.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -97,27 +97,27 @@
                             class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
                             <div class="swiper-wrapper">
                                 <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="assets/images/product/default/home-1/default-1.jpg"
+                                    <img class="img-fluid" src="../assets/images/product/default/home-1/default-1.jpg"
                                         alt="">
                                 </div>
                                 <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="assets/images/product/default/home-1/default-2.jpg"
+                                    <img class="img-fluid" src="../assets/images/product/default/home-1/default-2.jpg"
                                         alt="">
                                 </div>
                                 <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="assets/images/product/default/home-1/default-3.jpg"
+                                    <img class="img-fluid" src="../assets/images/product/default/home-1/default-3.jpg"
                                         alt="">
                                 </div>
                                 <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="assets/images/product/default/home-1/default-4.jpg"
+                                    <img class="img-fluid" src="../assets/images/product/default/home-1/default-4.jpg"
                                         alt="">
                                 </div>
                                 <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="assets/images/product/default/home-1/default-5.jpg"
+                                    <img class="img-fluid" src="../assets/images/product/default/home-1/default-5.jpg"
                                         alt="">
                                 </div>
                                 <div class="product-image-thumb-single swiper-slide">
-                                    <img class="img-fluid" src="assets/images/product/default/home-1/default-6.jpg"
+                                    <img class="img-fluid" src="../assets/images/product/default/home-1/default-6.jpg"
                                         alt="">
                                 </div>
                             </div>
@@ -259,10 +259,10 @@
     <%@ include file="footer.jsp" %>
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script>
+    <script src="../assets/js/vendor/vendor.min.js"></script>
+    <script src="../assets/js/plugins/plugins.min.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

@@ -58,7 +58,7 @@ public class AddToCartServlet extends HttpServlet{
             // Forward to the JSP page to display the cart
             // RequestDispatcher dispatcher = request.getRequestDispatcher("views/index.jsp");
             // dispatcher.forward(request, response);
-            response.sendRedirect("views/index.jsp");
+            // response.sendRedirect("views/index.jsp");
 
 
 

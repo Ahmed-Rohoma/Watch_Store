@@ -7,12 +7,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css">
+    <link rel="stylesheet" href="../assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="../assets/css/style.min.css">
 
 </head>
 
@@ -156,10 +156,10 @@
     <button class="material-scrolltop" type="button"></button>
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script>
+    <script src="../assets/js/vendor/vendor.min.js"></script>
+    <script src="../assets/js/plugins/plugins.min.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

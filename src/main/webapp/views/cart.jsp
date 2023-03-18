@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
     <%@taglib prefix="c" uri="jakarta.tags.core" %>
-        <%@ page import="gov.iti.jets.model.Cart" %>
+        <%--@ page import="gov.iti.jets.model.Cart" --%>
             <%-- // Retrieve the shopping cart from the session //HttpSession session=request.getSession(); Cart
                 cart=(Cart) session.getAttribute("cart"); --%>
                 <!DOCTYPE html>
@@ -17,15 +17,15 @@
                     <title>HONO - Multi Purpose HTML Template</title>
 
                     <!-- ::::::::::::::Favicon icon::::::::::::::-->
-                    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+                    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
                     <!-- Main CSS -->
-                    <!-- <link rel="stylesheet" href="assets/sass/style.css"> -->
+                    <!-- <link rel="stylesheet" href="../assets/sass/style.css"> -->
 
                     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-                    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
-                    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
-                    <link rel="stylesheet" href="assets/css/style.min.css">
+                    <link rel="stylesheet" href="../assets/css/vendor/vendor.min.css">
+                    <link rel="stylesheet" href="../assets/css/plugins/plugins.min.css">
+                    <link rel="stylesheet" href="../assets/css/style.min.css">
 
                 </head>
 
@@ -94,7 +94,7 @@
                                                                             </td>
                                                                             <td class="product_thumb"><a
                                                                                     href="product-details-default.html"><img
-                                                                                        src="assets/images/product/default/home-1/default-1.jpg"
+                                                                                        src="../assets/images/product/default/home-1/default-1.jpg"
                                                                                         alt=""></a></td>
                                                                             <td class="product_name"><a
                                                                                     href="product-details-default.html">Handbag
@@ -193,7 +193,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="modal-add-cart-product-img">
                                                                         <img class="img-fluid"
-                                                                            src="assets/images/product/default/home-1/default-1.jpg"
+                                                                            src="../assets/images/product/default/home-1/default-1.jpg"
                                                                             alt="">
                                                                     </div>
                                                                 </div>
@@ -255,32 +255,32 @@
                                                                     <div class="swiper-wrapper">
                                                                         <div
                                                                             class="product-image-large-image swiper-slide img-responsive">
-                                                                            <img src="assets/images/product/default/home-1/default-1.jpg"
+                                                                            <img src="../assets/images/product/default/home-1/default-1.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-large-image swiper-slide img-responsive">
-                                                                            <img src="assets/images/product/default/home-1/default-2.jpg"
+                                                                            <img src="../assets/images/product/default/home-1/default-2.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-large-image swiper-slide img-responsive">
-                                                                            <img src="assets/images/product/default/home-1/default-3.jpg"
+                                                                            <img src="../assets/images/product/default/home-1/default-3.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-large-image swiper-slide img-responsive">
-                                                                            <img src="assets/images/product/default/home-1/default-4.jpg"
+                                                                            <img src="../assets/images/product/default/home-1/default-4.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-large-image swiper-slide img-responsive">
-                                                                            <img src="assets/images/product/default/home-1/default-5.jpg"
+                                                                            <img src="../assets/images/product/default/home-1/default-5.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-large-image swiper-slide img-responsive">
-                                                                            <img src="assets/images/product/default/home-1/default-6.jpg"
+                                                                            <img src="../assets/images/product/default/home-1/default-6.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                     </div>
@@ -293,37 +293,37 @@
                                                                         <div
                                                                             class="product-image-thumb-single swiper-slide">
                                                                             <img class="img-fluid"
-                                                                                src="assets/images/product/default/home-1/default-1.jpg"
+                                                                                src="../assets/images/product/default/home-1/default-1.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-thumb-single swiper-slide">
                                                                             <img class="img-fluid"
-                                                                                src="assets/images/product/default/home-1/default-2.jpg"
+                                                                                src="../assets/images/product/default/home-1/default-2.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-thumb-single swiper-slide">
                                                                             <img class="img-fluid"
-                                                                                src="assets/images/product/default/home-1/default-3.jpg"
+                                                                                src="../assets/images/product/default/home-1/default-3.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-thumb-single swiper-slide">
                                                                             <img class="img-fluid"
-                                                                                src="assets/images/product/default/home-1/default-4.jpg"
+                                                                                src="../assets/images/product/default/home-1/default-4.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-thumb-single swiper-slide">
                                                                             <img class="img-fluid"
-                                                                                src="assets/images/product/default/home-1/default-5.jpg"
+                                                                                src="../assets/images/product/default/home-1/default-5.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                         <div
                                                                             class="product-image-thumb-single swiper-slide">
                                                                             <img class="img-fluid"
-                                                                                src="assets/images/product/default/home-1/default-6.jpg"
+                                                                                src="../assets/images/product/default/home-1/default-6.jpg"
                                                                                 alt="">
                                                                         </div>
                                                                     </div>
@@ -461,12 +461,10 @@
                             </c:otherwise>
                         </c:choose>
                         <%@ include file="footer.jsp" %>
-                            <script src="assets/js/vendor/vendor.min.js"></script>
-                            <script src="assets/js/plugins/plugins.min.js"></script>
+                            <script src="../assets/js/vendor/vendor.min.js"></script>
+                            <script src="../assets/js/plugins/plugins.min.js"></script>
 
                             <!-- Main JS -->
-                            <script src="assets/js/main.js"></script>
+                            <script src="../assets/js/main.js"></script>
                 </body>
-
-
                 </html>
