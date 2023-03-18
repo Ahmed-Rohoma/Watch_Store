@@ -705,7 +705,7 @@
                             $.ajax({
                                 url: "/add-to-cart",
                                 type: "GET",
-                                data: { action: 'add', productId: ProductId },
+                                data: { action: 'add', productId: ProductId,  quantity: "1" },
                                 success: function (response) {
                                     // handle successful response
                                     $("#content").html(response);

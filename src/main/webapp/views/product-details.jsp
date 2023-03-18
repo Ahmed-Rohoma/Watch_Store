@@ -1,5 +1,5 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
         <%@ page import="com.google.gson.Gson" %>
             <%@ page import="gov.iti.jets.model.ProductModel" %>
@@ -102,7 +102,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="col-xl-7 col-lg-6">
@@ -110,8 +110,9 @@
                                                     data-aos="fade-up" data-aos-delay="200">
                                                     <!-- Start  Product Details Text Area-->
                                                     <div class="product-details-text">
-                                                        <h4 class="title"><%= product.getProductName() %>
-                                                            
+                                                        <h4 class="title">
+                                                            <%= product.getProductName() %>
+
                                                         </h4>
                                                         <div class="d-flex align-items-center">
                                                             <ul class="review-star">
@@ -126,7 +127,9 @@
                                                         </div>
                                                         <div class="price">$<%= product.getPrice() %>
                                                         </div>
-                                                        <p><%= product.getDescription() %></p>
+                                                        <p>
+                                                            <%= product.getDescription() %>
+                                                        </p>
                                                     </div> <!-- End  Product Details Text Area-->
                                                     <!-- Start Product Variable Area -->
                                                     <div class="product-details-variable">
@@ -136,8 +139,8 @@
                                                             <div class="product-stock"> <span
                                                                     class="product-stock-in"><i
                                                                         class="ion-checkmark-circled"></i></span>
-                                                                        <%= product.getQuantity() %> IN
-                                                                STOCK
+                                                                <%= product.getQuantity() %> IN
+                                                                    STOCK 
                                                             </div>
                                                         </div>
                                                         <!-- Product Variable Single Item -->
@@ -145,11 +148,20 @@
                                                             <div class="variable-single-item ">
                                                                 <span>Quantity</span>
                                                                 <div class="product-variable-quantity">
-                                                                    <input min="1" max="100" value="1" type="number">
+                                                                    <!-- <c:if test="${product.quantity lt 100}">
+
+                                                                        <c:otherwise> <input min="1" max='100' value="1"
+                                                                                type="number" id="quantity">
+
+                                                                        </c:otherwise>
+                                                                    </c:if> -->
+                                                                    <input min="1" max='<%= product.getQuantity() %>'
+                                                                        value="1" type="number" id="quantity">
                                                                 </div>
                                                             </div>
 
-                                                            <div class="product-add-to-cart-btn">
+                                                            <div class="product-add-to-cart-btn"
+                                                                onclick="addToCart('<%= product.getProductId() %>')">
                                                                 <a href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#modalAddcart">+
                                                                     Add To Cart</a>
@@ -201,6 +213,29 @@
 
                                     <!-- Main JS -->
                                     <script src="../assets/js/main.js"></script>
+                                    <script>
+                                        function addToCart(productId) {
+                                            var quantity = $("#quantity").val();
+                                            console.log("productId : " + productId);
+                                            console.log("quantity : " + quantity);
+                                            // Make an AJAX request
+                                            $.ajax({
+                                                url: "/add-to-cart",
+                                                type: "GET",
+                                                data: { action: 'add', productId: productId, quantity: quantity },
+                                                success: function (response) {
+                                                    // handle successful response
+                                                    // $("#content").html(response);
+                                                    console.log("Added to cart successfully!");
+
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    // handle error response
+                                                    console.log(textStatus, errorThrown);
+                                                }
+                                            });
+                                        }
+                                    </script>
                         </body>
 
                 </html>

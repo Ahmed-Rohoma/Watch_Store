@@ -2,9 +2,11 @@ package gov.iti.jets.controller.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
-import gov.iti.jets.model.CartDto;
-import gov.iti.jets.model.Item;
+import com.google.gson.Gson;
+import gov.iti.jets.model.CartItemModel;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,46 +21,50 @@ public class AddToCartServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;Charset=UTF-8");
         try(PrintWriter out = response.getWriter()){
-            // ArrayList<Cart> cartList = new ArrayList<>();
-            // int id =Integer.parseInt(request.getParameter("productId"));
-            // System.out.println("productId = " + id);
-            // Cart cm = new Cart();
-            // cm.setProductId(id);
-            // cm.setQuantity(1);
 
             // Retrieve the cart from the session, or create a new one if it doesn't exist
             HttpSession session = request.getSession();
-            CartDto cart = (CartDto) session.getAttribute("cart");
-            if (cart == null) {
-                cart = new CartDto();
-                session.setAttribute("cart", cart);
-            }
+            List<CartItemModel> cart = (List<CartItemModel>) session.getAttribute("cart");
+
+
+            Boolean exist = false;
 
             // Add or remove items from the cart as needed
             String action = request.getParameter("action");
             if (action != null && action.equals("add")) {
-                String productId = request.getParameter("productId");
-                // int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int quantity = 1;
-                Item item = new Item(null,1);
-                //get product by id from database
-                cart.addItem(item);
+                Integer productId =Integer.parseInt(request.getParameter("productId"));
+                Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+                if (cart == null) {
+                    cart = new ArrayList<>();
+                    session.setAttribute("cart", cart);
+                    cart.add(new CartItemModel(productId,quantity));
+                }else {
+                    for (CartItemModel p : cart) {
+                        System.out.println(p.getProductId()+"  ************** ");
+                        if (p.getProductId() == productId) {
+                            exist = true;
+                            System.out.println("product exist");
+                            p.setQuantity(quantity);
+                        }
+                    }
+                    if(!exist){
+                        cart.add(new CartItemModel(productId,quantity));
+                        System.out.println("product added");
+                    }
+                }
 
-            }
-            // else if (action != null && action.equals("remove")) {
-            //     String productId = request.getParameter("productId");
-            //     cart.removeItem(productId);
-            // }
+            }else if (action != null && action.equals("remove")) {
+                 String productId = request.getParameter("productId");
+//                 cart.removeItem(productId);
+             }
 
             // Convert the cart to a JSON string and store it in local storage
-            String cartJSON = cart.toJSON();
-            request.setAttribute("cartJSON", cartJSON);
+            String cartJson = new Gson().toJson(cart);
+            request.setAttribute("cartJson", cartJson);
+
             //print all add items in cart
-            System.out.println("*******"+cart.toJSON()+"********");
-            // Forward to the JSP page to display the cart
-            // RequestDispatcher dispatcher = request.getRequestDispatcher("views/index.jsp");
-            // dispatcher.forward(request, response);
-            // response.sendRedirect("views/index.jsp");
+            System.out.println("*******"+cartJson+"********");
+
 
 
 
