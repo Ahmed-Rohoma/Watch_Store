@@ -1,27 +1,27 @@
-package gov.iti.jets.persistance.Dao;
+package gov.iti.jets.persistance.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
-import gov.iti.jets.persistance.DBManager.Connection;
-import gov.iti.jets.repository.entity.Product;
+import gov.iti.jets.persistance.connection.DBMananger;
+import gov.iti.jets.entity.Product;
 
-public class ProductDAOImp implements ProductDaoInterface {
+public class IProductImp implements IProduct {
     private EntityManager entityManager;
 
-    public ProductDAOImp() {
-        entityManager = Connection.getInstance().createEntityManager();
+    public IProductImp() {
+        entityManager = DBMananger.getInstance().createEntityManager();
     }
 
     @Override
-    public List<gov.iti.jets.presentation.dtos.Product> getAllProducts() {
+    public List<gov.iti.jets.model.Product> getAllProducts() {
         Query query = entityManager.createQuery("SELECT p FROM Product p");
         System.out.println("dao 2");
         List<Product> pro = query.getResultList();
-        List<gov.iti.jets.presentation.dtos.Product> result = new ArrayList<>();
+        List<gov.iti.jets.model.Product> result = new ArrayList<>();
         for (Product p:pro) {
-            result.add(new gov.iti.jets.presentation.dtos.Product(p.getProductId(),p.getProductName(),p.getPrice()
+            result.add(new gov.iti.jets.model.Product(p.getProductId(),p.getProductName(),p.getPrice()
             ,p.getQuantity(),p.getDescription(),p.getBrandId(),p.getImagePath()));
         }
         return result;

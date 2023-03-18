@@ -1,4 +1,4 @@
-package gov.iti.jets.presentation.controller.customer;
+package gov.iti.jets.controller.customer;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

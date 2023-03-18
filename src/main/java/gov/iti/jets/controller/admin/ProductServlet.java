@@ -1,4 +1,4 @@
-package gov.iti.jets.presentation.controller.admin;
+package gov.iti.jets.controller.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,18 +7,18 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import gov.iti.jets.presentation.dtos.Product;
-import gov.iti.jets.persistance.Dao.ProductDAOImp;
+import gov.iti.jets.model.Product;
+import gov.iti.jets.persistance.dao.IProductImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 @WebServlet("/admin/products")
 public class ProductServlet extends HttpServlet {
-  private ProductDAOImp productDAO;
+  private IProductImp productDAO;
 
   public ProductServlet() {
-    productDAO = new ProductDAOImp();
+    productDAO = new IProductImp();
   }
 
   @Override
@@ -29,7 +29,7 @@ public class ProductServlet extends HttpServlet {
     PrintWriter out = response.getWriter();
     System.out.println("welcome from servlet");
 
-    List<gov.iti.jets.presentation.dtos.Product> pro = new ArrayList<>();
+    List<Product> pro = new ArrayList<>();
 
     pro = productDAO.getAllProducts();
 

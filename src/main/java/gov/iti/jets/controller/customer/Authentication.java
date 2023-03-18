@@ -1,8 +1,8 @@
-package gov.iti.jets.presentation.controller.customer;
+package gov.iti.jets.controller.customer;
 
 import java.io.IOException;
 
-import gov.iti.jets.repository.entity.User;
+import gov.iti.jets.entity.User;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
