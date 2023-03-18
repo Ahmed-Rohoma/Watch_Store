@@ -3,6 +3,7 @@ package gov.iti.jets.persistance.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import gov.iti.jets.model.ProductModel;
 import jakarta.persistence.*;
 import gov.iti.jets.persistance.connection.DBMananger;
 import gov.iti.jets.entity.Product;
@@ -15,13 +16,13 @@ public class IProductImp implements IProduct {
     }
 
     @Override
-    public List<gov.iti.jets.model.Product> getAllProducts() {
+    public List<ProductModel> getAllProducts() {
         Query query = entityManager.createQuery("SELECT p FROM Product p");
         System.out.println("dao 2");
         List<Product> pro = query.getResultList();
-        List<gov.iti.jets.model.Product> result = new ArrayList<>();
+        List<ProductModel> result = new ArrayList<>();
         for (Product p:pro) {
-            result.add(new gov.iti.jets.model.Product(p.getProductId(),p.getProductName(),p.getPrice()
+            result.add(new ProductModel(p.getProductId(),p.getProductName(),p.getPrice()
             ,p.getQuantity(),p.getDescription(),p.getBrandId(),p.getImagePath()));
         }
         return result;

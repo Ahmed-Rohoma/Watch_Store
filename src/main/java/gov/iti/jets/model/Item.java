@@ -2,17 +2,17 @@ package gov.iti.jets.model;
 
 
 public class Item {
-    private Product  product;
+    private ProductModel productModel;
     private Integer quantity;
-    public Item(Product product, Integer quantity) {
-        this.product = product;
+    public Item(ProductModel productModel, Integer quantity) {
+        this.productModel = productModel;
         this.quantity = quantity;
     }
-    public Product getProduct() {
-        return product;
+    public ProductModel getProduct() {
+        return productModel;
     }
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(ProductModel productModel) {
+        this.productModel = productModel;
     }
     public Integer getQuantity() {
         return quantity;

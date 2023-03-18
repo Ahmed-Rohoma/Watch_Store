@@ -11,7 +11,7 @@ $(document).ready(function () {
         $.each(prod, function (key, val) {
             products += `<div class="product-default-single-item product-color--pink swiper-slide">
            <div class="image-box">
-               <a href="product-details.jsp" class="image-link">
+               <a href="http://localhost:9090/product-details?productId=`+val.productId+`" class="image-link">
                    <img src="../assets/images/product/default/home-3/default-2.jpg"
                        alt="">
                    <img src="../assets/images/product/default/home-3/default-2.jpg"
@@ -37,7 +37,7 @@ $(document).ready(function () {
            <div class="content">
                <div class="content-left">
                    <h6 class="title"><a
-                           href="product-details.jsp">`+ val.productName + `</a></h6>
+                           href="product-details.jsp?product="`+val+`">`+ val.productName + `</a></h6>
                    <ul class="review-star">
                        <li class="fill"><i class="ion-android-star"></i></li>
                        <li class="fill"><i class="ion-android-star"></i></li>

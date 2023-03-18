@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import gov.iti.jets.model.Product;
+import gov.iti.jets.model.ProductModel;
 import gov.iti.jets.persistance.dao.IProductImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,14 +29,14 @@ public class ProductServlet extends HttpServlet {
     PrintWriter out = response.getWriter();
     System.out.println("welcome from servlet");
 
-    List<Product> pro = new ArrayList<>();
+    List<ProductModel> pro = new ArrayList<>();
 
     pro = productDAO.getAllProducts();
 
     System.out.println("////////////////////////////");
 
-    for (Product product : pro) {
-      System.out.println(product.toString());
+    for (ProductModel productModel : pro) {
+      System.out.println(productModel.toString());
     }
     System.out.println("////////////////////////////");
 
