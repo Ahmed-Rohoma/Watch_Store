@@ -61,6 +61,8 @@ public class AddToCartServlet extends HttpServlet{
             String cartJson = new Gson().toJson(cart);
             session.setAttribute("cart", cart);
             session.setAttribute("cartJson", cartJson);
+            String name = "Dina Mishahed";
+            session.setAttribute("Name", name);
 
             //print all add items in cart
             System.out.println("*******"+cartJson+"********");

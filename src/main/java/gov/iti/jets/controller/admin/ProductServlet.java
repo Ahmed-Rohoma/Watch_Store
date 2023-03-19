@@ -43,6 +43,9 @@ public class ProductServlet extends HttpServlet {
     Gson gson = new Gson();
     String msg = gson.toJson(pro);
     System.out.println("********* " + msg);
+    HttpSession session = request.getSession();
+
+    System.out.println("Session attr name: " + session.getAttribute("Name"));
 
     out.write(msg);
     out.flush();
@@ -52,6 +55,6 @@ public class ProductServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      // handling add,update and remove product 
+    // handling add,update and remove product
   }
 }
