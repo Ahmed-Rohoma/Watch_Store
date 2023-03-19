@@ -36,12 +36,11 @@ public class AddToCartServlet extends HttpServlet{
                 Integer quantity = Integer.parseInt(request.getParameter("quantity"));
                 if (cart == null) {
                     cart = new ArrayList<>();
-                    session.setAttribute("cart", cart);
                     cart.add(new CartItemModel(productId,quantity));
                 }else {
                     for (CartItemModel p : cart) {
-                        System.out.println(p.getProductId()+"  ************** ");
-                        if (p.getProductId() == productId) {
+                        System.out.println(p.productModel.getProductId()+"  ************** ");
+                        if (p.productModel.getProductId() == productId) {
                             exist = true;
                             System.out.println("product exist");
                             p.setQuantity(quantity);
@@ -60,37 +59,16 @@ public class AddToCartServlet extends HttpServlet{
 
             // Convert the cart to a JSON string and store it in local storage
             String cartJson = new Gson().toJson(cart);
-            request.setAttribute("cartJson", cartJson);
+            session.setAttribute("cart", cart);
+            session.setAttribute("cartJson", cartJson);
 
             //print all add items in cart
             System.out.println("*******"+cartJson+"********");
 
+            System.out.println("*******"+cart.toString()+"********");
 
-
-
-            // ArrayList<Cart> cart_list  = (ArrayList<Cart>) session.getAttribute("views/index.jsp");
-            // if(cart_list == null){
-            //     cartList.add(cm);
-            //     session.setAttribute("cart-list", cartList);
-            //     response.sendRedirect("views/index.jsp");
-            //     // out.println("session created and added the list ");
-            // }else{
-            //     cartList = cart_list;
-            //     Boolean exist = false;
-
-            //     for(Cart c:cart_list){
-            //         System.out.println(c.getProductId()+"  ************** ");
-            //         if(c.getProductId() == id){
-            //             exist = true;
-            //             // out.println("product exist");
-            //         }
-            //     }
-            //     if(!exist){
-            //         cartList.add(cm);
-            //         response.sendRedirect("views/index.jsp");
-            //     }
-            //     out.println("<br>Cart list Aready exist ");
-            // }
+            //session id
+            System.out.printf("sessionId : " +session.getId());
         }
 
     }

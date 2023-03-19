@@ -6,13 +6,13 @@ import java.math.BigDecimal;
 
 @Builder
 public class ProductModel {
-    private int productId;
-    private String productName;
-    private BigDecimal price;
-    private Integer quantity;
-    private String description;
-    private Integer brandId;
-    private String imagePath;
+    public int productId;
+    public String productName;
+    public BigDecimal price;
+    public Integer quantity;
+    public String description;
+    public Integer brandId;
+    public String imagePath;
 
     public ProductModel() {
     }
