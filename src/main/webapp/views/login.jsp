@@ -74,31 +74,27 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="account_form" data-aos="fade-up" data-aos-delay="0">
                                 <h3>login</h3>
-                                <form action="auth" method="POST">
-                                    <div class="default-form-box">
-                                        <label>Email <span>*</span></label>
-                                        <input type="text" name="email">
+                                <div class="default-form-box">
+                                    <label>Email <span>*</span></label>
+                                    <input type="text" id="email">
+                                </div>
+                                <div class="default-form-box">
+                                    <label>Passwords <span>*</span></label>
+                                    <input type="password" id="password">
+                                </div>
+                                <div class="login_submit">
+                                    <div style="display: flex;">
+                                        <button class="btn btn-md btn-black-default-hover mb-4" type="button"
+                                            id="loginbtn">login</button>
+                                        <h6 id="error" style="margin-top:10px;margin-left:10px; color: red;"></h6>
                                     </div>
-                                    <div class="default-form-box">
-                                        <label>Passwords <span>*</span></label>
-                                        <input type="password" name="password">
-                                    </div>
-                                    <div class="login_submit">
-                                        <div style="display: flex;">
-                                            <button class="btn btn-md btn-black-default-hover mb-4"
-                                                type="submit">login</button>
-                                            <c:if test="${error}">
-                                                <h6 style="color: red;">Invalid email or Password</h6>
-                                            </c:if>
-                                        </div>
 
-                                        <label class="checkbox-default mb-4" for="offer">
-                                            <input type="checkbox" name="remember" id="offer">
-                                            <span>Remember me</span>
-                                        </label>
-                                        <!-- <a href="#">Lost your password?</a> -->
-                                    </div>
-                                </form>
+                                    <label class="checkbox-default mb-4" for="offer">
+                                        <input type="checkbox" name="remember" id="offer">
+                                        <span>Remember me</span>
+                                    </label>
+                                    <!-- <a href="#">Lost your password?</a> -->
+                                </div>
                             </div>
                         </div>
                         <!--login area start-->
@@ -147,8 +143,8 @@
                                         <input type="text" name="creditLimit" id="txtCreditLimit">
                                     </div>
                                     <div class="login_submit">
-                                        <button class="btn btn-md btn-black-default-hover" type="submit" id="regsubmit"
-                                            disabled>Register</button>
+                                        <button class="btn btn-md btn-black-default-hover" type="button" id="regbtn"
+                                            >Register</button>
                                     </div>
                                     <br>
                                 </form>
@@ -193,7 +189,71 @@
             <!-- Main JS -->
             <script src="../assets/js/main.js"></script>
             <script src="views/loginscript.js"></script>
+            <script>
 
+
+                $(document).ready(function () {
+
+                    $("#loginbtn").click(function () {
+                        var email = $('#email').val();
+                        var password = $('#password').val();
+
+
+                        $.post('auth', { email: email, password: password })
+                            .done(function (response) {
+                                // Handle the response from the server
+                                console.log(response);
+                                console.log(response[6]+"/////////////////////");
+
+                                if (response[0] == "t"){
+                                    if (response[6] == "A")
+                                    // to Admin pages
+                                        window.location.href = "views/index.jsp";
+                                    if (response[6] == "U")
+                                        window.location.href = "views/index.jsp";
+                                }
+                                else {
+                                    console.log(email + password);
+                                    $("#error").html("  Invalid email or Password");
+                                    console.log("error");
+                                }
+                            })
+                            .fail(function (xhr, status, error) {
+                                // Handle errors
+                                console.log(error);
+                            });
+                    });
+
+                    $("#regbtn").click(function () {
+                        console.log("register/////////////////////");
+                        var name = $('#txtName').val();
+                        var email = $('#txtEmail').val();
+                        var password = $('#txtPassword').val();
+                        var confirmPassword = $('#txtConfirmPassword').val();
+                        var job = $('#txtJob').val();
+                        var birthday = $('#txtBirthday').val();
+                        var address = $('#txtAddress').val();
+                        var interests = $('#txtInterests').val();
+                        var creditLimit = $('#txtCreditLimit').val();
+                        console.log(name+"   "+email+"   "+password+"   "+job+"   "+birthday+"   "+address+"   "+interests+"   "+creditLimit);
+
+                        $.post('register',{name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit})
+                            .done(function (response) {
+                                // Handle the response from the server
+                                console.log(response+"/////////////////////");
+
+                                if (response == "done"){
+                                    window.location.href = "views/index.jsp";
+                                }
+                            })
+                            .fail(function (xhr, status, error) {
+                                // Handle errors
+                                console.log(error+"mmmmmmmmmmmmm");
+                            });
+                    });
+
+                });
+            </script>
         </body>
 
 

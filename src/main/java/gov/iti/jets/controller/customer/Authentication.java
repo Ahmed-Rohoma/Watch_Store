@@ -1,11 +1,10 @@
 package gov.iti.jets.controller.customer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import gov.iti.jets.entity.User;
-
-import jakarta.servlet.ServletConfig;
-import jakarta.servlet.ServletContext;
+import gov.iti.jets.persistance.connection.DBMananger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -22,23 +21,25 @@ import jakarta.persistence.criteria.Root;
 @WebServlet("/auth")
 public class Authentication extends HttpServlet {
 
-    ServletConfig servletConfig;
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        servletConfig = config;
-    }
-
-    public static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
-    public static EntityManager entityManager = entityManagerFactory.createEntityManager();
-
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("from Servlet before entity manager");
         request.getRequestDispatcher("auth").forward(request, response);
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        System.out.println("from Servlet before entity manager");
+        
+        // EntityManagerFactory entityManagerFactory = DBMananger.getInstance(); 
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
+        
+        System.out.println("###########################################################");
+
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        PrintWriter out = response.getWriter();
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -59,8 +60,7 @@ public class Authentication extends HttpServlet {
             userResult = entityManager.createQuery(userCriteriaQuery).getSingleResult();
             System.out.println("After Try..");
 
-            ServletContext context = servletConfig.getServletContext();
-            context.setAttribute("error", false);
+            out.println(true);
 
             System.out.println("User email : " + userResult.getEmail() + " & password : " + userResult.getPassword());
 
@@ -78,17 +78,16 @@ public class Authentication extends HttpServlet {
                 response.addCookie(passwordCookie);
             }
             if (userResult.getIsAdmin() == 1) {
-                System.out.println("Admin....");
-                request.getRequestDispatcher("getnews").forward(request, response);
+                out.println("Admin");
+                // request.getRequestDispatcher("getnews").forward(request, response);
             } else {
-                System.out.println("User....");
-                request.getRequestDispatcher("getnews").forward(request, response);
+                out.println("User");
+                // request.getRequestDispatcher("getnews").forward(request, response);
             }
         } catch (Exception e) {
             System.out.println("Invalid email || Password");            
-            ServletContext context = servletConfig.getServletContext();
-            context.setAttribute("error", true);
-            request.getRequestDispatcher("views/login.jsp").forward(request, response);
+            out.println(false);
+            // request.getRequestDispatcher("views/login.jsp").forward(request, response);
         }
 
     }

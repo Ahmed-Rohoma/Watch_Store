@@ -1,9 +1,9 @@
 
-// Name Validation
+// Email Validation
 var checkRequest = null;
 console.log("afterCheckEmail");
 function checkEmail() {
-    
+
     console.log("checkEmail");
     if (window.XMLHttpRequest)
         checkRequest = new XMLHttpRequest();
@@ -25,11 +25,12 @@ function emailHandler() {
 
     if (checkRequest.responseText == "Valid Email") {
         document.getElementById("msgtxt").style.color = "green";
-        $('#regsubmit').attr("disabled", false);
+        $('#regbtn').attr("disabled", false);
         // $('#submit').css('background', '#227f96');
     } else {
         document.getElementById("msgtxt").style.color = "red";
-        $('#regsubmit').attr("disabled", true);
+        $('#regbtn').attr("disabled", true);
         // $('#submit').css('background', 'grey');
     }
 }
+
