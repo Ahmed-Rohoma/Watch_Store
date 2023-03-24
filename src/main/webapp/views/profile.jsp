@@ -13,7 +13,7 @@
             <title>HONO - Multi Purpose HTML Template</title>
 
             <!-- ::::::::::::::Favicon icon::::::::::::::-->
-            <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+            <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
             <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
             <!-- Vendor CSS -->
@@ -34,9 +34,9 @@
             <!-- <link rel="stylesheet" href="assets/sass/style.css"> -->
 
             <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-            <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
-            <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
-            <link rel="stylesheet" href="assets/css/style.min.css">
+            <link rel="stylesheet" href="../assets/css/vendor/vendor.min.css">
+            <link rel="stylesheet" href="../assets/css/plugins/plugins.min.css">
+            <link rel="stylesheet" href="../assets/css/style.min.css">
 
         </head>
 
@@ -89,7 +89,7 @@
                                             class="nav-link btn btn-block btn-md btn-black-default-hover">Account
                                             details</a>
                                     </li>
-                                    <li><a href="login.html"
+                                    <li><a href="login.jsp"
                                             class="nav-link btn btn-block btn-md btn-black-default-hover">logout</a>
                                     </li>
                                 </ul>
@@ -193,7 +193,7 @@
                                                 </div>
                                                 <div class="default-form-box mb-20">
                                                     <label>Email</label>
-                                                    <input type="email" id="txtemail" value="${sessionScope.userData.getEmail()}" name="email-name">
+                                                    <input type="email" id="txtEmail" value="${sessionScope.userData.getEmail()}" name="email-name">
                                                 </div>
                                                 <div class="default-form-box mb-20">
                                                     <label>Password</label>
@@ -240,11 +240,11 @@
                 </div>
             </div> <!-- ...:::: End Account Dashboard Section:::... -->
 
-            <script src="assets/js/vendor/vendor.min.js"></script>
-            <script src="assets/js/plugins/plugins.min.js"></script>
+            <script src="../assets/js/vendor/vendor.min.js"></script>
+            <script src="../assets/js/plugins/plugins.min.js"></script>
 
             <!-- Main JS -->
-            <script src="assets/js/main.js"></script>
+            <script src="../assets/js/main.js"></script>
 
             <script>
                 $(document).ready(function () {
@@ -261,7 +261,7 @@
                         var creditLimit = $('#txtCreditLimit').val();
 
                         console.log(name + "   " + email + "   " + password + "   " + job + "   " + birthday + "   " + address + "   " + interests + "   " + creditLimit);
-                        $.post('updateProfile', { name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit })
+                        $.post('http://localhost:8090/updateProfile', { name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit })
                             .done(function (response) {
                                 // Handle the response from the server
                                 console.log(response + "/////////////////////Updated Successfully");

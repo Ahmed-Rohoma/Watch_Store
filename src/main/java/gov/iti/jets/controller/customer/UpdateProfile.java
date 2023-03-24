@@ -2,10 +2,6 @@ package gov.iti.jets.controller.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import gov.iti.jets.model.UserModel;
 import gov.iti.jets.persistance.dao.UserImp;
 
@@ -31,16 +27,12 @@ public class UpdateProfile extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String job = request.getParameter("job");
-        Date birthday = new Date();
-        try {
-            birthday = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String birthday = request.getParameter("birthday");
         String address = request.getParameter("address");
         String interests = request.getParameter("interests");
-        int creditLimit = Integer.parseInt(request.getParameter("creditlimit"));
+        Double creditLimit = Double.parseDouble(request.getParameter("creditlimit"));
 
+        //iddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
         HttpSession session = request.getSession();
         // UserModel user = (UserModel) session.getAttribute("userData");
         

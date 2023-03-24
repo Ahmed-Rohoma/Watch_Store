@@ -1,28 +1,23 @@
 package gov.iti.jets.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import jakarta.persistence.*;
 
 public class UserModel implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @Column(name = "username")
     private String userName;
     private String email;
     private String password;
     private String job;
     private double creditLimit;
-    private Date birthdate;
+    private String birthdate;
     private String address;
     private String interests;
     private int isAdmin;
 
-    public UserModel(String userName, String email, String password, String job, double creditLimit, Date birthdate, String address,
+    public UserModel(String userName, String email, String password, String job, double creditLimit, String birthdate, String address,
             String interests, int isAdmin) {
         this.userName = userName;
         this.email = email;
@@ -34,7 +29,7 @@ public class UserModel implements Serializable {
         this.interests = interests;
         this.isAdmin = isAdmin;
     }
-    public UserModel(Integer userId, String userName, String email, String password, String job, double creditLimit, Date birthdate,
+    public UserModel(Integer userId, String userName, String email, String password, String job, double creditLimit, String birthdate,
             String address, String interests, int isAdmin) {
         this.userId = userId;
         this.userName = userName;
@@ -83,10 +78,10 @@ public class UserModel implements Serializable {
     public void setCreditLimit(double creditLimit) {
         this.creditLimit = creditLimit;
     }
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
     public String getAddress() {
@@ -107,6 +102,5 @@ public class UserModel implements Serializable {
     public void setIsAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
-
 
 }

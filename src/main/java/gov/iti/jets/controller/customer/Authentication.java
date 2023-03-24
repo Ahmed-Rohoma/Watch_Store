@@ -18,10 +18,11 @@ public class Authentication extends HttpServlet {
     public void init() throws ServletException {
         userImp = new UserImp();
     }
-
+    
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
+        PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
@@ -29,15 +30,21 @@ public class Authentication extends HttpServlet {
 
         UserModel user = userImp.getUser(email, password);
         if(user!=null){
+            out.print("Valid");
             System.out.println("Right email & Password");
             if (user.getIsAdmin() == 1) {
                 System.out.println("Admin");
+                out.print("Admin");
                 request.getRequestDispatcher("/admin/products").forward(request, response);
             } else {
                 // session
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userData", user);
-
+                
+                // LocalDateTime dateTime = LocalDateTime.ofInstant(user.getBirthdate().toInstant(), ZoneId.systemDefault()); // convert the Date to a LocalDateTime
+                // LocalDate localDate = dateTime.toLocalDate();
+                // System.out.println("....///" + user.getBirthdate());
+                
                 if (request.getParameter("remember") != null) {
                     Cookie emailCookie = new Cookie("userEmail", email);
                     Cookie passwordCookie = new Cookie("password", password);
@@ -46,9 +53,7 @@ public class Authentication extends HttpServlet {
                     System.out.println(request.getParameter("remember") + "rememberrrr");
                 }
                 System.out.println("user");
-//                request.getRequestDispatcher("views/profile.jsp").forward(request, response);
-                PrintWriter out = response.getWriter();
-                out.print("U");
+                out.print("User");
             }
 
         }

@@ -77,6 +77,7 @@ public class UserImp implements IUser {
         User userResult = null;
         try {
             userResult = entityManager.createQuery(userCriteriaQuery).getSingleResult();
+        System.out.println(userResult.getBirthdate()+"cccc");
             return userMapper.entityToModel(userResult);
         } catch (Exception e) {
             System.out.println("Invalid email || Password");
