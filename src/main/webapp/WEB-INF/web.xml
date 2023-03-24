@@ -15,7 +15,4 @@
     <welcome-file>views/cart.jsp</welcome-file>
     <welcome-file>views/empty-cart.jsp</welcome-file>
   </welcome-file-list>
-
-
-
 </web-app>

@@ -12,17 +12,17 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/user/cart")
+@WebServlet("/cart")
 
 public class CartItemsServlet  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String cart = (String) session.getAttribute("cartJson");
-        String name = (String) session.getAttribute("Name");
+        // HttpSession session = request.getSession();
+        // String cart = (String) session.getAttribute("cartJson");
+        // String name = (String) session.getAttribute("Name");
 
-        System.out.println("--------- "+cart+"  ++++++++++++++" + "  " + name);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/cart.jsp");
-        dispatcher.include(request, response);
+        // System.out.println("--------- "+cart+"  ++++++++++++++" + "  " + name);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/cart.jsp");
+        dispatcher.forward (request, response);
     }
 }

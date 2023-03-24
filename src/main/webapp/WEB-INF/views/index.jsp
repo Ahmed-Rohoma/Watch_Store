@@ -698,14 +698,14 @@
                     <script src="script.js"></script>
                     <script>
                         function myFunction(ProductId, e) {
-                            console.log("Add Item to Cart productId = " +ProductId);
+                            console.log("Add Item to Cart productId = " + ProductId);
                             // Prevent default link behavior
                             e.preventDefault();
                             // Make an AJAX request
                             $.ajax({
                                 url: "/add-to-cart",
                                 type: "GET",
-                                data: { action: 'add', productId: ProductId,  quantity: "1" },
+                                data: { action: 'add', productId: ProductId, quantity: "1" },
                                 success: function (response) {
                                     // handle successful response
                                     $("#content").html(response);

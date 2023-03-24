@@ -3,7 +3,9 @@ package gov.iti.jets.controller.customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import gov.iti.jets.model.CartItemModel;
@@ -24,53 +26,55 @@ public class AddToCartServlet extends HttpServlet{
 
             // Retrieve the cart from the session, or create a new one if it doesn't exist
             HttpSession session = request.getSession();
-            List<CartItemModel> cart = (List<CartItemModel>) session.getAttribute("cart");
+            Map<Integer, CartItemModel> cart = (Map<Integer, CartItemModel>) session.getAttribute("cart");
 
 
             Boolean exist = false;
 
             // Add or remove items from the cart as needed
             String action = request.getParameter("action");
+            Integer productId =Integer.parseInt(request.getParameter("productId"));
             if (action != null && action.equals("add")) {
-                Integer productId =Integer.parseInt(request.getParameter("productId"));
                 Integer quantity = Integer.parseInt(request.getParameter("quantity"));
                 if (cart == null) {
-                    cart = new ArrayList<>();
-                    cart.add(new CartItemModel(productId,quantity));
-                }else {
-                    for (CartItemModel p : cart) {
-                        System.out.println(p.productModel.getProductId()+"  ************** ");
-                        if (p.productModel.getProductId() == productId) {
-                            exist = true;
-                            System.out.println("product exist");
-                            p.setQuantity(quantity);
-                        }
-                    }
-                    if(!exist){
-                        cart.add(new CartItemModel(productId,quantity));
-                        System.out.println("product added");
-                    }
+                    cart = new HashMap<>();
+                    cart.put(productId,new CartItemModel(productId,quantity));
                 }
+                cart.put(productId,new CartItemModel(productId,quantity));
+//                else {
+//                    for (CartItemModel p : cart) {
+//                        System.out.println(p.getProductId()+"  ************** ");
+//                        if (p.getProductId() == productId) {
+//                            exist = true;
+//                            System.out.println("product exist");
+//                            p.setitemQuantity(quantity);
+//                        }
+//                    }
+//                    if(!exist){
+//                        cart.add(new CartItemModel(productId,quantity));
+//                        System.out.println("product added");
+//                    }
+//                }
 
             }else if (action != null && action.equals("remove")) {
-                 String productId = request.getParameter("productId");
-//                 cart.removeItem(productId);
+                 cart.remove(productId);
              }
+            session.setAttribute("cart", cart);
+
 
             // Convert the cart to a JSON string and store it in local storage
-            String cartJson = new Gson().toJson(cart);
-            session.setAttribute("cart", cart);
-            session.setAttribute("cartJson", cartJson);
-            String name = "Dina Mishahed";
-            session.setAttribute("Name", name);
+            // String cartJson = new Gson().toJson(cart);
+            // session.setAttribute("cartJson", cartJson);
+            // String name = "Dina Mishahed";
+            // session.setAttribute("Name", name);
 
-            //print all add items in cart
-            System.out.println("*******"+cartJson+"********");
+            // //print all add items in cart
+            // System.out.println("*******"+cartJson+"********");
 
-            System.out.println("*******"+cart.toString()+"********");
+            // System.out.println("*******"+cart.toString()+"********");
 
-            //session id
-            System.out.printf("sessionId : " +session.getId());
+            // //session id
+            // System.out.printf("sessionId : " +session.getId());
         }
 
     }
