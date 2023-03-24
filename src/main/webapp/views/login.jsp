@@ -202,28 +202,30 @@
 
 
                         $.post('auth', { email: email, password: password })
-                            // .done(function (response) {
-                            //     // Handle the response from the server
-                            //     console.log(response);
-                            //     console.log(response[6]+"/////////////////////");
+                            .done(function (response) {
+                                // Handle the response from the server
+                                console.log(response);
+                                // console.log(response[6]+"/////////////////////");
 
-                            //     if (response[0] == "t"){
-                            //         if (response[6] == "A")
-                            //         // to Admin pages
-                            //             window.location.href = "views/index.jsp";
-                            //         if (response[6] == "U")
-                            //             window.location.href = "views/index.jsp";
-                            //     }
-                            //     else {
-                            //         console.log(email + password);
-                            //         $("#error").html("  Invalid email or Password");
-                            //         console.log("error");
-                            //     }
-                            // })
-                            // .fail(function (xhr, status, error) {
-                            //     // Handle errors
-                            //     console.log(error);
-                            // });
+                                if (response == "U")
+                                        window.location = "views/profile.jsp";
+                                // if (response[0] == "t"){
+                                //     if (response[6] == "A")
+                                //     // to Admin pages
+                                //         window.location.href = "views/index.jsp";
+                                //     if (response == "U")
+                                //         window.location = "views/profile.jsp";
+                                // }
+                                else {
+                                    console.log(email + password);
+                                    $("#error").html("  Invalid email or Password");
+                                    console.log("error");
+                                }
+                            })
+                            .fail(function (xhr, status, error) {
+                                // Handle errors
+                                console.log(error);
+                            });
                     });
 
                     $("#regbtn").click(function () {
@@ -245,6 +247,7 @@
                                 console.log(response+"/////////////////////");
 
                                 if (response == "done"){
+                                    
                                     window.location.href = "views/index.jsp";
                                 }
                             })

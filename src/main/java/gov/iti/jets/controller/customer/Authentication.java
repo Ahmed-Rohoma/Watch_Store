@@ -46,7 +46,9 @@ public class Authentication extends HttpServlet {
                     System.out.println(request.getParameter("remember") + "rememberrrr");
                 }
                 System.out.println("user");
-                request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+//                request.getRequestDispatcher("views/profile.jsp").forward(request, response);
+                PrintWriter out = response.getWriter();
+                out.print("U");
             }
 
         }
