@@ -55,7 +55,7 @@
                                                             <!-- Ajax of change quantity --- lead to change total price -->
                                                             <td class="product_quantity">
                                                                 <label>Quantity</label>
-                                                                <input min="1" max="100" value=${item.value.getitemQuantity()} type="number">
+                                                                <input min="1" max="100" value=${item.value.getitemQuantity()} type="number" onblur="addToCart('${item.key}',this.value,event)">
                                                             </td>
                                                             <td class="product_total">
                                                                 $${item.value.getTotal()}</td>
@@ -85,7 +85,7 @@
                                     <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
                                         <h3>Cart Totals</h3>
                                         <div class="coupon_inner">
-                                            <div class="cart_subtotal">
+                                            <!-- <div class="cart_subtotal">
                                                 <p>Subtotal</p>
                                                 <p class="cart_amount">$215.00</p>
                                             </div>
@@ -96,7 +96,7 @@
                                                     $255.00
                                                 </p>
                                             </div>
-                                            <a href="#">Calculate shipping</a>
+                                            <a href="#">Calculate shipping</a> -->
 
                                             <div class="cart_subtotal">
                                                 <p>Total</p>
