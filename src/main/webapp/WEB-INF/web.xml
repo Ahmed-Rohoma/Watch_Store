@@ -9,6 +9,7 @@
 
   <welcome-file-list>
     <welcome-file>views/login.jsp</welcome-file>
+    <welcome-file>views/profile.jsp</welcome-file>
     <welcome-file>views/index.jsp</welcome-file>
     <welcome-file>views/header.jsp</welcome-file>
     <welcome-file>views/footer.jsp</welcome-file>

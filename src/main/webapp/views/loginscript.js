@@ -21,16 +21,16 @@ function checkEmail() {
 function emailHandler() {
     if (checkRequest.readyState == 4 && checkRequest.status == 200) {
         document.getElementById("msgtxt").innerText = checkRequest.responseText;
+        console.log("...."+checkRequest.responseText+"..");
     }
+    console.log(".."+checkRequest.responseText+"..");
 
     if (checkRequest.responseText == "Valid Email") {
         document.getElementById("msgtxt").style.color = "green";
         $('#regbtn').attr("disabled", false);
-        // $('#submit').css('background', '#227f96');
     } else {
         document.getElementById("msgtxt").style.color = "red";
         $('#regbtn').attr("disabled", true);
-        // $('#submit').css('background', 'grey');
     }
 }
 

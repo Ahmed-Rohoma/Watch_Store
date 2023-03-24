@@ -6,58 +6,35 @@ import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import gov.iti.jets.entity.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
+import gov.iti.jets.persistance.dao.UserImp;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 
-
 @WebServlet("/emailchecker")
 public class EmailChecker extends HttpServlet {
+
+    private UserImp userImp;
+
+    @Override
+    public void init() throws ServletException {
+        userImp = new UserImp();
+    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
+        System.out.println("checkkkkkkk");
 
-
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myPersistenceUnit");
-        
-        System.out.println("###########################################################");
-
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-
-        String email = request.getParameter("email");
-       
-        System.out.println("Enterd email : " + email );
-
-
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> userCriteriaQuery = criteriaBuilder.createQuery(User.class);
-        Root<User> userRoot = userCriteriaQuery.from(User.class);
-        userCriteriaQuery.select(userRoot)
-                .where(criteriaBuilder.equal(userRoot.get("email"), email));
-
-        System.out.println("Before Try..");
-
-        User userResult = null;
-        try {
-            userResult = entityManager.createQuery(userCriteriaQuery).getSingleResult();
-            System.out.println("After Try..");
-
-            out.println("Valid Email");
-
-        } catch (Exception e) {
-            System.out.println("Invalid Email");            
-            out.println("Invalid Email");
+        if (userImp.emailIsExists(request.getParameter("email"))) {
+            System.out.println("In valid");
+            out.print("Invalid Email");
+        } else {
+            System.out.println("valid");
+            out.print("Valid Email");
         }
 
     }
+
 }

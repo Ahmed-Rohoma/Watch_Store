@@ -40,6 +40,8 @@
 
         <body>
 
+            <%@ include file="header.jsp" %>
+
             <!-- Offcanvas Overlay -->
             <!-- <div class="offcanvas-overlay"></div> -->
 
@@ -112,8 +114,8 @@
                                     <div class="default-form-box">
                                         <label>Email <span>*</span></label>
                                         <input type="text" name="email" id="txtEmail" onblur="checkEmail();">
+                                        <span id="msgtxt"></span><br>
                                     </div>
-                                    <span id="msgtxt"></span><br>
                                     <div class="default-form-box">
                                         <label>Password <span>*</span></label>
                                         <input type="password" name="password" id="txtPassword">
@@ -144,7 +146,7 @@
                                     </div>
                                     <div class="login_submit">
                                         <button class="btn btn-md btn-black-default-hover" type="button" id="regbtn"
-                                            >Register</button>
+                                            disabled >Register</button>
                                     </div>
                                     <br>
                                 </form>
@@ -200,28 +202,28 @@
 
 
                         $.post('auth', { email: email, password: password })
-                            .done(function (response) {
-                                // Handle the response from the server
-                                console.log(response);
-                                console.log(response[6]+"/////////////////////");
+                            // .done(function (response) {
+                            //     // Handle the response from the server
+                            //     console.log(response);
+                            //     console.log(response[6]+"/////////////////////");
 
-                                if (response[0] == "t"){
-                                    if (response[6] == "A")
-                                    // to Admin pages
-                                        window.location.href = "views/index.jsp";
-                                    if (response[6] == "U")
-                                        window.location.href = "views/index.jsp";
-                                }
-                                else {
-                                    console.log(email + password);
-                                    $("#error").html("  Invalid email or Password");
-                                    console.log("error");
-                                }
-                            })
-                            .fail(function (xhr, status, error) {
-                                // Handle errors
-                                console.log(error);
-                            });
+                            //     if (response[0] == "t"){
+                            //         if (response[6] == "A")
+                            //         // to Admin pages
+                            //             window.location.href = "views/index.jsp";
+                            //         if (response[6] == "U")
+                            //             window.location.href = "views/index.jsp";
+                            //     }
+                            //     else {
+                            //         console.log(email + password);
+                            //         $("#error").html("  Invalid email or Password");
+                            //         console.log("error");
+                            //     }
+                            // })
+                            // .fail(function (xhr, status, error) {
+                            //     // Handle errors
+                            //     console.log(error);
+                            // });
                     });
 
                     $("#regbtn").click(function () {

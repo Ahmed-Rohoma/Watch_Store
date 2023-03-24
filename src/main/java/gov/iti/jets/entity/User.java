@@ -1,21 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package gov.iti.jets.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -25,46 +22,37 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "user")
-@NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-    @NamedQuery(name = "User.findByUserName", query = "SELECT u FROM User u WHERE u.userName = :userName"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-    @NamedQuery(name = "User.findByJob", query = "SELECT u FROM User u WHERE u.job = :job"),
-    @NamedQuery(name = "User.findByCreditLimit", query = "SELECT u FROM User u WHERE u.creditLimit = :creditLimit"),
-    @NamedQuery(name = "User.findByAge", query = "SELECT u FROM User u WHERE u.age = :age"),
-    @NamedQuery(name = "User.findByAddress", query = "SELECT u FROM User u WHERE u.address = :address"),
-    @NamedQuery(name = "User.findByInterests", query = "SELECT u FROM User u WHERE u.interests = :interests"),
-    @NamedQuery(name = "User.findByIsAdmin", query = "SELECT u FROM User u WHERE u.isAdmin = :isAdmin")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "userId")
     private Integer userId;
-    @Column(name = "userName")
     private String userName;
-    @Column(name = "email")
     private String email;
-    @Column(name = "password")
     private String password;
-    @Column(name = "job")
     private String job;
-    @Column(name = "creditLimit")
-    private Integer creditLimit;
-    @Column(name = "age")
-    private Integer age;
-    @Column(name = "address")
+    private Double creditLimit;
+    private Date birthdate;
     private String address;
-    @Column(name = "interests")
     private String interests;
-    @Column(name = "isAdmin")
     private Integer isAdmin;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     private List<Order1> order1List = new ArrayList<>();
+
+    public User(String userName, String email, String password, String job, Double creditLimit, Date birthdate,
+            String address, String interests, Integer isAdmin) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.job = job;
+        this.creditLimit = creditLimit;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.interests = interests;
+        this.isAdmin = isAdmin;
+    }
 
     public User() {
     }
@@ -113,20 +101,20 @@ public class User implements Serializable {
         this.job = job;
     }
 
-    public Integer getCreditLimit() {
+    public Double getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(Integer creditLimit) {
+    public void setCreditLimit(Double creditLimit) {
         this.creditLimit = creditLimit;
     }
 
-    public Integer getAge() {
-        return age;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getAddress() {
@@ -175,7 +163,8 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
+        if ((this.userId == null && other.userId != null)
+                || (this.userId != null && !this.userId.equals(other.userId))) {
             return false;
         }
         return true;
@@ -185,5 +174,8 @@ public class User implements Serializable {
     public String toString() {
         return "com.orm.Model.User[ userId=" + userId + " ]";
     }
-    
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
 }

@@ -1,11 +1,11 @@
 package gov.iti.jets.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import jakarta.persistence.*;
 
-@Entity
-public class User implements Serializable {
+public class UserModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,24 +17,24 @@ public class User implements Serializable {
     private String password;
     private String job;
     private double creditLimit;
-    private int age;
+    private Date birthdate;
     private String address;
     private String interests;
     private int isAdmin;
 
-    public User(String userName, String email, String password, String job, double creditLimit, int age, String address,
+    public UserModel(String userName, String email, String password, String job, double creditLimit, Date birthdate, String address,
             String interests, int isAdmin) {
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.job = job;
         this.creditLimit = creditLimit;
-        this.age = age;
+        this.birthdate = birthdate;
         this.address = address;
         this.interests = interests;
         this.isAdmin = isAdmin;
     }
-    public User(Integer userId, String userName, String email, String password, String job, double creditLimit, int age,
+    public UserModel(Integer userId, String userName, String email, String password, String job, double creditLimit, Date birthdate,
             String address, String interests, int isAdmin) {
         this.userId = userId;
         this.userName = userName;
@@ -42,7 +42,7 @@ public class User implements Serializable {
         this.password = password;
         this.job = job;
         this.creditLimit = creditLimit;
-        this.age = age;
+        this.birthdate = birthdate;
         this.address = address;
         this.interests = interests;
         this.isAdmin = isAdmin;
@@ -83,11 +83,11 @@ public class User implements Serializable {
     public void setCreditLimit(double creditLimit) {
         this.creditLimit = creditLimit;
     }
-    public int getAge() {
-        return age;
+    public Date getBirthdate() {
+        return birthdate;
     }
-    public void setAge(int age) {
-        this.age = age;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
     public String getAddress() {
         return address;
