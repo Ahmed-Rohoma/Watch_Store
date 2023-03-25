@@ -204,16 +204,22 @@
                             $.post('auth', { email: email, password: password })
                                 .done(function (response) {
                                     // Handle the response from the server
-                                    console.log(response);
+                                    console.log("RESPONSE " + response);
                                     // console.log(response[6]+"/////////////////////");
+
+
+                                    console.log("response[0]" + response[0]);
+                                    console.log("response[5]" + response[5]);
 
                                     if (response[0] == "V") {
                                         if (response[5] == "A")
                                             // to Admin pages
-                                            window.location = "/admin/products";
+                                            window.location = "products.html";
+                                            // window.location = "/updateProfile";
+                                            
                                         if (response[5] == "U")
                                             window.location = "views/profile.jsp";
-                                    }else {
+                                    } else {
                                         console.log(email + password);
                                         $("#error").html("  Invalid email or Password");
                                         console.log(" Invalid email or Password");

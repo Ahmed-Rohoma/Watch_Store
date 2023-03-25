@@ -108,8 +108,8 @@
           <configuration>
             <username>admin</username>
             <password>admin</password>
-            <url>http://localhost:8090/manager/text</url>
-            <path>/</path>
+            <url>http://localhost:8081/manager/text</url>
+            <path>/Home</path>
           </configuration>
         </plugin>
 
