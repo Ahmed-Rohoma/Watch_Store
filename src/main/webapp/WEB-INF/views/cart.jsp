@@ -522,7 +522,8 @@
                             // handle successful response
                             $("#content").html(response);
                             $("#"+ProductId).html("$" + Price*Quantity);
-                            $(".cart_amount").html("$" + sessionStorage.getItem("cartTotal")+0);
+                            console.log( "total: "+ response);
+                            $(".cart_amount").html("$" + response +0);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             // handle error response

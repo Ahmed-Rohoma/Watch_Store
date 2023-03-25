@@ -15,7 +15,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 
-@WebServlet("/aaa")
+@WebServlet("/home")
 public class index extends  HttpServlet {
 
     private IProductImp productDAO;

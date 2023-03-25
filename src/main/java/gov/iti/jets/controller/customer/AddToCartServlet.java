@@ -61,9 +61,9 @@ public class AddToCartServlet extends HttpServlet{
                  cart.remove(productId);
              }
             session.setAttribute("cart", cart);
-            session.setAttribute("cartTotal", getTotalShipping(cart));
-
-
+            Double cartTotal =  getTotalShipping(cart);
+            session.setAttribute("cartTotal",cartTotal);
+            out.println(cartTotal);
             // Convert the cart to a JSON string and store it in local storage
             String cartJson = new Gson().toJson(cart);
             // session.setAttribute("cartJson", cartJson);
