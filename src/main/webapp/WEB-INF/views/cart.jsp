@@ -59,7 +59,7 @@
         <div id="cartItemsDiv">
             <c:choose>
                 <c:when test="${empty cart || cart.size() == 0 }">
-                    <c:import url="empty-cart.jsp" />
+                    <c:import url="WEB-INF/views/empty-cart.jsp" />
                 </c:when>
                 <c:otherwise>
                     <!-- ...:::: Start Cart Section:::... -->
@@ -116,20 +116,21 @@
                                                                     <label>Quantity</label>
                                                                     <input min="1" max="100"
                                                                         value=${item.value.getitemQuantity()}
-                                                                        type="number">
+                                                                        type="number"
+                                                                        onblur="addToCart('${item.key}',this.value,'${item.value.getPrice()}',event)">
                                                                 </td>
                                                                 <td class="product_total">
-                                                                    $${item.value.getTotal()}</td>
+                                                                    <div  id="${item.key}">$${item.value.getTotal()}</div></td>
                                                             </tr>
                                                             <!-- End Cart Single Item-->
                                                         </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <div class="cart_submit">
+                                            <!-- <div class="cart_submit">
                                                 <button class="btn btn-md btn-golden" type="submit">update
                                                     cart</button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +147,7 @@
                                         <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
                                             <h3>Cart Totals</h3>
                                             <div class="coupon_inner">
-                                                <div class="cart_subtotal">
+                                                <!-- <div class="cart_subtotal">
                                                     <p>Subtotal</p>
                                                     <p class="cart_amount">$215.00</p>
                                                 </div>
@@ -157,7 +158,7 @@
                                                         $255.00
                                                     </p>
                                                 </div>
-                                                <a href="#">Calculate shipping</a>
+                                                <a href="#">Calculate shipping</a> -->
 
                                                 <div class="cart_subtotal">
                                                     <p>Total</p>
@@ -491,7 +492,43 @@
                         }
                     });
                 }
+                function updateQuantity(productId, e) {
+                    // Prevent default link behavior
+                    e.preventDefault();
+                    // Make an AJAX request
+                    $.ajax({
+                        url: "/add-to-cart",
+                        type: "GET",
+                        data: { action: 'add', productId: productId },
+                        success: function (response) {
 
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            // handle error response
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
+                }
+                function addToCart(ProductId, Quantity,Price, e) {
+                    console.log("Add Item to Cart productId = " + ProductId);
+                    // Prevent default link behavior
+                    e.preventDefault();
+                    // Make an AJAX request
+                    $.ajax({
+                        url: "/add-to-cart",
+                        type: "GET",
+                        data: { action: 'add', productId: ProductId, quantity: Quantity },
+                        success: function (response) {
+                            // handle successful response
+                            $("#content").html(response);
+                            $("#"+ProductId).html("$" + Price*Quantity);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            // handle error response
+                            console.log(textStatus, errorThrown);
+                        }
+                    });
+                }
             </script>
 </body>
 

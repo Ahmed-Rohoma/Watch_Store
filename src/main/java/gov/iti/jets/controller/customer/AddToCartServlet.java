@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.DoubleStream;
 
 import com.google.gson.Gson;
 import gov.iti.jets.model.CartItemModel;
@@ -60,16 +61,17 @@ public class AddToCartServlet extends HttpServlet{
                  cart.remove(productId);
              }
             session.setAttribute("cart", cart);
+            session.setAttribute("cartTotal", getTotalShipping(cart));
 
 
             // Convert the cart to a JSON string and store it in local storage
-            // String cartJson = new Gson().toJson(cart);
+            String cartJson = new Gson().toJson(cart);
             // session.setAttribute("cartJson", cartJson);
             // String name = "Dina Mishahed";
             // session.setAttribute("Name", name);
 
-            // //print all add items in cart
-            // System.out.println("*******"+cartJson+"********");
+            //print all add items in cart
+            System.out.println("\n*******"+cartJson+"********\n");
 
             // System.out.println("*******"+cart.toString()+"********");
 
@@ -77,5 +79,13 @@ public class AddToCartServlet extends HttpServlet{
             // System.out.printf("sessionId : " +session.getId());
         }
 
+    }
+
+    private double getTotalShipping(Map<Integer, CartItemModel> cart){
+        double totalPrice = cart.entrySet().stream()
+                                .mapToDouble(entry -> entry.getValue().getitemQuantity() * entry.getValue().getPrice().doubleValue())
+                                .sum();
+        System.out.println("totalPrice  "+totalPrice);
+        return totalPrice;
     }
 }
