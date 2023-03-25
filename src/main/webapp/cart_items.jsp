@@ -100,7 +100,7 @@
 
                                             <div class="cart_subtotal">
                                                 <p>Total</p>
-                                                <p class="cart_amount">$215.00</p>
+                                                <p class="cart_amount">$${cartTotal}0</p>
                                             </div>
                                             <div class="checkout_btn">
                                                 <a href="#" class="btn btn-md btn-golden">Proceed
