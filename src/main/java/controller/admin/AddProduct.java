@@ -15,7 +15,6 @@ import entity.Product;
 import persistance.dao.CategoryDAOImp;
 
 import persistance.dao.ProductDAOImp;
-import service.utility;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.*;
@@ -78,9 +77,9 @@ public class AddProduct extends HttpServlet {
         String description = request.getParameter("description");
         BigDecimal price = new BigDecimal((String) (request.getParameter("price")));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        String brand = request.getParameter("selectedBrand");
+        Integer brandID = Integer.parseInt(request.getParameter("selectedBrand"));
         Part filePart = request.getPart("image");
-    
+
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
         System.out.println("product | " + name + " | " + description + " | " + price + " | " + quantity);
@@ -94,14 +93,14 @@ public class AddProduct extends HttpServlet {
         System.out.println(filePath);
 
         System.out.println(
-                "Adding product : " + name + "\nd: " + description + "\n path = " + savePath + " | " + name);
+                "Adding product : " + name + "\nd: " + description + "\n brand = " + brandID);
 
-        Product product = new Product(name, price, quantity, description, utility.getBrandID(brands, brand),
+        Product product = new Product(name, price, quantity, description, brandID,
                 filePath);
 
         productDAO.addProduct(product);
 
-        response.sendRedirect("products.html");
+        response.sendRedirect("products.jsp");
 
     }
 

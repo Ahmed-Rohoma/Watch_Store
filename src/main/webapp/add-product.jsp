@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <!-- https://getbootstrap.com/ -->
   <link rel="stylesheet" href="css/templatemo-style.css">
+  <script src="js/utility.js"></script>
   <!--
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
@@ -24,7 +25,7 @@
 <body onload="populateBrands()">
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.jsp">
         <h1 class="tm-site-title mb-0">Product Admin</h1>
       </a>
       <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
@@ -44,14 +45,14 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="products.html">
+            <a class="nav-link" href="products.jsp">
               <i class="fas fa-shopping-cart"></i>
               Products
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="accounts.html">
+            <a class="nav-link" href="accounts.jsp">
               <i class="far fa-user"></i>
               Accounts
             </a>
@@ -59,7 +60,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link d-block" href="login.html">
+            <a class="nav-link d-block" href="views/login.jsp">
               Admin, <b>Logout</b>
             </a>
           </li>
@@ -151,40 +152,34 @@
   <script>
 
     function populateBrands() {
-      // var brands = ['Brand A', 'Brand B', 'Brand C'];  // get Brands 
+
+      console.log("======= populateBrands ===========");
 
       $.ajax({
         url: '/addProduct',
         type: 'GET',
         success: function (result) {
           console.log("Success Function =========================");
-
           console.log(result);
-
           var brands = JSON.parse(result);
+          console.log("brands in popBrand : " + brands + "\n=========");
 
-          console.log(brands);
-
-          // get the select element by its ID
           var selectElement = document.getElementById('brand');
 
+          console.log("fill Brand in add product");
           // populate the options of the select element from the 'brands' array
           for (var i = 0; i < brands.length; i++) {
             var optionElement = document.createElement('option');
-            optionElement.value = brands[i].brandName;
+            console.log(brands[i]);
+            optionElement.value = brands[i].id;
             optionElement.text = brands[i].brandName;
             selectElement.appendChild(optionElement);
           }
-
         },
         error: function (xhr, status, error) {
           console.log("Error Function =========================")
-
         }
       });
-
-
-
     }
 
     function handleFileSelect(event) {

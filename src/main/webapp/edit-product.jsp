@@ -24,7 +24,7 @@
 <body onload="getProduct()">
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.jsp">
         <h1 class="tm-site-title mb-0">Product Admin</h1>
       </a>
       <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
@@ -44,14 +44,14 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="products.html">
+            <a class="nav-link" href="products.jsp">
               <i class="fas fa-shopping-cart"></i>
               Products
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="accounts.html">
+            <a class="nav-link" href="accounts.jsp">
               <i class="far fa-user"></i>
               Accounts
             </a>
@@ -59,7 +59,7 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link d-block" href="login.html">
+            <a class="nav-link d-block" href="views/login.jsp">
               Admin, <b>Logout</b>
             </a>
           </li>
@@ -92,11 +92,7 @@
                 </div>
                 <div class="form-group mb-3">
                   <label for="category">Select Brand</label>
-                  <select class="custom-select tm-select-accounts" id="brand">
-                    <option selected>Select Brand</option> <!-- should be Brand List  -->
-                    <option value="1">New Arrival</option>
-                    <option value="2">Most Popular</option>
-                    <option value="3">Trending</option>
+                  <select class="custom-select tm-select-accounts" id="brand" name="selectedBrand">
                   </select>
                 </div>
                 <div class="row">
@@ -153,7 +149,7 @@
   <!-- https://getbootstrap.com/ -->
   <script>
 
-    var product;
+    var currentProductBrand;
 
     function getProduct() {
 
@@ -162,7 +158,6 @@
       var params = new URLSearchParams(location.search);
       var productId = params.get("productId");
       console.log(productId);
-
 
       $.ajax({
         url: '/updateProduct',
@@ -194,24 +189,51 @@
 
       console.log("==================== AFTER REPLACE =================");
 
-      console.log(product.imagePath);
+      console.log(product.brandId);
 
-
-      // imagePathFromDatabase.replace(/\\\\/g, "\\");
-
+      currentProductBrand = product.brandId;
 
       $('#productName').val(product.productName);
       $('#productDescription').val(product.description);
       $('#productPrice').val(product.price);
       $('#productQuantity').val(product.quantity);
-      // img/product-image.jpg
-      // $('.tm-product-img-edit img').attr('src', product.imagePath);
-
-
       $('#productImg').attr('src', product.imagePath);
-      // $('.tm-product-img-dummy mx-auto').attr('src', product.imagePath);
+
+      fillBrand();
+
+    }
+
+    function fillBrand() {
+
+      $.ajax({
+        url: '/addProduct',
+        type: 'GET',
+        success: function (result) {
+          console.log("Success Function =========================");
+          console.log(result);
+          var brands = JSON.parse(result);
+          console.log("brands in popBrand : ");
+          console.log(brands);
+          console.log("currentProductBrand : " + currentProductBrand + "\n=========");
 
 
+          var dropdown = document.getElementById('brand');
+
+          for (let i = 0; i < brands.length; i++) {
+            const option = document.createElement('option');
+            option.value = brands[i].id;
+            option.text = brands[i].brandName;
+            if (brands[i].id === currentProductBrand) {
+              option.selected = true; // set the selected attribute if the brand matches the current product's brand
+            }
+            dropdown.appendChild(option); // add the option element to the dropdown
+          }
+
+        },
+        error: function (xhr, status, error) {
+          console.log("Error Function =========================")
+        }
+      });
     }
 
     $(function () {

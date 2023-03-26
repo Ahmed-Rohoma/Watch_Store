@@ -214,7 +214,7 @@
                                     if (response[0] == "V") {
                                         if (response[5] == "A")
                                             // to Admin pages
-                                            window.location = "products.html";
+                                            window.location = "products.jsp";
                                             // window.location = "/updateProfile";
                                             
                                         if (response[5] == "U")

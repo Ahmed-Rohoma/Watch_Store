@@ -109,7 +109,7 @@
             <username>admin</username>
             <password>admin</password>
             <url>http://localhost:8081/manager/text</url>
-            <path>/Home</path>
+            <path>/</path>
           </configuration>
         </plugin>
 

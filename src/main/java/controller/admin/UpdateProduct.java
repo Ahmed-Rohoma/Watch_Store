@@ -3,6 +3,7 @@ package controller.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.math.BigDecimal;
 
 import com.google.gson.JsonObject;
 
@@ -20,7 +21,7 @@ import jakarta.servlet.http.*;
 public class UpdateProduct extends HttpServlet {
 
     private ProductDAOImp productDAO;
-
+    private int productID;
     String savePath = "";
 
     public UpdateProduct() {
@@ -40,7 +41,7 @@ public class UpdateProduct extends HttpServlet {
         System.out.println(" update Product  do GET ");
         System.out.println("============================");
 
-        Integer productID = Integer.parseInt(request.getParameter("productId"));
+        productID = Integer.parseInt(request.getParameter("productId"));
         System.out.println("Product to update : " + productID);
 
         Product product = productDAO.getProductByID(productID);
@@ -52,16 +53,7 @@ public class UpdateProduct extends HttpServlet {
             return;
         }
 
-        // provide the product in request
-
-        // Gson gson = new Gson();
-        // String msg = gson.toJson(product);
-        // System.out.println(" " + msg);
-
         PrintWriter out = response.getWriter();
-        // out.write(msg);
-        // out.flush();
-        // out.close();
 
         JsonObject json = convert(product);
 
@@ -73,13 +65,6 @@ public class UpdateProduct extends HttpServlet {
         out.flush();
         out.close();
 
-        // request.setAttribute("product", convert(product));
-        // System.out.println(convert(product));
-        // System.out.println("forward ......");
-
-        // request.getRequestDispatcher("edit-product.html").forward(request, response);
-
-        // System.out.println("after forward ......");
     }
 
     @Override
@@ -90,21 +75,15 @@ public class UpdateProduct extends HttpServlet {
         System.out.println(" update Product do Post  ");
         System.out.println("============================");
 
-        Enumeration<String> attributeNames = request.getParameterNames();
-        System.out.println(attributeNames.hasMoreElements());
-        while (attributeNames.hasMoreElements()) {
-            String attributeName = attributeNames.nextElement();
-            Object attributeValue = request.getAttribute(attributeName);
-            System.out.println(attributeName + " = " + attributeValue);
-        }
-
         String name = request.getParameter("name");
-        System.out.println("name " + name);
         String description = request.getParameter("description");
-        Double price = Double.parseDouble(request.getParameter("price"));
+        Integer brandID = Integer.parseInt(request.getParameter("selectedBrand"));
+        BigDecimal price = new BigDecimal((String) (request.getParameter("price")));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-        System.out.println("Adding product : " + name + "\nd: " + description + "\n path = " + savePath + " | " + name);
+        System.out
+                .println("updating product : " + name + "\nd: " + description + "\n brand = " + brandID + "\nprice = "
+                        + price + "\nquantity = " + quantity);
 
         // Part filePart = request.getPart("fileInput");
         // Part filePart = request.getPart("image");
@@ -118,12 +97,13 @@ public class UpdateProduct extends HttpServlet {
 
         // filePart.write(filePath);
 
-        // Product product = new Product(name, price, quantity, description, 2,
-        // "filePath");
+        Product product = new Product(name, price, quantity, description, brandID,
+                "filePath");
 
-        // productDAO.updateProduct(product);
+        productDAO.updateProduct(product, productID);
 
-        // response.sendRedirect("products.html");
+        response.sendRedirect("products.jsp");
+
 
     }
 

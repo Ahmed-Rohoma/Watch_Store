@@ -8,5 +8,5 @@ public interface ProductDaoInterface {
     public Product getProductByID(int productID);
     public boolean addProduct(Product product);
     public boolean deleteProductById(int productID);
-    public boolean updateProduct(Product product);
+    public boolean updateProduct(Product product ,int id);
 }
