@@ -96,7 +96,7 @@
                                                             <li><a href="wishlist.html">Wishlist</a></li>
                                                             <li><a href="compare.html">Compare</a></li>
                                                             <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="views/login.jsp">Login</a></li>
+                                                            <li><a href="/login">Login</a></li>
                                                             <li><a href="profile.jsp">My Account</a></li>
                                                         </ul>
                                                     </li>
