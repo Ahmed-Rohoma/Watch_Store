@@ -18,7 +18,7 @@ public class UserMapper {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return new User(userModel.getUserName(), userModel.getEmail(), userModel.getPassword(), userModel.getJob(),
+        return new User(userModel.getUserId(),userModel.getUserName(), userModel.getEmail(), userModel.getPassword(), userModel.getJob(),
                 userModel.getCreditLimit(), birthdate, userModel.getAddress(), userModel.getInterests(),
                 userModel.getIsAdmin());
     }

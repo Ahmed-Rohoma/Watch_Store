@@ -24,6 +24,20 @@ import jakarta.persistence.Table;
 @Table(name = "user")
 public class User implements Serializable {
 
+    public User(Integer userId, String userName, String email, String password, String job, Double creditLimit,
+            Date birthdate, String address, String interests, Integer isAdmin) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.job = job;
+        this.creditLimit = creditLimit;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.interests = interests;
+        this.isAdmin = isAdmin;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

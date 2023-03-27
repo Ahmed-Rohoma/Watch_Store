@@ -52,7 +52,7 @@ public class Authentication extends HttpServlet {
                     response.addCookie(passwordCookie);
                     System.out.println(request.getParameter("remember") + "rememberrrr");
                 }
-                System.out.println("user");
+                System.out.println("user" + user.getUserId());
                 out.print("User");
             }
 

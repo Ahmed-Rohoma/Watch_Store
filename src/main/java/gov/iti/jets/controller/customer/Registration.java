@@ -34,11 +34,12 @@ public class Registration extends HttpServlet {
         int creditLimit = Integer.parseInt(request.getParameter("creditlimit"));
 
         System.out.println(name + email + password + job + creditLimit + birthday + address + interests);
-        UserModel user = new UserModel(name, email, password, job, creditLimit, birthday, address, interests, 0);
-        if (userImp.addUser(user)){
-            System.out.println(user.getUserId()+"  id");
+        UserModel userModel = new UserModel(name, email, password, job, creditLimit, birthday, address, interests, 0);
+        UserModel registeredUser = userImp.addUser(userModel);
+        if (registeredUser != null){
+            System.out.println(registeredUser.getUserId()+"  id");
             HttpSession session = request.getSession(true);
-            session.setAttribute("userData", user);
+            session.setAttribute("userData", registeredUser);
             System.out.println("added");
         }
         else
