@@ -28,8 +28,6 @@ public class AddToCartServlet extends HttpServlet{
             // Retrieve the cart from the session, or create a new one if it doesn't exist
             HttpSession session = request.getSession();
             Map<Integer, CartItemModel> cart = (Map<Integer, CartItemModel>) session.getAttribute("cart");
-
-
             Boolean exist = false;
 
             // Add or remove items from the cart as needed

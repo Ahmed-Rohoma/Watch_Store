@@ -32,7 +32,7 @@ public class ProductDetailsServlet extends HttpServlet {
         request.setAttribute("ProductModel", jsonProduct);
         
         // forward the request to the JSP
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/product-details.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/product-details.jsp");
         dispatcher.forward(request, response);
     }
     
