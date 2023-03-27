@@ -38,10 +38,8 @@ public class index extends  HttpServlet {
         //     System.out.println(pro.getProductName()+"dddddddd");
         // }
         servletContext.setAttribute("allpros",products);
-        servletContext.setAttribute("rootPath",response.getWriter());
-
         // System.out.println(servletContext.getAttribute("products"));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
         dispatcher.include(request, response);
     }
 

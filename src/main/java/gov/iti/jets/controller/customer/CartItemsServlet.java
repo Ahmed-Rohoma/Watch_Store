@@ -22,7 +22,7 @@ public class CartItemsServlet  extends HttpServlet {
         // String name = (String) session.getAttribute("Name");
 
         // System.out.println("--------- "+cart+"  ++++++++++++++" + "  " + name);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("views/cart.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/cart.jsp");
         dispatcher.forward (request, response);
     }
 }

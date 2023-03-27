@@ -1,8 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
     <%@taglib prefix="c" uri="jakarta.tags.core" %>
-                <%@ page isELIgnored="false" %>
-
 
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
@@ -158,7 +156,9 @@
                         </div>
                     </div>
                 </div> <!-- ...:::: End Customer Login Section :::... -->
-                jjjjjj ${rootPath}
+
+
+
                 <!-- material-scrolltop button -->
                 <!-- <button class="material-scrolltop" type="button"></button> -->
 
@@ -197,7 +197,6 @@
                     $(document).ready(function () {
 
                         $("#loginbtn").click(function () {
-                            console.log("Login Page" );
                             var email = $('#email').val();
                             var password = $('#password').val();
 
