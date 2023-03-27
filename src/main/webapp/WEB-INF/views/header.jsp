@@ -8,30 +8,30 @@
     <title>HONO - Multi Purpose HTML Template</title>
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
-    <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
-    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/vendor/ionicons.css">
+    <link rel="stylesheet" href="../assets/css/vendor/simple-line-icons.css">
+    <link rel="stylesheet" href="../assets/css/vendor/jquery-ui.min.css">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="assets/css/plugins/swiper-bundle.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
-    <link rel="stylesheet" href="assets/css/plugins/venobox.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/jquery.lineProgressbar.css">
-    <link rel="stylesheet" href="assets/css/plugins/aos.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/plugins/venobox.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/jquery.lineProgressbar.css">
+    <link rel="stylesheet" href="../assets/css/plugins/aos.min.css">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <!-- <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css"> -->
+    <!-- <link rel="stylesheet" href="../../assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="../../assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.min.css"> -->
 
 </head>
 
@@ -46,7 +46,7 @@
                             <!-- Start Header Logo -->
                             <div class="header-logo">
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/images/logo/logo_white.png" alt=""></a>
+                                    <a href="index.html"><img src="../assets/images/logo/logo_white.png" alt=""></a>
                                 </div>
                             </div>
                             <!-- End Header Logo -->
@@ -92,7 +92,7 @@
                                                         <a href="#" class="mega-menu-item-title">Other Pages</a>
                                                         <ul class="mega-menu-sub">
                                                             <li><a href="cart.jsp">Cart</a></li>
-                                                            <li><a href="empty-cart.html">Cart</a></li>
+                                                            <li><a href="/cart">Cart</a></li>
                                                             <li><a href="wishlist.html">Wishlist</a></li>
                                                             <li><a href="compare.html">Compare</a></li>
                                                             <li><a href="checkout.html">Checkout</a></li>
@@ -138,7 +138,7 @@
                                                 <div class="menu-banner">
                                                     <a href="#" class="menu-banner-link">
                                                         <img class="menu-banner-img"
-                                                            src="assets/images/banner/menu-banner.jpg" alt="">
+                                                            src="../assets/images/banner/menu-banner.jpg" alt="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -228,7 +228,7 @@
                             <li>
                                 <a href="index.html">
                                     <div class="logo">
-                                        <img src="assets/images/logo/logo_white.png" alt="">
+                                        <img src="../assets/images/logo/logo_white.png" alt="">
                                     </div>
                                 </a>
                             </li>
@@ -386,7 +386,7 @@
             <!-- Start Mobile contact Info -->
             <div class="mobile-contact-info">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo/logo_white.png" alt=""></a>
+                    <a href="index.html"><img src="../assets/images/logo/logo_white.png" alt=""></a>
                 </div>
 
                 <address class="address">
@@ -423,7 +423,7 @@
         <!-- Start Mobile contact Info -->
         <div class="mobile-contact-info">
             <div class="logo">
-                <a href="index.html"><img src="assets/images/logo/logo_white.png" alt=""></a>
+                <a href="index.html"><img src="../assets/images/logo/logo_white.png" alt=""></a>
             </div>
 
             <address class="address">
@@ -462,7 +462,7 @@
                 <li class="offcanvas-cart-item-single">
                     <div class="offcanvas-cart-item-block">
                         <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
+                            <img src="../assets/images/product/default/home-3/default-1.jpg" alt=""
                                 class="offcanvas-cart-image">
                         </a>
                         <div class="offcanvas-cart-item-content">
@@ -480,7 +480,7 @@
                 <li class="offcanvas-cart-item-single">
                     <div class="offcanvas-cart-item-block">
                         <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt=""
+                            <img src="../assets/images/product/default/home-2/default-1.jpg" alt=""
                                 class="offcanvas-cart-image">
                         </a>
                         <div class="offcanvas-cart-item-content">
@@ -498,7 +498,7 @@
                 <li class="offcanvas-cart-item-single">
                     <div class="offcanvas-cart-item-block">
                         <a href="#" class="offcanvas-cart-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
+                            <img src="../assets/images/product/default/home-3/default-1.jpg" alt=""
                                 class="offcanvas-cart-image">
                         </a>
                         <div class="offcanvas-cart-item-content">
@@ -540,7 +540,7 @@
                 <li class="offcanvas-wishlist-item-single">
                     <div class="offcanvas-wishlist-item-block">
                         <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
+                            <img src="../assets/images/product/default/home-3/default-1.jpg" alt=""
                                 class="offcanvas-wishlist-image">
                         </a>
                         <div class="offcanvas-wishlist-item-content">
@@ -558,7 +558,7 @@
                 <li class="offcanvas-wishlist-item-single">
                     <div class="offcanvas-wishlist-item-block">
                         <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-2/default-1.jpg" alt=""
+                            <img src="../assets/images/product/default/home-2/default-1.jpg" alt=""
                                 class="offcanvas-wishlist-image">
                         </a>
                         <div class="offcanvas-wishlist-item-content">
@@ -576,7 +576,7 @@
                 <li class="offcanvas-wishlist-item-single">
                     <div class="offcanvas-wishlist-item-block">
                         <a href="#" class="offcanvas-wishlist-item-image-link">
-                            <img src="assets/images/product/default/home-3/default-1.jpg" alt=""
+                            <img src="../assets/images/product/default/home-3/default-1.jpg" alt=""
                                 class="offcanvas-wishlist-image">
                         </a>
                         <div class="offcanvas-wishlist-item-content">
@@ -634,7 +634,7 @@
                                     <div class="col-md-4">
                                         <div class="modal-add-cart-product-img">
                                             <img class="img-fluid"
-                                                src="assets/images/product/default/home-3/default-1.jpg" alt="">
+                                                src="../assets/images/product/default/home-3/default-1.jpg" alt="">
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -684,22 +684,22 @@
                                     <div class="product-large-image modal-product-image-large swiper-container">
                                         <div class="swiper-wrapper">
                                             <div class="product-image-large-image swiper-slide img-responsive">
-                                                <img src="assets/images/product/default/home-3/default-1.jpg" alt="">
+                                                <img src="../assets/images/product/default/home-3/default-1.jpg" alt="">
                                             </div>
                                             <div class="product-image-large-image swiper-slide img-responsive">
-                                                <img src="assets/images/product/default/home-3/default-2.jpg" alt="">
+                                                <img src="../assets/images/product/default/home-3/default-2.jpg" alt="">
                                             </div>
                                             <div class="product-image-large-image swiper-slide img-responsive">
-                                                <img src="assets/images/product/default/home-3/default-3.jpg" alt="">
+                                                <img src="../assets/images/product/default/home-3/default-3.jpg" alt="">
                                             </div>
                                             <div class="product-image-large-image swiper-slide img-responsive">
-                                                <img src="assets/images/product/default/home-3/default-4.jpg" alt="">
+                                                <img src="../assets/images/product/default/home-3/default-4.jpg" alt="">
                                             </div>
                                             <div class="product-image-large-image swiper-slide img-responsive">
-                                                <img src="assets/images/product/default/home-3/default-5.jpg" alt="">
+                                                <img src="../assets/images/product/default/home-3/default-5.jpg" alt="">
                                             </div>
                                             <div class="product-image-large-image swiper-slide img-responsive">
-                                                <img src="assets/images/product/default/home-3/default-6.jpg" alt="">
+                                                <img src="../assets/images/product/default/home-3/default-6.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -710,27 +710,27 @@
                                         <div class="swiper-wrapper">
                                             <div class="product-image-thumb-single swiper-slide">
                                                 <img class="img-fluid"
-                                                    src="assets/images/product/default/home-3/default-1.jpg" alt="">
+                                                    src="../assets/images/product/default/home-3/default-1.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
                                                 <img class="img-fluid"
-                                                    src="assets/images/product/default/home-3/default-2.jpg" alt="">
+                                                    src="../assets/images/product/default/home-3/default-2.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
                                                 <img class="img-fluid"
-                                                    src="assets/images/product/default/home-3/default-3.jpg" alt="">
+                                                    src="../assets/images/product/default/home-3/default-3.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
                                                 <img class="img-fluid"
-                                                    src="assets/images/product/default/home-3/default-4.jpg" alt="">
+                                                    src="../assets/images/product/default/home-3/default-4.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
                                                 <img class="img-fluid"
-                                                    src="assets/images/product/default/home-3/default-5.jpg" alt="">
+                                                    src="../assets/images/product/default/home-3/default-5.jpg" alt="">
                                             </div>
                                             <div class="product-image-thumb-single swiper-slide">
                                                 <img class="img-fluid"
-                                                    src="assets/images/product/default/home-3/default-6.jpg" alt="">
+                                                    src="../assets/images/product/default/home-3/default-6.jpg" alt="">
                                             </div>
                                         </div>
                                         <!-- Add Arrows -->
@@ -831,10 +831,10 @@
     </div> <!-- End Modal Quickview cart -->
 
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-    <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script>
+    <script src="../../assets/js/vendor/vendor.min.js"></script>
+    <script src="../../assets/js/plugins/plugins.min.js"></script>
 
     <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

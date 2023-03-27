@@ -37,14 +37,9 @@ public class Authentication extends HttpServlet {
                 out.print("Admin");
                 request.getRequestDispatcher("/admin/products").forward(request, response);
             } else {
-                // session
+
                 HttpSession session = request.getSession(true);
-                session.setAttribute("userData", user);
-                
-                // LocalDateTime dateTime = LocalDateTime.ofInstant(user.getBirthdate().toInstant(), ZoneId.systemDefault()); // convert the Date to a LocalDateTime
-                // LocalDate localDate = dateTime.toLocalDate();
-                // System.out.println("....///" + user.getBirthdate());
-                
+                session.setAttribute("userData", user);                
                 if (request.getParameter("remember") != null) {
                     Cookie emailCookie = new Cookie("userEmail", email);
                     Cookie passwordCookie = new Cookie("password", password);

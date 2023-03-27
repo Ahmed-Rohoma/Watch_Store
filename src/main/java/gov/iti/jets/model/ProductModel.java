@@ -1,9 +1,11 @@
 package gov.iti.jets.model;
 
+import lombok.Builder;
 
 import java.math.BigDecimal;
 
-public class Product {
+@Builder
+public class ProductModel {
     private int productId;
     private String productName;
     private BigDecimal price;
@@ -12,7 +14,11 @@ public class Product {
     private Integer brandId;
     private String imagePath;
 
-    public Product(int productId, String productName, BigDecimal price, Integer quantity, String description, Integer brandId, String imagePath) {
+    public ProductModel() {
+    }
+
+    public ProductModel(int productId, String productName, BigDecimal price, Integer quantity, String description,
+            Integer brandId, String imagePath) {
         this.productId = productId;
         this.productName = productName;
         this.price = price;
@@ -20,6 +26,15 @@ public class Product {
         this.description = description;
         this.brandId = brandId;
         this.imagePath = imagePath;
+    }
+    public void setProductModel(ProductModel p) {
+        this.productId = p.productId;
+        this.productName = p.productName;
+        this.price = p.price;
+        this.quantity = p.quantity;
+        this.description = p.description;
+        this.brandId = p.brandId;
+        this.imagePath = p.imagePath;
     }
 
     public int getProductId() {
