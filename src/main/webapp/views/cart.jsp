@@ -101,12 +101,12 @@
                                                                         onclick="removeFromCart('${item.key}',event)"><i
                                                                             class="fa fa-trash-o"></i></a>
                                                                 </td>
-                                                                <td class="product_thumb"><a
-                                                                        href="/product-details?productId=${item.getProductId()}"><img
+                                                                <td class="product_thumb">
+                                                                    <a href=""><img
                                                                             src="../assets/images/product/default/home-1/default-1.jpg"
-                                                                            alt=""></a></td>
-                                                                <td class="product_name"><a
-                                                                        href="/product-details?productId=${item.getProductId()}">
+                                                                            alt=""></a>
+                                                                </td>
+                                                                <td class="product_name"><a href="">
                                                                         ${item.value.getProductName()}
                                                                     </a></td>
                                                                 <td class="product-price">
@@ -120,7 +120,9 @@
                                                                         onblur="addToCart('${item.key}',this.value,'${item.value.getPrice()}',event)">
                                                                 </td>
                                                                 <td class="product_total">
-                                                                    <div  id="${item.key}">$${item.value.getTotal()}</div></td>
+                                                                    <div id="${item.key}">$${item.value.getTotal()}
+                                                                    </div>
+                                                                </td>
                                                             </tr>
                                                             <!-- End Cart Single Item-->
                                                         </c:forEach>
@@ -148,7 +150,8 @@
                                                     <p class="cart_amount">$${cartTotal}0</p>
                                                 </div>
                                                 <div class="checkout_btn">
-                                                    <a href="" class="btn btn-md btn-golden" onclick="checkout()">Proceed
+                                                    <a href="/checkout" class="btn btn-md btn-golden"
+                                                        >Proceed
                                                         to
                                                         Checkout</a>
                                                 </div>
@@ -492,7 +495,7 @@
                         }
                     });
                 }
-                function addToCart(ProductId, Quantity,Price, e) {
+                function addToCart(ProductId, Quantity, Price, e) {
                     console.log("Add Item to Cart productId = " + ProductId);
                     // Prevent default link behavior
                     e.preventDefault();
@@ -504,9 +507,9 @@
                         success: function (response) {
                             // handle successful response
                             $("#content").html(response);
-                            $("#"+ProductId).html("$" + Price*Quantity);
-                            console.log( "total: "+ response);
-                            $(".cart_amount").html("$" + response +0);
+                            $("#" + ProductId).html("$" + Price * Quantity);
+                            console.log("total: " + response);
+                            $(".cart_amount").html("$" + response + 0);
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                             // handle error response

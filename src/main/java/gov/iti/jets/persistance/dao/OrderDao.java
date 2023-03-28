@@ -128,7 +128,6 @@ public class OrderDao {
 
         System.out.println(newOrder.getId() + ":" + total);
         return response.append(newOrder.getId() + ":" + total).toString();
-
     }
 
     // private void updateProducts(Map<Integer, Integer> cart) {

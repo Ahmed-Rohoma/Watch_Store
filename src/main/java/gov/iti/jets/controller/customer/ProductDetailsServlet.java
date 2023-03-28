@@ -19,11 +19,11 @@ public class ProductDetailsServlet extends HttpServlet {
     gov.iti.jets.service.ProductService productService = new gov.iti.jets.service.ProductService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Integer productId = Integer.parseInt(request.getParameter("productId"));
         ProductModel product =  productService.getProductByID(productId);
         System.out.println(product.getProductId() + " -- " + product.getProductName());
 
-        
         // Convert the product to a JSON string
         String jsonProduct = new Gson().toJson(product);
 

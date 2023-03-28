@@ -36,7 +36,8 @@ public class Authentication extends HttpServlet {
             if (user.getIsAdmin() == 1) {
                 System.out.println("Admin");
                 out.print("A");
-                request.getRequestDispatcher("/admin/products").forward(request, response);
+                // response.sendRedirect("/adminProducts");
+                // request.getRequestDispatcher("/admin/products").forward(request, response);
             } else {
 
                 HttpSession session = request.getSession(true);
