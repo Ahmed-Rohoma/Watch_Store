@@ -1,11 +1,17 @@
 package gov.iti.jets.persistance.dao;
 
+import gov.iti.jets.entity.Product;
 import gov.iti.jets.entity.User;
 import gov.iti.jets.mapper.UserMapper;
+import gov.iti.jets.model.ProductModel;
 import gov.iti.jets.model.UserModel;
 import gov.iti.jets.persistance.connection.DBMananger;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserImp implements IUser {
 
@@ -18,7 +24,26 @@ public class UserImp implements IUser {
 
     @Override
     public UserModel getUser(int userId) {
-        return entityManager.getReference(UserModel.class, userId);
+        UserModel user = entityManager.find(UserModel.class, userId);
+        entityManager.clear();
+        return user;
+    }
+
+    @Override
+    public List<UserModel> getAllUsers() {
+        System.out.println("1");
+        Query query = entityManager.createQuery("SELECT s FROM User s");
+        System.out.println("2");
+        List<User> users = query.getResultList();
+        System.out.println("3");
+        List<UserModel> result = new ArrayList<>();
+        System.out.println("4");
+        for (User user : users) {
+            result.add(userMapper.entityToModel(user));
+        }
+        System.out.println("5");
+        entityManager.clear();
+        return result;
     }
 
     @Override
@@ -28,6 +53,7 @@ public class UserImp implements IUser {
             entityManager.getTransaction().begin();
             entityManager.persist(user);
             entityManager.getTransaction().commit();
+            entityManager.clear();
             return userMapper.entityToModel(user);
         }
         return null;
@@ -58,12 +84,13 @@ public class UserImp implements IUser {
     @Override
     public boolean updateUser(UserModel userModel) {
         if (userModel != null) {
-            System.out.println(userModel.toString()+"/////////////////////////////");
+            System.out.println(userModel.toString() + "/////////////////////////////");
             entityManager.getTransaction().begin();
             User user = entityManager.find(User.class, userModel.getUserId());
             user = userMapper.modelToEntity(userModel);
             entityManager.merge(user);
             entityManager.getTransaction().commit();
+            entityManager.clear();
             return true;
         }
         return false;

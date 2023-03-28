@@ -196,7 +196,7 @@
 
                                         if (response[1] == "U"){
                                             console.log(".... " + response[2]);
-                                            window.location = "views/profile.jsp";
+                                            window.location = "/profile";
                                         }
 
                                     } else {
