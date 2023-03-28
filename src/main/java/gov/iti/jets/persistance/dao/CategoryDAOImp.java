@@ -17,6 +17,7 @@ public class CategoryDAOImp implements CategoryDaoInterface {
     @Override
     public List<Brand> getAllCategories() {
         Query query = entityManager.createQuery("SELECT p FROM Brand p");
+        entityManager.clear();
         return query.getResultList();
     }
 
@@ -27,8 +28,9 @@ public class CategoryDAOImp implements CategoryDaoInterface {
     }
 
     @Override
-    public boolean addCategory(Brand brand) {
-        if (brand != null) {
+    public boolean addCategory(String brandName) {
+        if (brandName != null) {
+            Brand brand = new Brand(brandName);
             entityManager.getTransaction().begin();
             entityManager.persist(brand);
             entityManager.getTransaction().commit();
@@ -39,10 +41,10 @@ public class CategoryDAOImp implements CategoryDaoInterface {
 
     @Override
     public boolean deleteCategoryById(int categoryID) {
-        Product category = entityManager.find(Product.class, categoryID);
-        if (category != null) {
+        Brand brand = entityManager.find(Brand.class, categoryID);
+        if (brand != null) {
             entityManager.getTransaction().begin();
-            entityManager.remove(category);
+            entityManager.remove(brand);
             entityManager.getTransaction().commit();
             return true;
         }
@@ -50,8 +52,10 @@ public class CategoryDAOImp implements CategoryDaoInterface {
     }
 
     @Override
-    public boolean updateCategory(Brand brand) {
+    public boolean updateCategory(Integer id,String newName) {
+        Brand brand = getCategoryByID(id);
         if (brand != null) {
+            brand.setBrandName(newName);
             entityManager.getTransaction().begin();
             entityManager.merge(brand);
             entityManager.getTransaction().commit();

@@ -4,14 +4,12 @@ package gov.iti.jets.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-
 import jakarta.persistence.Basic;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "user")
@@ -135,32 +133,12 @@ public class User implements Serializable {
     }
 
     // public List<Order> getOrder1List() {
-    //     return orderList;
+    // return orderList;
     // }
 
     // public void setOrder1List(List<Order> order1List) {
-    //     this.orderList = order1List;
+    // this.orderList = order1List;
     // }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (userId != null ? userId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.userId == null && other.userId != null)
-                || (this.userId != null && !this.userId.equals(other.userId))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {

@@ -78,7 +78,7 @@
                   <th scope="col">PRODUCT NAME</th>
                   <th scope="col">UNIT Price</th>
                   <th scope="col">IN STOCK</th>
-                  <th scope="col">Brand</th>
+                  <th scope="col">Brand Name</th>
                   <th scope="col">&nbsp;</th>
                 </tr>
               </thead>
@@ -102,9 +102,8 @@
             </table>
           </div>
           <!-- table container -->
-          <button class="btn btn-primary btn-block text-uppercase mb-3">
-            Add new category
-          </button>
+          <a href="add-brand.jsp" class="btn btn-primary btn-block text-uppercase mb-3">Brand Settings</a>
+
         </div>
       </div>
     </div>
@@ -125,9 +124,13 @@
   <!-- https://getbootstrap.com/ -->
   <script>
 
+    var brands;
+    var products;
+
     function getProducts() {
 
       console.log("========== GetProducts Function ==================");
+
 
       $.get("/adminProducts", function (data) {
         console.log("back from servlet");
@@ -135,6 +138,10 @@
         console.log(pageData);
         products = pageData.products;
         var tbodyData = '';
+
+        getBrands(pageData);
+
+        console.log("Test method ===> " + getBrandbyID(1));
 
         // Loop through the products array and add a row for each product
         $.each(products, function (index, product) {
@@ -148,7 +155,7 @@
                   <td class="tm-product-name">`+ product.productName + `</td>
                   <td>`+ product.price + `</td>
                   <td>`+ product.quantity + `</td>
-                  <td>`+ product.brandId + `</td>
+                  <td>`+ getBrandbyID(product.brandId) + `</td>
                   <td>
                     <a class="tm-product-delete-link" onClick="deleteProduct(${product.productId})">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
@@ -159,8 +166,6 @@
 
         $('#products_table_tbody').html(tbodyData);
 
-        getBrands(pageData);
-
       });
 
     }
@@ -169,7 +174,8 @@
 
       console.log("========== GetBrands Function ==================");
 
-      var brands = pageData.brands;
+      brands = pageData.brands;
+      console.log(brands);
       var tbodyData = '';
 
       // Loop through the products array and add a row for each product
@@ -178,7 +184,7 @@
         tbodyData += `<tr>
                   <td class="tm-product-name">` + brand.brandName + `</td>
                   <td class="text-center">
-                    <a href="#" class="tm-product-delete-link" onClick="deleteProduct(${brand.brandId})">
+                    <a href="#" class="tm-product-delete-link" onClick="deleteBrand(${brand.id})">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
                     </a>
                   </td>
@@ -187,6 +193,44 @@
 
       $('#brands_table_tbody').html(tbodyData);
 
+    }
+
+    function getBrandbyID(id) {
+      console.log("======================");
+      console.log("======================");
+      console.log("id : " + id);
+      console.log("======================");
+      console.log("======================");
+      for (const brand of brands) {
+        if (brand.id === id) {
+          return brand.brandName;
+        }
+      }
+
+    }
+
+
+    function deleteBrand(id) {
+
+      console.log("deleting Brand with id : " + id);
+
+      // productId="${product.productId}"
+
+      $.ajax({
+        url: '/deleteBrand',
+        type: 'POST',
+        data: {
+          brandId: id
+        },
+        success: function (result) {
+          console.log("Success Function =========================");
+          refreshContent();
+        },
+        error: function (xhr, status, error) {
+          console.log("Error Function =========================")
+
+        }
+      });
     }
 
     function deleteProduct(id) {
@@ -221,11 +265,11 @@
       getProducts();
     }
 
-    $(function () {
-      $(".tm-product-name").on("click", function () {
-        window.location.href = "edit-product.jsp";
-      });
-    });
+    // $(function () {
+    //   $(".tm-product-name").on("click", function () {
+    //     window.location.href = "edit-product.jsp";
+    //   });
+    // });
   </script>
 </body>
 

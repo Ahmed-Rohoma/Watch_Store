@@ -1,13 +1,13 @@
 package gov.iti.jets.controller.admin;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
 import com.google.gson.*;
 
-import gov.iti.jets.persistance.dao.CategoryDAOImp;
-import gov.iti.jets.persistance.dao.ProductDAOImp;
+import gov.iti.jets.persistance.dao.*;
 import gov.iti.jets.entity.*;
 
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,13 @@ public class viewAllProducts extends HttpServlet {
     private ProductDAOImp productDAO;
     private CategoryDAOImp brandDAO;
 
-    public viewAllProducts() {
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+
+        // String savePath = getServletContext().getRealPath("") + "productImages" + File.separator;
+        // getServletContext().setAttribute("savePath", savePath);
+
         productDAO = new ProductDAOImp();
         brandDAO = new CategoryDAOImp();
     }

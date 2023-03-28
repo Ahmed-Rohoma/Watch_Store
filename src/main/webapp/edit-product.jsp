@@ -108,20 +108,35 @@
                     <input id="productQuantity" name="quantity" type="number" class="form-control validate" required />
                   </div>
                 </div>
-
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+
+            <!-- <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
               <div class="tm-product-img-dummy mx-auto">
-                <img id="productImg" src="path/to/image.jpg" alt="Product Image" width="100%">
+                <img id="productImg" src="" alt="Product Image" width="100%">
                 <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                  onclick="document.getElementById('fileInput').click();"></i>
+                  onclick="document.getElementById('fileInput').click();" style="display:none;" ></i>
               </div>
               <div class="custom-file mt-3 mb-3">
                 <input id="fileInput" type="file" style="display:none;" />
                 <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
                   onclick="document.getElementById('fileInput').click();" />
               </div>
+            </div> -->
+
+            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+              <div class="tm-product-img-dummy mx-auto">
+                <img id="productImg" src="" alt="" style="width: 100%; height: 100%; object-fit: contain;">
+                <label for="fileInput">
+                  <i class="fas fa-cloud-upload-alt tm-upload-icon" style="display:none;"></i>
+                </label>
+                <input id="fileInput" type="file" name="image" style="display:none;" onchange="previewImage(event)" />
+              </div>
+              <div>
+                <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
+                  onclick="document.getElementById('fileInput').click();" />
+              </div>
             </div>
+
             <div class="col-12">
               <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Product Now</button>
             </div>
@@ -150,6 +165,7 @@
   <script>
 
     var currentProductBrand;
+    var product;
 
     function getProduct() {
 
@@ -182,7 +198,7 @@
 
       console.log("filling the form");
 
-      var product = JSON.parse(result);
+      product = JSON.parse(result);
       console.log(product.imagePath);
 
       product.imagePath = product.imagePath.replace(/\\\\/g, "\\");
@@ -234,7 +250,21 @@
           console.log("Error Function =========================")
         }
       });
+
+      // setting it again 
+      $('#productImg').attr('src', product.imagePath);
+
     }
+
+    function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = document.getElementById("productImg");
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
 
     $(function () {
       $("#expire_date").datepicker({

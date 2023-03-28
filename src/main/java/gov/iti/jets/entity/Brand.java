@@ -16,6 +16,10 @@ public class Brand {
     public Brand() {
     }
 
+    public Brand(String brandName) {
+        this.brandName = brandName;
+    }
+
     public Integer getId() {
         return id;
     }
