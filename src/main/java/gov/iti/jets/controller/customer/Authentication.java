@@ -29,36 +29,27 @@ public class Authentication extends HttpServlet {
         System.out.println("Enterd email : " + email + " & password : " + password);
 
         UserModel user = userImp.getUser(email, password);
-        if (user != null) {
-            out.print("Valid");
+        if(user!=null){
+            out.print("V");
             System.out.println("Right email & Password");
             if (user.getIsAdmin() == 1) {
                 System.out.println("Admin");
-                out.print("Admin");
-                // request.getRequestDispatcher("/admin/products").forward(request, response);
-                // request.getRequestDispatcher("add-product.html").forward(request, response);
-                // response.sendRedirect("add-product.html");
-
+                out.print("A");
+                request.getRequestDispatcher("/admin/products").forward(request, response);
             } else {
-                // session
+
                 HttpSession session = request.getSession(true);
                 session.setAttribute("userData", user);
-
-                // LocalDateTime dateTime =
-                // LocalDateTime.ofInstant(user.getBirthdate().toInstant(),
-                // ZoneId.systemDefault()); // convert the Date to a LocalDateTime
-                // LocalDate localDate = dateTime.toLocalDate();
-                // System.out.println("....///" + user.getBirthdate());
-
                 if (request.getParameter("remember") != null) {
                     Cookie emailCookie = new Cookie("userEmail", email);
                     Cookie passwordCookie = new Cookie("password", password);
                     response.addCookie(emailCookie);
                     response.addCookie(passwordCookie);
                     System.out.println(request.getParameter("remember") + "rememberrrr");
+
                 }
-                System.out.println("user");
-                out.print("User");
+                System.out.println("user" + user.getUserId());
+                out.print("U");
             }
 
         }

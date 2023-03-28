@@ -9,7 +9,7 @@ public interface IUser {
 
     public UserModel getUser(String email, String password);
 
-    public boolean addUser(UserModel user);
+    public UserModel addUser(UserModel user);
 
     public boolean emailIsExists(String email);
 

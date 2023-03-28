@@ -34,6 +34,20 @@ public class User implements Serializable {
     // @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     // private List<Order> orderList = new ArrayList<>();
 
+    public User(Integer userId, String userName, String email, String password, String job, Double creditLimit,
+                Date birthdate, String address, String interests, Integer isAdmin) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.job = job;
+        this.creditLimit = creditLimit;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.interests = interests;
+        this.isAdmin = isAdmin;
+    }
+
     public User(String userName, String email, String password, String job, Double creditLimit, Date birthdate,
             String address, String interests, Integer isAdmin) {
         this.userName = userName;

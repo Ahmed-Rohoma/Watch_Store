@@ -59,7 +59,7 @@
         <div id="cartItemsDiv">
             <c:choose>
                 <c:when test="${empty cart || cart.size() == 0 }">
-                    <c:import url="WEB-INF/views/empty-cart.jsp" />
+                    <c:import url="empty-cart.jsp" />
                 </c:when>
                 <c:otherwise>
                     <!-- ...:::: Start Cart Section:::... -->

@@ -206,20 +206,17 @@
                                 .done(function (response) {
                                     // Handle the response from the server
                                     console.log("RESPONSE " + response);
-                                    // console.log(response[6]+"/////////////////////");
-
-
-                                    console.log("response[0]" + response[0]);
-                                    console.log("response[5]" + response[5]);
 
                                     if (response[0] == "V") {
-                                        if (response[5] == "A")
-                                            // to Admin pages
+                                        $("#error").html("");
+                                        if (response[1] == "A")
                                             window.location = "products.jsp";
-                                            // window.location = "/updateProfile";
-                                            
-                                        if (response[5] == "U")
+
+                                        if (response[1] == "U"){
+                                            console.log(".... " + response[2]);
                                             window.location = "views/profile.jsp";
+                                        }
+
                                     } else {
                                         console.log(email + password);
                                         $("#error").html("  Invalid email or Password");
@@ -251,7 +248,6 @@
                                     console.log(response + "/////////////////////");
 
                                     if (response == "done") {
-
                                         window.location.href = "views/index.jsp";
                                     }
                                 })

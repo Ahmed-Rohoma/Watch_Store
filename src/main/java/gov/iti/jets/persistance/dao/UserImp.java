@@ -22,14 +22,15 @@ public class UserImp implements IUser {
     }
 
     @Override
-    public boolean addUser(UserModel user) {
-        if (user != null) {
+    public UserModel addUser(UserModel userModel) {
+        if (userModel != null) {
+            User user = userMapper.modelToEntity(userModel);
             entityManager.getTransaction().begin();
-            entityManager.persist(userMapper.modelToEntity(user));
+            entityManager.persist(user);
             entityManager.getTransaction().commit();
-            return true;
+            return userMapper.entityToModel(user);
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -55,10 +56,13 @@ public class UserImp implements IUser {
     }
 
     @Override
-    public boolean updateUser(UserModel user) {
-        if (user != null) {
+    public boolean updateUser(UserModel userModel) {
+        if (userModel != null) {
+            System.out.println(userModel.toString()+"/////////////////////////////");
             entityManager.getTransaction().begin();
-            entityManager.merge(userMapper.modelToEntity(user));
+            User user = entityManager.find(User.class, userModel.getUserId());
+            user = userMapper.modelToEntity(userModel);
+            entityManager.merge(user);
             entityManager.getTransaction().commit();
             return true;
         }
@@ -77,7 +81,6 @@ public class UserImp implements IUser {
         User userResult = null;
         try {
             userResult = entityManager.createQuery(userCriteriaQuery).getSingleResult();
-        System.out.println(userResult.getBirthdate()+"cccc");
             return userMapper.entityToModel(userResult);
         } catch (Exception e) {
             System.out.println("Invalid email || Password");
