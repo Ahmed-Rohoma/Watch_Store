@@ -5,11 +5,16 @@ import java.util.List;
 
 import gov.iti.jets.model.ProductModel;
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import gov.iti.jets.persistance.connection.DBMananger;
 import gov.iti.jets.entity.Product;
+import gov.iti.jets.mapper.ProductMapper;
 
 public class IProductImp implements IProduct {
     private EntityManager entityManager;
+    private ProductMapper productMapper;
 
     public IProductImp() {
         entityManager = DBMananger.getInstance().createEntityManager();
@@ -21,9 +26,9 @@ public class IProductImp implements IProduct {
         System.out.println("dao 2");
         List<Product> pro = query.getResultList();
         List<ProductModel> result = new ArrayList<>();
-        for (Product p:pro) {
-            result.add(new ProductModel(p.getProductId(),p.getProductName(),p.getPrice()
-            ,p.getQuantity(),p.getDescription(),p.getBrandId(),p.getImagePath()));
+        for (Product p : pro) {
+            result.add(new ProductModel(p.getProductId(), p.getProductName(), p.getPrice(), p.getQuantity(),
+                    p.getDescription(), p.getBrandId(), p.getImagePath()));
         }
         return result;
     }
@@ -68,4 +73,30 @@ public class IProductImp implements IProduct {
             return false;
         }
     }
+
+    @Override
+    public List<ProductModel> getProductsByBrandID(Integer brandId) {
+
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Product> proCriteriaQuery = criteriaBuilder.createQuery(Product.class);
+        Root<Product> proRoot = proCriteriaQuery.from(Product.class);
+        proCriteriaQuery.select(proRoot)
+                .where(criteriaBuilder.equal(proRoot.get("brandId"), brandId));
+        List<Product> proResult = null;
+        List<ProductModel> productsModel = new ArrayList<>();
+        try {
+            System.out.println("befor...............");
+            proResult = entityManager.createQuery(proCriteriaQuery).getResultList();
+            System.out.println("afdter........");
+            for (Product pro : proResult) {
+                System.out.println(brandId + pro.getProductName());
+                productsModel.add(new ProductModel(pro.getProductId(), pro.getProductName(), pro.getPrice(), pro.getQuantity(),
+                pro.getDescription(), pro.getBrandId(), pro.getImagePath()));            }
+        } catch (Exception e) {
+            System.out.println("Invalid brand");
+            productsModel = null;
+        }
+        return productsModel;
+    }
+
 }

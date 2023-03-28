@@ -2,13 +2,11 @@ package gov.iti.jets.mapper;
 
 import gov.iti.jets.entity.Product;
 import gov.iti.jets.model.ProductModel;
-import gov.iti.jets.service.ProductService;
 
 public class ProductMapper {
     
 
     public ProductModel toModel(Product product) {
-        ProductService service = new ProductService();
         ProductModel model = ProductModel.builder()
                 .productId(product.getProductId())
                 .productName(product.getProductName())
