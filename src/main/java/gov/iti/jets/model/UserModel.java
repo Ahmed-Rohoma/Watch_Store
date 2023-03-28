@@ -99,8 +99,5 @@ public class UserModel implements Serializable {
     public int getIsAdmin() {
         return isAdmin;
     }
-    public void setIsAdmin(int isAdmin) {
-        this.isAdmin = isAdmin;
-    }
 
 }
