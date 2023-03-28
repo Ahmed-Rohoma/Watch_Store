@@ -3,6 +3,7 @@ package gov.iti.jets.controller.customer;
 import java.io.IOException;
 
 import gov.iti.jets.model.UserModel;
+import gov.iti.jets.persistance.dao.IUser;
 import gov.iti.jets.persistance.dao.UserImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,11 +15,11 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/register")
 public class Registration extends HttpServlet {
 
-    private UserImp userImp;
+    private IUser iUser;
 
     @Override
     public void init() throws ServletException {
-        userImp = new UserImp();
+        iUser = new UserImp();
     }
 
     @Override
@@ -35,7 +36,7 @@ public class Registration extends HttpServlet {
 
         System.out.println(name + email + password + job + creditLimit + birthday + address + interests);
         UserModel userModel = new UserModel(name, email, password, job, creditLimit, birthday, address, interests, 0);
-        UserModel registeredUser = userImp.addUser(userModel);
+        UserModel registeredUser = iUser.addUser(userModel);
         if (registeredUser != null){
             System.out.println(registeredUser.getUserId()+"  id");
             HttpSession session = request.getSession(true);

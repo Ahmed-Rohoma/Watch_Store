@@ -13,5 +13,5 @@ public interface IUser {
 
     public boolean emailIsExists(String email);
 
-    public boolean updateUser(UserModel brand);
+    public boolean updateUser(UserModel userModel);
 }

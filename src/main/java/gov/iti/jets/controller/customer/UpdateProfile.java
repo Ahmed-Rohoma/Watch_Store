@@ -3,6 +3,7 @@ package gov.iti.jets.controller.customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import gov.iti.jets.model.UserModel;
+import gov.iti.jets.persistance.dao.IUser;
 import gov.iti.jets.persistance.dao.UserImp;
 
 import jakarta.servlet.ServletException;
@@ -12,11 +13,11 @@ import jakarta.servlet.http.*;
 @WebServlet("/updateProfile")
 public class UpdateProfile extends HttpServlet {
     
-    private UserImp userImp;
+    private IUser iUser;
 
     @Override
     public void init() throws ServletException {
-        userImp = new UserImp();
+        iUser = new UserImp();
     }
 
     @Override
@@ -38,7 +39,7 @@ public class UpdateProfile extends HttpServlet {
         System.out.println(name + email + password + job + creditLimit + birthday + address + interests);
         UserModel user = new UserModel(((UserModel) session.getAttribute("userData")).getUserId(),name, email, password, job, creditLimit, birthday, address, interests, 0);
         
-        if(userImp.updateUser(user)){
+        if(iUser.updateUser(user)){
             out.print("updated");
         }
         else{

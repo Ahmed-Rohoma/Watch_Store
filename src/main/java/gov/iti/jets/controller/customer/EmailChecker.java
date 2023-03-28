@@ -1,5 +1,6 @@
 package gov.iti.jets.controller.customer;
 
+import gov.iti.jets.persistance.dao.IUser;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 
@@ -13,11 +14,11 @@ import jakarta.servlet.http.*;
 @WebServlet("/emailchecker")
 public class EmailChecker extends HttpServlet {
 
-    private UserImp userImp;
+    private IUser iUser;
 
     @Override
     public void init() throws ServletException {
-        userImp = new UserImp();
+        iUser = new UserImp();
     }
 
     @Override
@@ -27,7 +28,7 @@ public class EmailChecker extends HttpServlet {
         PrintWriter out = response.getWriter();
         System.out.println("checkkkkkkk");
 
-        if (userImp.emailIsExists(request.getParameter("email"))) {
+        if (iUser.emailIsExists(request.getParameter("email"))) {
             System.out.println("In valid");
             out.print("Invalid Email");
         } else {

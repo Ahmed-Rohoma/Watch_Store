@@ -26,8 +26,8 @@ public class User implements Serializable {
     private String address;
     private String interests;
     private Integer isAdmin;
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
-     private List<Order> orderList = new ArrayList<>();
+//     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
+//     private List<Order> orderList = new ArrayList<>();
 
     public User(Integer userId, String userName, String email, String password, String job, Double creditLimit,
                 Date birthdate, String address, String interests, Integer isAdmin) {
@@ -143,13 +143,13 @@ public class User implements Serializable {
         this.isAdmin = isAdmin;
     }
 
-     public List<Order> getOrder1List() {
-     return orderList;
-     }
+//     public List<Order> getOrder1List() {
+//     return orderList;
+//     }
 
-     public void setOrder1List(List<Order> order1List) {
-     this.orderList = order1List;
-     }
+//     public void setOrder1List(List<Order> order1List) {
+//     this.orderList = order1List;
+//     }
 
     @Override
     public String toString() {

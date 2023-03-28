@@ -81,9 +81,10 @@ public class UserImp implements IUser {
         User userResult = null;
         try {
             userResult = entityManager.createQuery(userCriteriaQuery).getSingleResult();
+            System.out.println("valid email & Password from dao");
             return userMapper.entityToModel(userResult);
         } catch (Exception e) {
-            System.out.println("Invalid email || Password");
+            System.out.println("Invalid email || Password from dao");
             return null;
         }
 

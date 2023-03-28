@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import gov.iti.jets.model.UserModel;
+import gov.iti.jets.persistance.dao.IUser;
 import gov.iti.jets.persistance.dao.UserImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,11 +13,11 @@ import jakarta.servlet.http.*;
 @WebServlet("/auth")
 public class Authentication extends HttpServlet {
 
-    private UserImp userImp;
+    private IUser iUser;
 
     @Override
     public void init() throws ServletException {
-        userImp = new UserImp();
+        iUser = new UserImp();
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Authentication extends HttpServlet {
 
         System.out.println("Enterd email : " + email + " & password : " + password);
 
-        UserModel user = userImp.getUser(email, password);
+        UserModel user = iUser.getUser(email, password);
         if(user!=null){
             out.print("V");
             System.out.println("Right email & Password");
