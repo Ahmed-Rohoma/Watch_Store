@@ -94,10 +94,10 @@
                                                             <li><a href="cart.jsp">Cart</a></li>
                                                             <li><a href="/cart">Cart</a></li>
                                                             <li><a href="wishlist.html">Wishlist</a></li>
-                                                            <li><a href="compare.html">Compare</a></li>
+                                                            <li><a href="/logout">Logout</a></li>
                                                             <li><a href="checkout.html">Checkout</a></li>
                                                             <li><a href="/login">Login</a></li>
-                                                            <li><a href="profile.jsp">My Account</a></li>
+                                                            <li><a href="/profile">My Account</a></li>
                                                         </ul>
                                                     </li>
                                                     <!-- Mega Menu Sub Link -->
