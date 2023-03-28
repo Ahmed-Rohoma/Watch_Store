@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
-<html lang="zxx">
+<html >
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8">
@@ -95,7 +97,7 @@
                                                             <li><a href="/cart">Cart</a></li>
                                                             <li><a href="wishlist.html">Wishlist</a></li>
                                                             <li><a href="compare.html">Compare</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
+                                                            <li><a href="/checkout">Checkout</a></li>
                                                             <li><a href="/login">Login</a></li>
                                                             <li><a href="profile.jsp">My Account</a></li>
                                                         </ul>
@@ -315,7 +317,7 @@
                                         <li><a href="empty-cart.html">Empty Cart</a></li>
                                         <li><a href="wishlist.html">Wishlist</a></li>
                                         <li><a href="compare.html">Compare</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="/checkout">Checkout</a></li>
                                         <li><a href="login.html">Login</a></li>
                                         <li><a href="profile.jsp">My Account</a></li>
                                     </ul>
@@ -405,7 +407,7 @@
                 <ul class="user-link">
                     <li><a href="wishlist.html">Wishlist</a></li>
                     <li><a href="cart.html">Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="/checkout">Checkout</a></li>
                 </ul>
             </div>
             <!-- End Mobile contact Info -->
@@ -442,7 +444,7 @@
             <ul class="user-link">
                 <li><a href="wishlist.html">Wishlist</a></li>
                 <li><a href="cart.html">Cart</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="/checkout">Checkout</a></li>
             </ul>
         </div>
         <!-- End Mobile contact Info -->
@@ -641,17 +643,17 @@
                                         <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Added to cart
                                             successfully!</div>
                                         <div class="modal-add-cart-product-cart-buttons">
-                                            <a href="cart.html">View Cart</a>
-                                            <a href="checkout.html">Checkout</a>
+                                            <a href="/cart">View Cart</a>
+                                            <a href="/checkout">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-5 modal-border">
                                 <ul class="modal-add-cart-product-shipping-info">
-                                    <li> <strong><i class="icon-shopping-cart"></i> There Are 5 Items In Your
+                                    <li> <strong><i class="icon-shopping-cart"></i> There Are ${cart.size()} Items In Your
                                             Cart.</strong></li>
-                                    <li> <strong>TOTAL PRICE: </strong> <span>$187.00</span></li>
+                                    <li> <strong>TOTAL PRICE: </strong> <span>${cartTotal}</span></li>
                                     <li class="modal-continue-button"><a href="#" data-bs-dismiss="modal">CONTINUE
                                             SHOPPING</a></li>
                                 </ul>
@@ -837,4 +839,22 @@
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
 </body>
+<script>
+    function checkout() {
+                    console.log("checkout ------");
+                    $.ajax({
+                        url: "/checkout",
+                        type: "GET",
+                        success: function (response) {
+                            console.log("checkout success ------");
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log("checkout error ------");
+
+                        }
+                    });
+                    $('#modalAddcart').modal('toggle');
+
+                }
+</script>
 </html>

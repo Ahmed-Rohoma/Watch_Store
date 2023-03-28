@@ -162,8 +162,7 @@
 
                                                             <div class="product-add-to-cart-btn"
                                                                 onclick="addToCart('<%= product.getProductId() %>')">
-                                                                <a href="#" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalAddcart">+
+                                                                <a href="#">+
                                                                     Add To Cart</a>
                                                             </div>
                                                         </div>
@@ -231,6 +230,7 @@
                                                     console.log(textStatus, errorThrown);
                                                 }
                                             });
+                                            $('#modalAddcart').modal('toggle');
                                         }
                                     </script>
                         </body>

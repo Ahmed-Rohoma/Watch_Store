@@ -10,7 +10,7 @@
                         </div>
                         <h4 class="title">Your Cart is Empty</h4>
                         <h6 class="sub-title">Sorry Mate... No item Found inside your cart!</h6>
-                        <a href="index.jsp" class="btn btn-lg btn-golden">Continue
+                        <a href="/home" class="btn btn-lg btn-golden">Continue
                             Shopping</a>
                     </div>
                 </div>
