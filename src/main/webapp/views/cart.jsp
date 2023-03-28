@@ -102,11 +102,11 @@
                                                                             class="fa fa-trash-o"></i></a>
                                                                 </td>
                                                                 <td class="product_thumb">
-                                                                    <a href=""><img
+                                                                    <a  href="/product-details?productId=${item.key}"><img
                                                                             src="../assets/images/product/default/home-1/default-1.jpg"
                                                                             alt=""></a>
                                                                 </td>
-                                                                <td class="product_name"><a href="">
+                                                                <td class="product_name"><a href="/product-details?productId=${item.key}">
                                                                         ${item.value.getProductName()}
                                                                     </a></td>
                                                                 <td class="product-price">
