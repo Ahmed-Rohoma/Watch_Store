@@ -102,11 +102,11 @@
                                                                             class="fa fa-trash-o"></i></a>
                                                                 </td>
                                                                 <td class="product_thumb"><a
-                                                                        href="product-details-default.html"><img
+                                                                        href="/product-details?productId=${item.getProductId()}"><img
                                                                             src="../assets/images/product/default/home-1/default-1.jpg"
                                                                             alt=""></a></td>
                                                                 <td class="product_name"><a
-                                                                        href="product-details-default.html">
+                                                                        href="/product-details?productId=${item.getProductId()}">
                                                                         ${item.value.getProductName()}
                                                                     </a></td>
                                                                 <td class="product-price">
@@ -127,10 +127,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <!-- <div class="cart_submit">
-                                                <button class="btn btn-md btn-golden" type="submit">update
-                                                    cart</button>
-                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -147,25 +143,12 @@
                                         <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
                                             <h3>Cart Totals</h3>
                                             <div class="coupon_inner">
-                                                <!-- <div class="cart_subtotal">
-                                                    <p>Subtotal</p>
-                                                    <p class="cart_amount">$215.00</p>
-                                                </div>
-                                                <div class="cart_subtotal ">
-                                                    <p>Shipping</p>
-                                                    <p class="cart_amount"><span>Flat
-                                                            Rate:</span>
-                                                        $255.00
-                                                    </p>
-                                                </div>
-                                                <a href="#">Calculate shipping</a> -->
-
                                                 <div class="cart_subtotal">
                                                     <p>Total</p>
                                                     <p class="cart_amount">$${cartTotal}0</p>
                                                 </div>
                                                 <div class="checkout_btn">
-                                                    <a href="#" class="btn btn-md btn-golden">Proceed
+                                                    <a href="" class="btn btn-md btn-golden" onclick="checkout()">Proceed
                                                         to
                                                         Checkout</a>
                                                 </div>
@@ -479,7 +462,7 @@
                 }
                 function refreshCartItemsDiv() {
                     $.ajax({
-                        url: "cart_items.jsp",
+                        url: "views/cart_items.jsp",
                         success: function (result) {
                             // console.log("successfully!");
                             console.log(result);
@@ -528,6 +511,24 @@
                         error: function (jqXHR, textStatus, errorThrown) {
                             // handle error response
                             console.log(textStatus, errorThrown);
+                        }
+                    });
+                }
+                function checkout() {
+                    console.log("checkout ------");
+                    // Prevent default link behavior
+                    // e.preventDefault();
+                    // Make an AJAX request
+                    $.ajax({
+                        url: "/checkout",
+                        type: "GET",
+                        success: function (response) {
+                            console.log("checkout success ------");
+
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log("checkout error ------");
+
                         }
                     });
                 }

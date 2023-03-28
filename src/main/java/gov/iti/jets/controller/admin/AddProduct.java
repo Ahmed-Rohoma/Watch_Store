@@ -32,6 +32,20 @@ public class AddProduct extends HttpServlet {
     public AddProduct() {
         productDAO = new ProductDAOImp();
         brandDAO = new CategoryDAOImp();
+        // savePath = (String) getServletContext().getAttribute("savePath");
+    }
+
+    @Override
+    public void init() throws ServletException {
+
+        savePath = getServletContext().getRealPath("") + "productImages" + File.separator;
+        File fileSaveDir = new File(savePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdir();
+        }
+        System.out.println("========= Creating image file ===========");
+        getServletContext().setAttribute("savePath", savePath);
+
     }
 
     @Override
@@ -48,21 +62,6 @@ public class AddProduct extends HttpServlet {
         out.write(msg);
         out.flush();
         out.close();
-    }
-
-    @Override
-    public void init() throws ServletException {
-
-        // savePath = "C:\\Users\\LENOVO\\Desktop\\productImages" + File.separator ;
-        System.out.println("NEW save Path => : " + savePath);
-        savePath = getServletContext().getRealPath("") + "productImages" + File.separator;
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
-
-        getServletContext().setAttribute("savePath", savePath);
-
     }
 
     @Override

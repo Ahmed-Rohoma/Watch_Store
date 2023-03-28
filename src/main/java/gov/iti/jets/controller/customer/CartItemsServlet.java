@@ -17,12 +17,7 @@ import java.util.List;
 public class CartItemsServlet  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // HttpSession session = request.getSession();
-        // String cart = (String) session.getAttribute("cartJson");
-        // String name = (String) session.getAttribute("Name");
-
-        // System.out.println("--------- "+cart+"  ++++++++++++++" + "  " + name);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/cart.jsp");
-        dispatcher.forward (request, response);
+        dispatcher.forward(request, response);
     }
 }

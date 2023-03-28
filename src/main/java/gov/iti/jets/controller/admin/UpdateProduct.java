@@ -3,6 +3,7 @@ package gov.iti.jets.controller.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.nio.file.Paths;
 
 import com.google.gson.JsonObject;
 
@@ -22,6 +23,7 @@ public class UpdateProduct extends HttpServlet {
     private ProductDAOImp productDAO;
     private int productID;
     String savePath = "";
+    Product product = null;
 
     public UpdateProduct() {
         productDAO = new ProductDAOImp();
@@ -30,6 +32,7 @@ public class UpdateProduct extends HttpServlet {
     @Override
     public void init() throws ServletException {
         savePath = (String) getServletContext().getAttribute("savePath");
+        System.out.println("saving Path : " + savePath);
     }
 
     @Override
@@ -43,10 +46,10 @@ public class UpdateProduct extends HttpServlet {
         productID = Integer.parseInt(request.getParameter("productId"));
         System.out.println("Product to update : " + productID);
 
-        Product product = productDAO.getProductByID(productID);
+        product = productDAO.getProductByID(productID);
 
         if (product == null) {
-            System.out.println("null");
+            System.out.println("Product is Deleted ..");
             // tell user that this product is not removed
             // forward to products.jsp
             return;
@@ -79,30 +82,36 @@ public class UpdateProduct extends HttpServlet {
         Integer brandID = Integer.parseInt(request.getParameter("selectedBrand"));
         BigDecimal price = new BigDecimal((String) (request.getParameter("price")));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
+        Part filePart = request.getPart("image");
+
+        // if ()
 
         System.out
                 .println("updating product : " + name + "\nd: " + description + "\n brand = " + brandID + "\nprice = "
                         + price + "\nquantity = " + quantity);
 
-        // Part filePart = request.getPart("fileInput");
-        // Part filePart = request.getPart("image");
+        product.setProductName(name);
+        product.setDescription(description);
+        product.setBrandId(brandID);
+        product.setPrice(price);
+        product.setQuantity(quantity);
 
-        // String fileName =
-        // Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-
-        // System.out.println("path ======> " + savePath);
-        // System.out.println("fNAme ======> " + fileName);
-        // String filePath = savePath + fileName;
-
-        // filePart.write(filePath);
-
-        Product product = new Product(name, price, quantity, description, brandID,
-                "filePath");
+        if (filePart.getSize() != 0) { // if new image is sent
+            System.out.println("file : " + filePart.getName() + " | size :  " + filePart.getSize());
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            if (savePath == null)
+                savePath = (String) getServletContext().getAttribute("savePath");
+            System.out.println("path ======> " + savePath);
+            System.out.println("fNAme ======> " + fileName);
+            String filePath = savePath + fileName;
+            filePart.write(filePath);
+            product.setImagePath(filePath);
+        } else
+            System.out.println(" image doesn't change ");
 
         productDAO.updateProduct(product, productID);
 
         response.sendRedirect("products.jsp");
-
 
     }
 

@@ -219,7 +219,7 @@
                                     <c:forEach var="item" items="${allpros}">
                                         <div class="product-default-single-item product-color--pink swiper-slide">
                                             <div class="image-box">
-                                                <a href="product-details-default.html" class="image-link">
+                                                <a href="/product-details?productId=${item.getProductId()}" class="image-link">
                                                     <img src="assets/images/product/default/home-3/default-1.jpg"
                                                         alt="">
                                                     <img src="assets/images/product/default/home-3/default-2.jpg"

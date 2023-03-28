@@ -10,7 +10,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "order_product")
 public class OrderProduct {
     @EmbeddedId
-    private OrderProductId id;
+    private OrderProductId id = new OrderProductId();
 
     @MapsId("orderId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -75,7 +75,8 @@ public class OrderProduct {
 
     @Override
     public String toString() {
-        return "orderProduct (order ID : " + order.getId() + " )  => Product " + product.getProductName() + " | quantity in Order " + quantity + " | quantity IN DabaBase " + product.getQuantity() ;
+        return "orderProduct (order ID : " + order.getId() + " )  => Product " + product.getProductName()
+                + " | quantity in Order " + quantity + " | quantity IN DabaBase " + product.getQuantity();
     }
 
 }

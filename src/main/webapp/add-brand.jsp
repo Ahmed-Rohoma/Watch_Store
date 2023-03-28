@@ -75,85 +75,49 @@
         <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
           <div class="row">
             <div class="col-12">
-              <h2 class="tm-block-title d-inline-block">Add Product</h2>
+              <h2 class="tm-block-title d-inline-block">Brand Settings</h2>
             </div>
           </div>
           <div class="row tm-edit-product-row">
             <div class="col-xl-6 col-lg-6 col-md-12">
-              <form action="addProduct" method="post" class="tm-edit-product-form" enctype="multipart/form-data">
+              <form action="addBrand" method="post" class="tm-edit-product-form">
                 <div class="form-group mb-3">
-                  <label for="name">Product Name
+                  <label for="">Brand Name
                   </label>
-                  <input id="productName" name="name" type="text" class="form-control validate" required />
+                  <input id="brand-name" name="newBrandName" type="text" class="form-control validate" required />
                 </div>
-                <div class="form-group mb-3">
-                  <label for="description">Description</label>
-                  <textarea class="form-control validate" rows="3" required id="productDescription"
-                    name="description"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                  <label for="brand">Select Brand</label>
-                  <select class="custom-select tm-select-accounts" id="brand" name="selectedBrand">
-                    <option value="">Select Brand</option>
-                  </select>
-                </div>
-                <div class="row">
-                  <div class="form-group mb-3 col-xs-12 col-sm-6">
-                    <label for="price">Product Price
-                    </label>
-                    <input id="productPrice" name="price" type="number" class="form-control validate"
-                      data-large-mode="true" />
-                  </div>
-                  <div class="form-group mb-3 col-xs-12 col-sm-6">
-                    <label for="stock">Units In Stock
-                    </label>
-                    <input id="productQuantity" name="quantity" type="number" class="form-control validate" required />
-                  </div>
-                </div>
-
             </div>
-            <!-- <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-              <div class="tm-product-img-dummy mx-auto">
-                <img id="productImg" src="path/to/image.jpg" alt="Product Image" width="100%">
-                <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                  onclick="document.getElementById('fileInput').click();"></i>
-              </div>
-              <div class="custom-file mt-3 mb-3">
-                <input id="fileInput" type="file" name="image" style="display:none;" />
-                <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
-                  onclick="document.getElementById('fileInput').click();" />
-              </div>
-            </div> -->
-
-            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-              <div class="tm-product-img-dummy mx-auto">
-                <img id="productImg" src="" alt="" style="width: 100%; height: 100%; object-fit: contain;">
-                <label for="fileInput">
-                  <i class="fas fa-cloud-upload-alt tm-upload-icon" style="display:none;" ></i>
-                </label>
-                <input id="fileInput" type="file" name="image" style="display:none;" onchange="previewImage(event)" />
-              </div>
-              <div>
-                <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
-                  onclick="document.getElementById('fileInput').click();" />
-              </div>
-            </div>
-            
-
-
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+              <button type="submit" class="btn btn-primary btn-block text-uppercase">Add New Brand</button>
             </div>
             </form>
+
+            <form action="updateBrand" method="post" class="tm-edit-product-form">
+              <div class="form-group mb-3">
+                <label for="">Brand Name
+                </label>
+                <input id="bName" name="brandName" type="text" class="form-control validate" required />
+              </div>
+              <div class="form-group mb-3">
+                <label for="brand">Select Brand</label>
+                <select class="custom-select tm-select-accounts" id="brand" name="selectedBrand">
+                  <option value="">Select Brand</option>
+                </select>
+              </div>
           </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Brand Name</button>
+          </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+  </div>
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">
-        Copyright &copy; <b>2018</b> All rights reserved.
+        Copyright &copy; <b>2023</b> All rights reserved.
 
         Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
       </p>
@@ -198,16 +162,6 @@
         }
       });
     }
-
-    function previewImage(event) {
-      var reader = new FileReader();
-      reader.onload = function () {
-        var img = document.getElementById("productImg");
-        img.src = reader.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-
 
     function handleFileSelect(event) {
       const input = event.target;

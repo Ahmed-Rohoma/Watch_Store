@@ -2,16 +2,11 @@
 package gov.iti.jets.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-
-import jakarta.persistence.Basic;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -31,8 +26,8 @@ public class User implements Serializable {
     private String address;
     private String interests;
     private Integer isAdmin;
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
-    // private List<Order> orderList = new ArrayList<>();
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
+     private List<Order> orderList = new ArrayList<>();
 
     public User(Integer userId, String userName, String email, String password, String job, Double creditLimit,
                 Date birthdate, String address, String interests, Integer isAdmin) {
@@ -148,33 +143,13 @@ public class User implements Serializable {
         this.isAdmin = isAdmin;
     }
 
-    // public List<Order> getOrder1List() {
-    //     return orderList;
-    // }
+     public List<Order> getOrder1List() {
+     return orderList;
+     }
 
-    // public void setOrder1List(List<Order> order1List) {
-    //     this.orderList = order1List;
-    // }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (userId != null ? userId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.userId == null && other.userId != null)
-                || (this.userId != null && !this.userId.equals(other.userId))) {
-            return false;
-        }
-        return true;
-    }
+     public void setOrder1List(List<Order> order1List) {
+     this.orderList = order1List;
+     }
 
     @Override
     public String toString() {

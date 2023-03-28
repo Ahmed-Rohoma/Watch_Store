@@ -140,7 +140,7 @@
                                                                     class="product-stock-in"><i
                                                                         class="ion-checkmark-circled"></i></span>
                                                                 <%= product.getQuantity() %> IN
-                                                                    STOCK 
+                                                                    STOCK
                                                             </div>
                                                         </div>
                                                         <!-- Product Variable Single Item -->
@@ -224,10 +224,7 @@
                                                 type: "GET",
                                                 data: { action: 'add', productId: productId, quantity: quantity },
                                                 success: function (response) {
-                                                    // handle successful response
-                                                    // $("#content").html(response);
                                                     console.log("Added to cart successfully!");
-
                                                 },
                                                 error: function (jqXHR, textStatus, errorThrown) {
                                                     // handle error response
