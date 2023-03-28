@@ -2,7 +2,7 @@
 <%@ page isELIgnored="false" %>
 <c:choose>
             <c:when test="${empty cart || cart.size() == 0 }">
-                <c:import url="WEB-INF/views/empty-cart.jsp" />
+                <c:import url="views/empty-cart.jsp" />
             </c:when>
             <c:otherwise>
                 <!-- ...:::: Start Cart Section:::... -->
@@ -36,18 +36,17 @@
                                                     <!-- Display Cart Items -->
                                                     <c:forEach var="item" items="${cart}">
                                                         <!-- Start Cart Single Item-->
-                                                    
                                                         <tr>
                                                             <!-- Handel Remove item here -->
                                                             <td class="product_remove">
                                                                 <a href=""  onclick="removeFromCart('${item.key}',event)" ><i class="fa fa-trash-o"></i></a>
                                                             </td>
                                                             <td class="product_thumb"><a
-                                                                    href="product-details-default.html"><img
+                                                                   href="/product-details?productId=${item.getProductId()}"><img
                                                                         src="../assets/images/product/default/home-1/default-1.jpg"
                                                                         alt=""></a></td>
                                                             <td class="product_name"><a
-                                                                    href="product-details-default.html">
+                                                                   href="/product-details?productId=${item.getProductId()}">
                                                                     ${item.value.getProductName()}
                                                                 </a></td>
                                                             <td class="product-price">
@@ -85,19 +84,6 @@
                                     <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
                                         <h3>Cart Totals</h3>
                                         <div class="coupon_inner">
-                                            <!-- <div class="cart_subtotal">
-                                                <p>Subtotal</p>
-                                                <p class="cart_amount">$215.00</p>
-                                            </div>
-                                            <div class="cart_subtotal ">
-                                                <p>Shipping</p>
-                                                <p class="cart_amount"><span>Flat
-                                                        Rate:</span>
-                                                    $255.00
-                                                </p>
-                                            </div>
-                                            <a href="#">Calculate shipping</a> -->
-
                                             <div class="cart_subtotal">
                                                 <p>Total</p>
                                                 <p class="cart_amount">$${cartTotal}0</p>
