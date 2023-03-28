@@ -38,7 +38,7 @@ public class Customers extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
 
-        List<UserModel> customers = new ArrayList<>(); //  ====>  userDao.getAllCustomers();
+        List<UserModel> customers = userDao.getAllUsers(); //  ====>  userDao.getAllCustomers();
 
         Gson gson = new Gson();
         String msg = gson.toJson(customers);
