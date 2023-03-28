@@ -76,20 +76,21 @@
 
             <div class="col-12 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-                    <h2 class="tm-block-title">Orders List</h2>
+                    <h2 class="tm-block-title">Customers Data</h2>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Customer Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Job</th>
+                                <th scope="col">Credit</th>
                                 <th scope="col">Age</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Interests</th>
                             </tr>
                         </thead>
                         <tbody id="cusotmers_table_tbody">
-                            <tr>
+                            <!-- <tr>
                                 <th scope="row"><b>#122349</b></th>
                                 <td>
                                     <div class="tm-status-circle moving">
@@ -100,7 +101,7 @@
                                 <td><b>485 km</b></td>
                                 <td>16:00, 12 NOV 2018</td>
                                 <td>08:00, 18 NOV 2018</td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -135,23 +136,24 @@
                 console.log("back from servlet");
                 var customers = JSON.parse(data);
                 console.log(customers);
-                
+
                 var tbodyData = '';
 
                 // Loop through the products array and add a row for each product
                 $.each(customers, function (index, customer) {
                     // <th scope="row"><input type="checkbox" /></th>
                     tbodyData += `<tr>
-                                <th scope="row"><b>#122349</b></th>
+                                <td>` + customer.userName + `</td>
                                 <td>
-                                    <div class="tm-status-circle moving">
-                                    </div>Moving
+                                    <div class="tm-status-circle moving"></div>
+                                    ` + customer.email + `
                                 </td>
-                                <td><b>Oliver Trag</b></td>
-                                <td><b>London, UK</b></td>
-                                <td><b>485 km</b></td>
-                                <td>16:00, 12 NOV 2018</td>
-                                <td>08:00, 18 NOV 2018</td>
+                                <td><b>` + customer.job + `</b></td>
+                                <td><b>` + customer.creditLimit + `</b></td>
+                                <td><b>` + customer.birthdate + `</b></td>
+                                <td><b>` + customer.address + `</b></td>
+                                <td><b>` + customer.interests + `</b></td>
+                                
                             </tr>`
                 });
 
