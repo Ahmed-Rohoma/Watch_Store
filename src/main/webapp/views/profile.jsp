@@ -195,47 +195,64 @@
                                                         <label>Name</label>
                                                         <input type="text" id="txtName"
                                                             value="${sessionScope.userData.getUserName()}" name="name">
+                                                        <h6 id="validatename"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Email</label>
                                                         <input type="email" id="txtEmail"
                                                             value="${sessionScope.userData.getEmail()}"
                                                             name="email-name">
+                                                        <h6 id="validateemail"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
+                                                            <span id="msgtxt"></span><br>
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Password</label>
                                                         <input type="password" id="txtPassword"
                                                             value="${sessionScope.userData.getPassword()}"
                                                             name="user-password">
+                                                        <h6 id="validatepassword"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Job</label>
                                                         <input type="text" id="txtJob"
                                                             value="${sessionScope.userData.getJob()}" name="user-job">
+                                                        <h6 id="validatejob"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Birthdate</label>
                                                         <input type="date" id="txtBirthday"
                                                             value="${sessionScope.userData.getBirthdate()}"
                                                             name="birthday">
+                                                        <h6 id="validatebirthday"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Address</label>
                                                         <input type="text" id="txtAddress"
                                                             value="${sessionScope.userData.getAddress()}"
                                                             name="user-address">
+                                                        <h6 id="validateaddress"
+                                                            style="margin-top:10px;margin-left:10px; color:red;">
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Interests</label>
                                                         <input type="text" id="txtInterests"
                                                             value="${sessionScope.userData.getInterests()}"
                                                             name="user-interests">
+                                                        <h6 id="validateinterests"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
                                                     </div>
                                                     <div class="default-form-box mb-20">
                                                         <label>Credit Limit</label>
                                                         <input type="number" id="txtCreditLimit"
                                                             value="${sessionScope.userData.getCreditLimit()}"
                                                             name="user-creditlimit">
+                                                        <h6 id="validatecreditLimit"
+                                                            style="margin-top:10px;margin-left:10px; color: red;">
                                                     </div>
 
                                                     <div class="save_button mt-3">
@@ -263,12 +280,15 @@
 
                 <!-- Main JS -->
                 <script src="../assets/js/main.js"></script>
+                <script src="views/loginscript.js"></script>
 
                 <script>
                     $(document).ready(function () {
 
+                        const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+                        const nameRegex = new RegExp("^[A-Za-z]\\w{3,29}$");
+
                         $("#update").click(function () {
-                            console.log("register/////////////////////");
                             var name = $('#txtName').val();
                             var email = $('#txtEmail').val();
                             var password = $('#txtPassword').val();
@@ -278,24 +298,77 @@
                             var interests = $('#txtInterests').val();
                             var creditLimit = $('#txtCreditLimit').val();
 
-                            console.log(name + "   " + email + "   " + password + "   " + job + "   " + birthday + "   " + address + "   " + interests + "   " + creditLimit);
-                            $.post('http://localhost:8090/updateProfile', { name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit })
-                                .done(function (response) {
-                                    // Handle the response from the server
-                                    console.log(response + "/////////////////////Updated Successfully");
+                            if (!name || !nameRegex.test(name) || !email || !emailRegex.test(email) || !password || !job || !birthday || !address || !interests || !creditLimit) {
+                                if (!name)
+                                    $("#validatename").html("Name is required");
+                                else if (!nameRegex.test(name))
+                                    $("#validatename").html("Invalid Name");
+                                else
+                                    $("#validatename").html("");
 
-                                    if (response == "updated") {
-                                        console.log("/////////////////////Updated Successfully");
-                                        $('#done').html("Updated Successfully");
-                                        setTimeout(function () {
-                                            $('#done').html("");
-                                        }, 5000);
-                                    }
-                                })
-                                .fail(function (xhr, status, error) {
-                                    // Handle errors
-                                    console.log(error + "mmmmmmmmmmmmm" + status);
-                                });
+
+                                if (!email)
+                                    $("#validateemail").html("Email is required");
+                                else if (!emailRegex.test(email))
+                                    $("#validateemail").html("Invalid Email");
+                                else
+                                    $("#validateemail").html("");
+
+
+                                if (!password)
+                                    $("#validatepassword").html("Password is required");
+                                else
+                                    $("#validatepassword").html("");
+
+
+                                if (!job)
+                                    $("#validatejob").html("Job is required");
+                                else
+                                    $("#validatejob").html("");
+
+
+                                if (!birthday)
+                                    $("#validatebirthday").html("Birthday is required");
+                                else
+                                    $("#validatebirthday").html("");
+
+
+                                if (!address)
+                                    $("#validateaddress").html("Address is required");
+                                else
+                                    $("#validateaddress").html("");
+
+
+                                if (!interests)
+                                    $("#validateinterests").html("Interests is required");
+                                else
+                                    $("#validateinterests").html("");
+
+
+                                if (!creditLimit)
+                                    $("#validatecreditLimit").html("criditLimit is required");
+                                else
+                                    $("#validatecreditLimit").html("");
+
+                            } else {
+                                $.post('http://localhost:8090/updateProfile', { name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit })
+                                    .done(function (response) {
+                                        // Handle the response from the server
+                                        console.log(response + "/////////////////////Updated Successfully");
+
+                                        if (response == "updated") {
+                                            console.log("/////////////////////Updated Successfully");
+                                            $('#done').html("Updated Successfully");
+                                            setTimeout(function () {
+                                                $('#done').html("");
+                                            }, 5000);
+                                        }
+                                    })
+                                    .fail(function (xhr, status, error) {
+                                        // Handle errors
+                                        console.log(error + "mmmmmmmmmmmmm" + status);
+                                    });
+                            }
                         });
                     });
                 </script>
