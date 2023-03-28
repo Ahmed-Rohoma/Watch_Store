@@ -24,7 +24,7 @@ public class UserMapper {
     }
 
     public UserModel entityToModel(User user) {
-
+        System.out.println("here");
         String[] date = user.getBirthdate().toString().split(" ");
         return new UserModel(user.getUserId(), user.getUserName(), user.getEmail(), user.getPassword(), user.getJob(),
                 user.getCreditLimit(), date[0], user.getAddress(), user.getInterests(),
