@@ -232,7 +232,7 @@
                                                 if (response[0] == "V") {
                                                     $("#error").html("");
                                                     if (response[1] == "A")
-                                                        window.location = "products.jsp";
+                                                        window.location = "/Admin?path=index";
 
                                                     if (response[1] == "U") {
                                                         console.log(".... " + response[2]);

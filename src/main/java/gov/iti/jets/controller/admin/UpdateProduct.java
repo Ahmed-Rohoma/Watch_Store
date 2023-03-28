@@ -111,7 +111,8 @@ public class UpdateProduct extends HttpServlet {
 
         productDAO.updateProduct(product, productID);
 
-        response.sendRedirect("products.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
+        dispatcher.forward(request, response);
 
     }
 
