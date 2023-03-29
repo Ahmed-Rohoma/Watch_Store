@@ -1,35 +1,35 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
-         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-            <%@ page isELIgnored="false" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ page isELIgnored="false" %>
 
+            <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
-                <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>HONO - Multi Purpose HTML Template</title>
 
-                    <title>HONO - Multi Purpose HTML Template</title>
+                <!-- ::::::::::::::Favicon icon::::::::::::::-->
+                <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
-                        <!-- ::::::::::::::Favicon icon::::::::::::::-->
-                        <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
+                <!-- Use the minified version files listed below for better performance and remove the files listed above -->
+                <link rel="stylesheet" href="../assets/css/vendor/vendor.min.css">
+                <link rel="stylesheet" href="../assets/css/plugins/plugins.min.css">
+                <link rel="stylesheet" href="../assets/css/style.min.css">
 
-                        <!-- Use the minified version files listed below for better performance and remove the files listed above -->
-                        <link rel="stylesheet" href="../assets/css/vendor/vendor.min.css">
-                        <link rel="stylesheet" href="../assets/css/plugins/plugins.min.css">
-                        <link rel="stylesheet" href="../assets/css/style.min.css">
+            </head>
 
-                </head>
+            <body>
 
-                <body>
+                <%@ include file="header.jsp" %>
 
-                    <%@ include file="header.jsp" %>
+                    <!-- Offcanvas Overlay -->
+                    <!-- <div class="offcanvas-overlay"></div> -->
 
-                        <!-- Offcanvas Overlay -->
-                        <!-- <div class="offcanvas-overlay"></div> -->
-
-                        <!-- ...:::: Start Breadcrumb Section:::... -->
+                    <!-- ...:::: Start Breadcrumb Section:::... -->
+                        <input id="from" value="${from}" hidden />
                         <div class="breadcrumb-section breadcrumb-bg-color--golden">
                             <div class="breadcrumb-wrapper">
                                 <div class="container">
@@ -203,7 +203,8 @@
 
                                 const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
                                 const nameRegex = new RegExp("^[A-Za-z]\\w{3,29}$");
-
+                                var from = $("#from").val();
+                                console.log(from + " ff .....");
                                 $("#loginbtn").click(function () {
                                     console.log("Login Page");
                                     var email = $('#email').val();
@@ -224,7 +225,7 @@
                                     } else {
                                         $("#emailmsg").html("");
                                         $("#passmsg").html("");
-                                        $.post('auth', { email: email, password: password })
+                                        $.post('auth', { email: email, password: password, from: from })
                                             .done(function (response) {
                                                 // Handle the response from the server
                                                 console.log("RESPONSE " + response);
@@ -234,9 +235,13 @@
                                                     if (response[1] == "A")
                                                         window.location = "/Admin?path=index";
 
-                                                    if (response[1] == "U") {
+                                                    if (response[1] == "U" && response[2] == "C") {
                                                         console.log(".... " + response[2]);
-                                                        window.location = "/profile";
+                                                        window.location = "/cart";
+                                                    }
+                                                    else if (response[1] == "U") {
+                                                        console.log(".... " + response[2]);
+                                                        window.location = "/home";
                                                     }
 
                                                 } else {
@@ -325,13 +330,15 @@
 
                                     } else {
 
-                                        $.post('register', { name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit })
+                                        $.post('register', { name: name, email: email, password: password, job: job, birthday: birthday, address: address, interests: interests, creditlimit: creditLimit, from: from })
                                             .done(function (response) {
                                                 // Handle the response from the server
                                                 console.log(response + "/////////////////////");
 
-                                                if (response == "done") {
-                                                    window.location.href = "views/index.jsp";
+                                                if (response == "C") {
+                                                    window.location = "/cart";
+                                                }else{
+                                                    window.location = "/home";
                                                 }
                                             })
                                             .fail(function (xhr, status, error) {
@@ -343,7 +350,7 @@
 
                             });
                         </script>
-                </body>
+            </body>
 
 
-                </html>
+            </html>

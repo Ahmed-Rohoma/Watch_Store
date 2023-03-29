@@ -13,6 +13,9 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(request.getParameter("path") != null){
+            request.setAttribute("from", request.getParameter("path"));
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/login.jsp");
         dispatcher.forward(request, response);
     }

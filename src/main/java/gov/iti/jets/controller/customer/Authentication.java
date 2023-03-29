@@ -38,8 +38,6 @@ public class Authentication extends HttpServlet {
             if (user.getIsAdmin() == 1) {
                 System.out.println("Admin");
                 out.print("A");
-                // response.sendRedirect("/adminProducts");
-                // request.getRequestDispatcher("/admin/products").forward(request, response);
             } else {
 
                 if (request.getParameter("remember") != null) {
@@ -52,8 +50,10 @@ public class Authentication extends HttpServlet {
                 }
                 System.out.println("user" + user.getUserId());
                 out.print("U");
+                if (request.getParameter("from").equals("checkout")) {
+                    out.print("C");
+                }
             }
-
         }
 
     }

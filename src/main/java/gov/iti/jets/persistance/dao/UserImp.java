@@ -1,9 +1,7 @@
 package gov.iti.jets.persistance.dao;
 
-import gov.iti.jets.entity.Product;
 import gov.iti.jets.entity.User;
 import gov.iti.jets.mapper.UserMapper;
-import gov.iti.jets.model.ProductModel;
 import gov.iti.jets.model.UserModel;
 import gov.iti.jets.persistance.connection.DBMananger;
 import jakarta.persistence.EntityManager;
@@ -31,7 +29,7 @@ public class UserImp implements IUser {
 
     @Override
     public List<UserModel> getAllUsers() {
-        Query query = entityManager.createQuery("SELECT s FROM User s");
+        Query query = entityManager.createQuery("SELECT u FROM User u where u.isAdmin = 0");
         List<User> users = query.getResultList();
         List<UserModel> result = new ArrayList<>();
         for (User user : users) {
