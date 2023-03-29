@@ -151,7 +151,7 @@
                                                 </div>
                                                 <div class="checkout_btn">
                                                     <c:if test="${empty userData}">
-                                                        <a href="/login" class="btn btn-md btn-golden">Proceed
+                                                        <a href="/login?path=checkout" class="btn btn-md btn-golden">Proceed
                                                             to
                                                             Checkout</a>
                                                     </c:if>
