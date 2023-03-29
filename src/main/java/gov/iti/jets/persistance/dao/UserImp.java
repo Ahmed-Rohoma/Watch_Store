@@ -31,17 +31,12 @@ public class UserImp implements IUser {
 
     @Override
     public List<UserModel> getAllUsers() {
-        System.out.println("1");
         Query query = entityManager.createQuery("SELECT s FROM User s");
-        System.out.println("2");
         List<User> users = query.getResultList();
-        System.out.println("3");
         List<UserModel> result = new ArrayList<>();
-        System.out.println("4");
         for (User user : users) {
             result.add(userMapper.entityToModel(user));
         }
-        System.out.println("5");
         entityManager.clear();
         return result;
     }

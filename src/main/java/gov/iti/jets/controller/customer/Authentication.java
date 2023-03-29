@@ -30,7 +30,9 @@ public class Authentication extends HttpServlet {
         System.out.println("Enterd email : " + email + " & password : " + password);
 
         UserModel user = iUser.getUser(email, password);
-        if(user!=null){
+        if (user != null) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("userData", user);
             out.print("V");
             System.out.println("Right email & Password");
             if (user.getIsAdmin() == 1) {
@@ -40,8 +42,6 @@ public class Authentication extends HttpServlet {
                 // request.getRequestDispatcher("/admin/products").forward(request, response);
             } else {
 
-                HttpSession session = request.getSession(true);
-                session.setAttribute("userData", user);
                 if (request.getParameter("remember") != null) {
                     Cookie emailCookie = new Cookie("userEmail", email);
                     Cookie passwordCookie = new Cookie("password", password);

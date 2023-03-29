@@ -40,7 +40,9 @@ public class AddBrand extends HttpServlet {
         String name = request.getParameter("newBrandName");
         System.out.println("Brand name to add : " + name);
         brandDAO.addCategory(name);
-        response.sendRedirect("products.jsp");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
+        dispatcher.forward(request, response);
 
     }
 

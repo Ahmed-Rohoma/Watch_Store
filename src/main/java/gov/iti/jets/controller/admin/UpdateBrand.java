@@ -36,7 +36,9 @@ public class UpdateBrand extends HttpServlet {
 
         System.out.println("update Brand name to : " + newName + " || Idselected : " + brandID );
         brandDAO.updateCategory(brandID, newName);
-        response.sendRedirect("products.jsp");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
+        dispatcher.forward(request, response);
 
     }
 }
