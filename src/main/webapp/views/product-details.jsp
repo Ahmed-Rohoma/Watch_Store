@@ -128,7 +128,10 @@
                                             <div class="variable-single-item">
                                                 <div class="product-stock"> <span class="product-stock-in"><i
                                                             class="ion-checkmark-circled"></i></span>
-                                                    ${ProductModel.getQuantity()} IN
+                                                    <c:if test="${ProductModel.getQuantity() lt 10}">
+                                                        ${ProductModel.getQuantity()}
+                                                    </c:if>
+                                                    IN
                                                     STOCK
                                                 </div>
                                             </div>
@@ -138,13 +141,14 @@
                                                     <span>Quantity</span>
                                                     <div class="product-variable-quantity">
                                                         <c:choose>
-                                                            <c:when test="${product.getQuantity() lt 20}">
+                                                            <c:when test="${ProductModel.getQuantity() lt 20}">
                                                                 <input min="1" max="${ProductModel.getQuantity()}"
                                                                     value="1" type="number" id="quantity">
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <input min="1" max='20' value="${empty ProductModel.getitemQuantity() ? '1' : ProductModel.getitemQuantity()}" type="number"
-                                                                    id="quantity">
+                                                                <input min="1" max='20'
+                                                                    value="${empty ProductModel.getitemQuantity() ? '1' : ProductModel.getitemQuantity()}"
+                                                                    type="number" id="quantity">
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </div>
@@ -214,8 +218,11 @@
                                     data: { action: 'add', productId: productId, quantity: quantity },
                                     success: function (response) {
                                         console.log("Added to cart successfully!");
-                                        console.log(response + "+++++");
-                                        $('#modalAddcart').modal('toggle');
+                                        var myArray = response.split("/");
+                                        console.log(myArray);
+                                        $('#ItemsNo').html("There Are "+myArray[0]+" Items In Your Cart.");
+                                        $('#TotalPrice').html(myArray[1]);
+                                        $('#modalAddcart').modal('toggle');  
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {
                                         // handle error response
