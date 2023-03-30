@@ -31,7 +31,7 @@ public class UpdateProduct extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        savePath = (String) getServletContext().getAttribute("savePath");
+        savePath = getServletContext().getRealPath("/productsImage/");
         System.out.println("saving Path : " + savePath);
     }
 
@@ -84,12 +84,6 @@ public class UpdateProduct extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         Part filePart = request.getPart("image");
 
-        // if ()
-
-        System.out
-                .println("updating product : " + name + "\nd: " + description + "\n brand = " + brandID + "\nprice = "
-                        + price + "\nquantity = " + quantity);
-
         product.setProductName(name);
         product.setDescription(description);
         product.setBrandId(brandID);
@@ -97,15 +91,21 @@ public class UpdateProduct extends HttpServlet {
         product.setQuantity(quantity);
 
         if (filePart.getSize() != 0) { // if new image is sent
-            System.out.println("file : " + filePart.getName() + " | size :  " + filePart.getSize());
             String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            if (savePath == null)
-                savePath = (String) getServletContext().getAttribute("savePath");
+            String fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf('.'));
+            String fileExtension = fileName.substring(fileName.lastIndexOf("."));
+
+            System.out.println("| filename : " + fileNameWithoutExtension + "| fileExtension : " + fileExtension);
+            String fName = fileNameWithoutExtension + name + fileExtension;
+
             System.out.println("path ======> " + savePath);
-            System.out.println("fNAme ======> " + fileName);
-            String filePath = savePath + fileName;
+            System.out.println("fNAme ======> " + fName);
+            String filePath = savePath + fName;
+
             filePart.write(filePath);
-            product.setImagePath(filePath);
+
+            System.out.println(filePath);
+            product.setImagePath(fName);
         } else
             System.out.println(" image doesn't change ");
 

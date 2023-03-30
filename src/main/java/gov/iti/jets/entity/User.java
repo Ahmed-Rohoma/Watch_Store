@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String interests;
     private Integer isAdmin;
      @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-     private List<Order> orderList = new ArrayList<>();
+     private List<Order> orders = new ArrayList<>();
 
     public User(Integer userId, String userName, String email, String password, String job, Double creditLimit,
                 Date birthdate, String address, String interests, Integer isAdmin) {
@@ -143,12 +143,12 @@ public class User implements Serializable {
         this.isAdmin = isAdmin;
     }
 
-     public List<Order> getOrder1List() {
-     return orderList;
+     public List<Order> getOrders() {
+     return orders;
      }
 
-     public void setOrder1List(List<Order> order1List) {
-     this.orderList = order1List;
+     public void setOrders(List<Order> orderList) {
+     this.orders = orderList;
      }
 
     @Override

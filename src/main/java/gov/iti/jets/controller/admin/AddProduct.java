@@ -29,22 +29,18 @@ public class AddProduct extends HttpServlet {
     String savePath;
     List<Brand> brands = new ArrayList<>();
 
-    public AddProduct() {
-        productDAO = new ProductDAOImp();
-        brandDAO = new CategoryDAOImp();
-        // savePath = (String) getServletContext().getAttribute("savePath");
-    }
-
     @Override
     public void init() throws ServletException {
 
-        savePath = getServletContext().getRealPath("") + "productImages" + File.separator;
+        productDAO = new ProductDAOImp();
+        brandDAO = new CategoryDAOImp();
+        savePath = getServletContext().getRealPath("/productsImage/");
         File fileSaveDir = new File(savePath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
         System.out.println("========= Creating image file ===========");
-        getServletContext().setAttribute("savePath", savePath);
+        getServletContext().setAttribute("imagesPath", "/productsImage");
 
     }
 
@@ -81,11 +77,18 @@ public class AddProduct extends HttpServlet {
 
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 
+        String fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf('.'));
+        String fileExtension = fileName.substring(fileName.lastIndexOf("."));
+
+        System.out.println("| filename : " + fileNameWithoutExtension + "| fileExtension : " + fileExtension);
+
+        String fName = fileNameWithoutExtension + name + fileExtension ;
+
         System.out.println("product | " + name + " | " + description + " | " + price + " | " + quantity);
 
         System.out.println("path ======> " + savePath);
-        System.out.println("fNAme ======> " + fileName);
-        String filePath = savePath + fileName;
+        System.out.println("fNAme ======> " + fName);
+        String filePath = savePath + fName;
 
         filePart.write(filePath);
 
@@ -95,7 +98,7 @@ public class AddProduct extends HttpServlet {
                 "Adding product : " + name + "\nd: " + description + "\n brand = " + brandID);
 
         Product product = new Product(name, price, quantity, description, brandID,
-                filePath);
+                fName);
 
         productDAO.addProduct(product);
 
