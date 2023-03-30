@@ -10,11 +10,9 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import gov.iti.jets.persistance.connection.DBMananger;
 import gov.iti.jets.entity.Product;
-import gov.iti.jets.mapper.ProductMapper;
 
 public class IProductImp implements IProduct {
     private EntityManager entityManager;
-    private ProductMapper productMapper;
 
     public IProductImp() {
         entityManager = DBMananger.getInstance().createEntityManager();
