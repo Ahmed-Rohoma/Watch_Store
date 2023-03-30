@@ -27,8 +27,8 @@
     <body onload="getProduct()">
       <nav class="navbar navbar-expand-xl">
         <div class="container h-100">
-          <a class="navbar-brand" href="${request.contextPath}/Admin?path=index">
-            <h1 class="tm-site-title mb-0">Watch Store</h1>
+          <a class="navbar-brand" href="${request.contextPath}/Admin?path=products">
+            <h1 class="tm-site-title mb-0">Tick Tock</h1>
           </a>
           <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -38,13 +38,7 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
-              <li class="nav-item">
-                <a class="nav-link" href="${request.contextPath}/Admin?path=index">
-                  <i class="fas fa-tachometer-alt"></i>
-                  Dashboard
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
+              
 
               <li class="nav-item">
                 <a class="nav-link active" href="${request.contextPath}/Admin?path=products">

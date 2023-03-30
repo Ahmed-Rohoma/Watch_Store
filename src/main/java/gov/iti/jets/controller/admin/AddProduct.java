@@ -82,7 +82,7 @@ public class AddProduct extends HttpServlet {
 
         System.out.println("| filename : " + fileNameWithoutExtension + "| fileExtension : " + fileExtension);
 
-        String fName = name + fileNameWithoutExtension + fileExtension ;
+        String fName = name + fileNameWithoutExtension + fileExtension;
 
         System.out.println("product | " + name + " | " + description + " | " + price + " | " + quantity);
 
@@ -101,6 +101,9 @@ public class AddProduct extends HttpServlet {
                 fName);
 
         productDAO.addProduct(product);
+
+        
+        request.setAttribute("successMessage", "New Product "+ name +" added successfully");
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
         dispatcher.forward(request, response);

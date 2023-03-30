@@ -17,17 +17,17 @@
       <link rel="stylesheet" href="css/bootstrap.min.css" />
       <!-- https://getbootstrap.com/ -->
       <link rel="stylesheet" href="css/templatemo-style.css">
-      <!--
-	Product Admin CSS Template
-	https://templatemo.com/tm-524-product-admin
-	-->
+
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script> -->
+
     </head>
 
     <body id="reportsPage" onload="getProducts()">
       <nav class="navbar navbar-expand-xl">
         <div class="container h-100">
-          <a class="navbar-brand" href="${request.contextPath}/Admin?path=index">
-            <h1 class="tm-site-title mb-0">Watch Store</h1>
+          <a class="navbar-brand" href="${request.contextPath}/Admin?path=products">
+            <h1 class="tm-site-title mb-0">Tick Tock</h1>
           </a>
           <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -37,13 +37,6 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
-              <li class="nav-item">
-                <a class="nav-link" href="${request.contextPath}/Admin?path=index">
-                  <i class="fas fa-tachometer-alt"></i>
-                  Dashboard
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
 
               <li class="nav-item">
                 <a class="nav-link active" href="${request.contextPath}/Admin?path=products">
@@ -68,8 +61,25 @@
             </ul>
           </div>
         </div>
-
       </nav>
+
+      <!-- Check if the success message request attribute is not null -->
+
+      <c:if test="${not empty successMessage}">
+        <!-- Display the SweetAlert message -->
+        <script>
+          swal({
+            title: "",
+            text: '${successMessage}',
+            icon: 'success',
+            timer: 1500,
+            buttons: false,
+            showConfirmButton: false
+          })
+
+        </script>
+      </c:if>
+
       <div class="container mt-5">
         <div class="row tm-content-row">
           <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
@@ -92,7 +102,8 @@
                 </table>
               </div>
               <!-- table container -->
-              <a href="${request.contextPath}/Admin?path=add-product" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
+              <a href="${request.contextPath}/Admin?path=add-product"
+                class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
             </div>
           </div>
           <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
@@ -106,7 +117,8 @@
                 </table>
               </div>
               <!-- table container -->
-              <a href="${request.contextPath}/Admin?path=add-brand" class="btn btn-primary btn-block text-uppercase mb-3">Brand Settings</a>
+              <a href="${request.contextPath}/Admin?path=add-brand"
+                class="btn btn-primary btn-block text-uppercase mb-3">Brand Settings</a>
 
             </div>
           </div>
@@ -217,45 +229,80 @@
 
           // productId="${product.productId}"
 
-          $.ajax({
-            url: '/deleteBrand',
-            type: 'POST',
-            data: {
-              brandId: id
-            },
-            success: function (result) {
-              console.log("Success Function =========================");
-              refreshContent();
-            },
-            error: function (xhr, status, error) {
-              console.log("Error Function =========================")
+          swal({
+            title: 'Are You Sure?',
+            text: 'You Are About to Delete This Brand',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
 
+              $.ajax({
+                url: '/deleteBrand',
+                type: 'POST',
+                data: {
+                  brandId: id
+                },
+                success: function (result) {
+                  console.log("Success Function =========================");
+                  refreshContent();
+                },
+                error: function (xhr, status, error) {
+                  console.log("Error Function =========================")
+
+                }
+              });
+            } else {
+              // if the user clicks the "cancel" button in the confirmation message
+              console.log('Delete operation canceled');
             }
           });
         }
+
 
         function deleteProduct(id) {
 
           console.log("deleting product with id : " + id);
 
-          // productId="${product.productId}"
+          // Display success message
+          swal({
+            title: 'Are you sure?',
+            text: 'You are about to delete this product',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
 
-          $.ajax({
-            url: '/deleteProduct',
-            type: 'POST',
-            data: {
-              productId: id
-            },
-            success: function (result) {
-              console.log("Success Function =========================");
-              refreshContent();
-            },
-            error: function (xhr, status, error) {
-              console.log("Error Function =========================")
+              console.log('Product deleting ');
 
+              $.ajax({
+                url: '/deleteProduct',
+                type: 'POST',
+                data: {
+                  productId: id
+                },
+                success: function (result) {
+                  console.log("Success Function =========================");
+                  refreshContent();
+                },
+                error: function (xhr, status, error) {
+                  console.log("Error Function =========================")
+
+                }
+              });
+            } else {
+              // if the user clicks the "cancel" button in the confirmation message
+              console.log('Delete operation canceled');
             }
           });
+
+          // productId="${product.productId}"
         }
+
+
+
 
         function updateProduct(id) {
           console.log("updating product with id : " + id);

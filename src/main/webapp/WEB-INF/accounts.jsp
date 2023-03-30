@@ -26,8 +26,8 @@
             <div class="" id="home">
                 <nav class="navbar navbar-expand-xl">
                     <div class="container h-100">
-                        <a class="navbar-brand" href="${request.contextPath}/Admin?path=index">
-                            <h1 class="tm-site-title mb-0">Watch Store</h1>
+                        <a class="navbar-brand" href="${request.contextPath}/Admin?path=products">
+                            <h1 class="tm-site-title mb-0">Tick Tock</h1>
                         </a>
                         <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -37,14 +37,6 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mx-auto h-100">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="${request.contextPath}/Admin?path=index">
-                                        <i class="fas fa-tachometer-alt"></i>
-                                        Dashboard
-                                        <span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-
                                 <li class="nav-item">
                                     <a class="nav-link" href="${request.contextPath}/Admin?path=products">
                                         <i class="fas fa-shopping-cart"></i>
@@ -151,32 +143,6 @@
                     });
 
                 }
-
-
-
-                Chart.defaults.global.defaultFontColor = 'white';
-                let ctxLine,
-                    ctxBar,
-                    ctxPie,
-                    optionsLine,
-                    optionsBar,
-                    optionsPie,
-                    configLine,
-                    configBar,
-                    configPie,
-                    lineChart;
-                barChart, pieChart;
-                // DOM is ready
-                $(function () {
-                    drawLineChart(); // Line Chart
-                    drawBarChart(); // Bar Chart
-                    drawPieChart(); // Pie Chart
-
-                    $(window).resize(function () {
-                        updateLineChart();
-                        updateBarChart();
-                    });
-                })
             </script>
         </body>
 

@@ -111,6 +111,8 @@ public class UpdateProduct extends HttpServlet {
 
         productDAO.updateProduct(product, productID);
 
+        request.setAttribute("successMessage", "Product " + name + " updated successfully");
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
         dispatcher.forward(request, response);
 

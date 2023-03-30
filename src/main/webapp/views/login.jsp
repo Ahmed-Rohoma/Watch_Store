@@ -236,7 +236,7 @@
                                                 if (response[0] == "V") {
                                                     $("#error").html("");
                                                     if (response[1] == "A")
-                                                        window.location = "/Admin?path=index";
+                                                        window.location = "/Admin?path=products";
 
                                                     if (response[1] == "U" && response[2] == "C") {
                                                         console.log(".... " + response[2]);

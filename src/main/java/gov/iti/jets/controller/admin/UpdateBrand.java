@@ -60,6 +60,8 @@ public class UpdateBrand extends HttpServlet {
 
         System.out.println("update Brand name to : " + newName + " || Idselected : " + brandID );
         brandDAO.updateCategory(brandID, newName);
+
+        request.setAttribute("successMessage", "Brand Name updated to "+ newName +" successfully");
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
         dispatcher.forward(request, response);

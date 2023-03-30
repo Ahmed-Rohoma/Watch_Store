@@ -26,17 +26,20 @@ public class Error extends HttpServlet {
         System.out.println(" Error 404 ");
         System.out.println("============================");
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Error Page</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>Oops! An error occurred.</h1>");
-        out.println("<img src='/path/to/general/photo.jpg'>");
-        out.println("</body>");
-        out.println("</html>");
+        
+        response.sendRedirect("views/404.html");
+
+        // response.setContentType("text/html");
+        // PrintWriter out = response.getWriter();
+        // out.println("<html>");
+        // out.println("<head>");
+        // out.println("<title>Error Page</title>");
+        // out.println("</head>");
+        // out.println("<body>");
+        // out.println("<h1>Oops! An error occurred.</h1>");
+        // out.println("<img src='/path/to/general/photo.jpg'>");
+        // out.println("</body>");
+        // out.println("</html>");
 
     }
 

@@ -68,6 +68,8 @@ public class AddBrand extends HttpServlet {
 
         brandDAO.addCategory(name);
 
+        request.setAttribute("successMessage", "New Brand "+ name +" added successfully");
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/products.jsp");
         dispatcher.forward(request, response);
 
