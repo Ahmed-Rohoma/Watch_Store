@@ -164,7 +164,7 @@
                         <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"
                             data-aos="fade-up" data-aos-delay="0">
                             <div class="image">
-                                <img class="img-fluid" src="assets/images/banner/banner-style-7-img-1.jpg" alt="">
+                                <img class="img-fluid" src="assets/images/product/default/omegaBrand.jpg" alt="">
                             </div>
                         </div>
                     </a>

@@ -61,11 +61,11 @@
                                         <nav>
                                             <ul>
                                                 <li class="has-dropdown">
-                                                    <a class="active main-menu-link" href="/home">Home</a>
+                                                    <a class="active main-menu-link" href="/">Home</a>
                                                     <!-- Sub Menu -->
                                                 </li>
                                                 <li class="has-dropdown">
-                                                    <a href="#">Shop <i class="fa fa-angle-down"></i></a>
+                                                    <a href="#">Pages <i class="fa fa-angle-down"></i></a>
                                                     <!-- Mega Menu -->
                                                     <div class="mega-menu">
                                                         <ul class="mega-menu-inner">

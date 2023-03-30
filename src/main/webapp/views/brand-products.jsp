@@ -202,10 +202,6 @@
                                                         </c:forEach>
                                                     </div>
                                                 </div> <!-- End Grid View Product -->
-                                                <!-- Start List View Product -->
-
-
-                                                <!-- End List View Product -->
                                             </div>
                                         </div>
                                     </div>

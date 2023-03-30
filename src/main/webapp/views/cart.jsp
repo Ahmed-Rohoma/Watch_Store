@@ -293,8 +293,11 @@
 
                 }
                 function processToCheckout(total, userLimit) {
+                    console.log("total : " + total);
+                    console.log("limit : " + userLimit);
+
                     // e.preventDefault();
-                    if (total > userLimit) {
+                    if (parseFloat(total) > parseFloat(userLimit)) {
                         console.log("warningModal");
                         $('#warningModal').modal('show');
                     } else {

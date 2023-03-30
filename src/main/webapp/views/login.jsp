@@ -9,7 +9,7 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                <title>HONO - Multi Purpose HTML Template</title>
+                <title>HONO</title>
 
                 <!-- ::::::::::::::Favicon icon::::::::::::::-->
                 <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
@@ -40,8 +40,7 @@
                                                 class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                                                 <nav aria-label="breadcrumb">
                                                     <ul>
-                                                        <li><a href="index.html">Home</a></li>
-                                                        <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
+                                                        <li><a href="/home">Home</a></li>
                                                         <li class="active" aria-current="page">Login</li>
                                                     </ul>
                                                 </nav>
@@ -82,7 +81,7 @@
                                                 </div>
 
                                                 <label class="checkbox-default mb-4" for="offer">
-                                                    <input type="checkbox" name="remember" id="offer">
+                                                    <input type="checkbox" name="remember" id="remember">
                                                     <span>Remember me</span>
                                                 </label>
                                                 <!-- <a href="#">Lost your password?</a> -->
@@ -209,6 +208,8 @@
                                     console.log("Login Page");
                                     var email = $('#email').val();
                                     var password = $('#password').val();
+                                    var remember = $('#remember').val();
+
 
                                     console.log(!email +" "+ !emailRegex.test(email) +" "+ !password);
                                     if (!email || !emailRegex.test(email) || !password) {
@@ -227,7 +228,7 @@
                                         $("#emailmsg").html("");
                                         $("#passmsg").html("");
                                         console.log("RESPONSE1111 ");
-                                        $.post('auth', { email: email, password: password, from: from })
+                                        $.post('auth', { email: email, password: password,remember : remember, from: from })
                                             .done(function (response) {
                                                 // Handle the response from the server
                                                 console.log("RESPONSE222 " + response);

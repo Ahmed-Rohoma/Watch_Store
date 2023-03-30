@@ -39,14 +39,14 @@ public class Authentication extends HttpServlet {
                 System.out.println("Admin");
                 out.print("A");
             } else {
-
+                System.out.println("cookie" + request.getParameter("remember") );
                 if (request.getParameter("remember") != null) {
+                    System.out.println("cokkkkkkkkkkkkkkkkkkkkkkkkkk");
                     Cookie emailCookie = new Cookie("userEmail", email);
                     Cookie passwordCookie = new Cookie("password", password);
                     response.addCookie(emailCookie);
                     response.addCookie(passwordCookie);
                     System.out.println(request.getParameter("remember") + "rememberrrr");
-
                 }
                 System.out.println("user" + user.getUserId());
                 out.print("U");
