@@ -11,7 +11,11 @@ public class ProductService {
 
     
     public ProductModel getProductByID(Integer productId){
-        return productMapper.toModel(productDAO.getProductByID(productId));
+        Product product = productDAO.getProductByID(productId);
+        if(product != null)
+            return productMapper.toModel(product);
+        else
+            return null;
     }
     
 }

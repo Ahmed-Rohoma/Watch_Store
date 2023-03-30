@@ -105,9 +105,16 @@
                                                                     <li><a href="wishlist.html">Wishlist</a></li>
                                                                     <li><a href="compare.html">Compare</a></li>
                                                                     <li><a href="/checkout">Checkout</a></li>
-                                                                    <li><a href="/login">Login</a></li>
-                                                                    <li><a href="profile.jsp">My Account</a></li>
-                                                                    <li><a href="/logout">Logout</a></li> 
+                                                                    <c:choose>
+                                                                        <c:when test="${empty sessionScope.userData}">
+                                                                            <li><a href="/login">Login</a></li>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <li><a href="/profile">My Account</a>
+                                                                            </li>
+                                                                            <li><a href="/logout">Logout</a></li>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
                                                                 </ul>
                                                             </li>
                                                             <!-- Mega Menu Sub Link -->

@@ -210,8 +210,9 @@
                                     var email = $('#email').val();
                                     var password = $('#password').val();
 
+                                    console.log(!email +" "+ !emailRegex.test(email) +" "+ !password);
                                     if (!email || !emailRegex.test(email) || !password) {
-
+                                        console.log("RESPONSE0000 ");
                                         if (!email)
                                             $("#emailmsg").html("Email is required");
                                         else if (!emailRegex.test(email))
@@ -225,10 +226,11 @@
                                     } else {
                                         $("#emailmsg").html("");
                                         $("#passmsg").html("");
+                                        console.log("RESPONSE1111 ");
                                         $.post('auth', { email: email, password: password, from: from })
                                             .done(function (response) {
                                                 // Handle the response from the server
-                                                console.log("RESPONSE " + response);
+                                                console.log("RESPONSE222 " + response);
 
                                                 if (response[0] == "V") {
                                                     $("#error").html("");

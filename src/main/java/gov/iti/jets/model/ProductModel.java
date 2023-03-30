@@ -37,6 +37,10 @@ public class ProductModel {
         this.imagePath = p.imagePath;
     }
 
+    public ProductModel getProductModel() {
+        return new ProductModel(productId, productName, price, quantity, description, brandId, imagePath);
+    }
+
     public int getProductId() {
         return productId;
     }

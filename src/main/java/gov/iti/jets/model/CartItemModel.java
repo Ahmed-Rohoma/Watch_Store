@@ -8,8 +8,10 @@ public class CartItemModel extends ProductModel {
     public CartItemModel(Integer productId, Integer quantity) {
         ProductService productService = new ProductService();
         ProductModel productModel= productService.getProductByID(productId);
-        this.itemQuantity = quantity;
-        this.setProductModel(productModel);
+        if(productModel != null){
+            this.setProductModel(productModel);
+            this.itemQuantity = quantity;
+        }
     }
     public Integer getitemQuantity() {
         return itemQuantity;
