@@ -1,6 +1,5 @@
 package gov.iti.jets.persistance.dao;
 
-
 import java.util.List;
 
 import gov.iti.jets.persistance.connection.DBMananger;
@@ -23,18 +22,23 @@ public class CategoryDAOImp implements CategoryDaoInterface {
 
     @Override
     public Brand getCategoryByID(int categoryID) {
-        return entityManager.getReference(Brand.class, categoryID);  // null if not found 
-        // return entityManager.find(Product.class, productID);     // exception if not found 
+        return entityManager.getReference(Brand.class, categoryID); // null if not found
+        // return entityManager.find(Product.class, productID); // exception if not
+        // found
     }
 
     @Override
     public boolean addCategory(String brandName) {
         if (brandName != null) {
-            Brand brand = new Brand(brandName);
-            entityManager.getTransaction().begin();
-            entityManager.persist(brand);
-            entityManager.getTransaction().commit();
-            return true;
+            try {
+                Brand brand = new Brand(brandName);
+                entityManager.getTransaction().begin();
+                entityManager.persist(brand);
+                entityManager.getTransaction().commit();
+                return true;
+            } catch (Exception e) {
+                entityManager.getTransaction().rollback();
+            }
         }
         return false;
     }
@@ -43,23 +47,32 @@ public class CategoryDAOImp implements CategoryDaoInterface {
     public boolean deleteCategoryById(int categoryID) {
         Brand brand = entityManager.find(Brand.class, categoryID);
         if (brand != null) {
-            entityManager.getTransaction().begin();
-            entityManager.remove(brand);
-            entityManager.getTransaction().commit();
-            return true;
+            try {
+                entityManager.getTransaction().begin();
+                entityManager.remove(brand);
+                entityManager.getTransaction().commit();
+                return true;
+            } catch (Exception e) {
+                entityManager.getTransaction().rollback();
+            }
         }
         return false;
     }
 
     @Override
-    public boolean updateCategory(Integer id,String newName) {
+    public boolean updateCategory(Integer id, String newName) {
         Brand brand = getCategoryByID(id);
         if (brand != null) {
-            brand.setBrandName(newName);
-            entityManager.getTransaction().begin();
-            entityManager.merge(brand);
-            entityManager.getTransaction().commit();
-            return true;
+            try{
+                brand.setBrandName(newName);
+                entityManager.getTransaction().begin();
+                entityManager.merge(brand);
+                entityManager.getTransaction().commit();
+                return true;
+            }
+            catch (Exception e) {
+                entityManager.getTransaction().rollback();
+            }
         }
         return false;
     }

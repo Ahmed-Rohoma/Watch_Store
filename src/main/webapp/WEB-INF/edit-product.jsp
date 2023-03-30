@@ -39,7 +39,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="${request.contextPath}/Admin?path=index">
                   <i class="fas fa-tachometer-alt"></i>
                   Dashboard
                   <span class="sr-only">(current)</span>
@@ -47,7 +47,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="${request.contextPath}/Admin?path=products">
+                <a class="nav-link active" href="${request.contextPath}/Admin?path=products">
                   <i class="fas fa-shopping-cart"></i>
                   Products
                 </a>
@@ -154,9 +154,7 @@
       <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
           <p class="text-center text-white mb-0 px-4 small">
-            Copyright &copy; <b>2018</b> All rights reserved.
-
-            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+            Copyright &copy; <b>2023</b> All rights reserved.
           </p>
         </div>
       </footer>
@@ -218,7 +216,7 @@
           $('#productDescription').val(product.description);
           $('#productPrice').val(product.price);
           $('#productQuantity').val(product.quantity);
-          $('#productImg').attr('src', product.imagePath);
+          $('#productImg').attr('src', "../productsImage/" + product.imagePath);
 
           fillBrand();
 
@@ -256,9 +254,6 @@
             }
           });
 
-          // setting it again 
-          $('#productImg').attr('src', product.imagePath);
-
         }
 
         function previewImage(event) {
@@ -270,11 +265,23 @@
           reader.readAsDataURL(event.target.files[0]);
         }
 
+        // ========================= Handling negative input =====================================================
 
-        $(function () {
-          $("#expire_date").datepicker({
-            defaultDate: "10/22/2020"
-          });
+
+        // Get the quantity and price input fields
+        const quantityInput = document.getElementById('productQuantity');
+        const priceInput = document.getElementById('productPrice');
+
+        // Add event listener for form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+          // Check if quantity and price are not negative
+          if (quantityInput.value < 0 || priceInput.value < 0) {
+            // Show error message
+            alert('Quantity and price must be positive numbers.');
+            // Prevent form submission
+            event.preventDefault();
+          }
         });
       </script>
     </body>

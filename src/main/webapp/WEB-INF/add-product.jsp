@@ -40,7 +40,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="${request.contextPath}/Admin?path=index">
                   <i class="fas fa-tachometer-alt"></i>
                   Dashboard
                   <span class="sr-only">(current)</span>
@@ -48,7 +48,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="${request.contextPath}/Admin?path=products">
+                <a class="nav-link active" href="${request.contextPath}/Admin?path=products">
                   <i class="fas fa-shopping-cart"></i>
                   Products
                 </a>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="form-group mb-3">
                       <label for="brand">Select Brand</label>
-                      <select class="custom-select tm-select-accounts" id="brand" name="selectedBrand">
+                      <select class="custom-select tm-select-accounts" id="brand" name="selectedBrand" required>
                         <option value="">Select Brand</option>
                       </select>
                     </div>
@@ -105,7 +105,7 @@
                         <label for="price">Product Price
                         </label>
                         <input id="productPrice" name="price" type="number" class="form-control validate"
-                          data-large-mode="true" />
+                          data-large-mode="true" required />
                       </div>
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                         <label for="stock">Units In Stock
@@ -116,27 +116,16 @@
                     </div>
 
                 </div>
-                <!-- <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-              <div class="tm-product-img-dummy mx-auto">
-                <img id="productImg" src="path/to/image.jpg" alt="Product Image" width="100%">
-                <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                  onclick="document.getElementById('fileInput').click();"></i>
-              </div>
-              <div class="custom-file mt-3 mb-3">
-                <input id="fileInput" type="file" name="image" style="display:none;" />
-                <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
-                  onclick="document.getElementById('fileInput').click();" />
-              </div>
-            </div> -->
 
                 <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                  <span id="fileInputError" style="display:none; color:red;">Please Choose an Image</span>
                   <div class="tm-product-img-dummy mx-auto">
                     <img id="productImg" src="" alt="" style="width: 100%; height: 100%; object-fit: contain;">
                     <label for="fileInput">
                       <i class="fas fa-cloud-upload-alt tm-upload-icon" style="display:none;"></i>
                     </label>
-                    <input id="fileInput" type="file" name="image" style="display:none;"
-                      onchange="previewImage(event)" />
+                    <input id="fileInput" type="file" name="image" style="display:none;" onchange="previewImage(event)"
+                      required />
                   </div>
                   <div>
                     <input type="button" class="btn btn-primary btn-block mx-auto" value="UPLOAD PRODUCT IMAGE"
@@ -158,9 +147,7 @@
       <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
           <p class="text-center text-white mb-0 px-4 small">
-            Copyright &copy; <b>2018</b> All rights reserved.
-
-            Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+            Copyright &copy; <b>2023</b> All rights reserved.
           </p>
         </div>
       </footer>
@@ -204,18 +191,30 @@
           });
         }
 
-        function previewImage(event) {
-          var reader = new FileReader();
-          reader.onload = function () {
-            var img = document.getElementById("productImg");
-            img.src = reader.result;
-          };
-          reader.readAsDataURL(event.target.files[0]);
-        }
+        // function previewImage(event) {
+        //   var reader = new FileReader();
+        //   reader.onload = function () {
+        //     var img = document.getElementById("productImg");
+        //     img.src = reader.result;
+        //   };
+        //   reader.readAsDataURL(event.target.files[0]);
+        // }
 
+
+        const fileInput = document.getElementById("fileInput");
+        const fileInputError = document.getElementById("fileInputError");
+
+        fileInput.addEventListener("change", handleFileSelect);
+        fileInput.addEventListener("invalid", function (event) {
+          event.preventDefault();
+          fileInputError.style.display = "block";
+        });
 
         function handleFileSelect(event) {
           const input = event.target;
+          if (fileInput.value) {
+            fileInputError.style.display = "none";
+          }
           if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = function (e) {
@@ -226,13 +225,26 @@
           }
         }
 
-        const fileInput = document.getElementById("fileInput");
-        fileInput.addEventListener("change", handleFileSelect);
+
+        // ========================= Handling negative input =====================================================
 
 
-        $(function () {
-          $("#expire_date").datepicker();
+        // Get the quantity and price input fields
+        const quantityInput = document.getElementById('productQuantity');
+        const priceInput = document.getElementById('productPrice');
+
+        // Add event listener for form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (event) {
+          // Check if quantity and price are not negative
+          if (quantityInput.value < 0 || priceInput.value < 0) {
+            // Show error message
+            alert('Quantity and price must be positive numbers.');
+            // Prevent form submission
+            event.preventDefault();
+          }
         });
+
       </script>
     </body>
 

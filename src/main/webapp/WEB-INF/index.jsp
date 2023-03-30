@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="${request.contextPath}/Admin?path=index">
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                                 <span class="sr-only">(current)</span>
@@ -233,13 +233,11 @@
     </div>
     <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
-            <p class="text-center text-white mb-0 px-4 small">
-                Copyright &copy; <b>2018</b> All rights reserved.
-
-                Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
-            </p>
+          <p class="text-center text-white mb-0 px-4 small">
+            Copyright &copy; <b>2023</b> All rights reserved.
+          </p>
         </div>
-    </footer>
+      </footer>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>

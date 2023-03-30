@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.List;
 
 
 import gov.iti.jets.entity.*;
@@ -130,21 +131,16 @@ public class OrderDao {
         return response.append(newOrder.getId() + ":" + total).toString();
     }
 
-    // private void updateProducts(Map<Integer, Integer> cart) {
+    public void getAllOrdersForUser(Integer userId){
 
-    // entityManager
+        User user = entityManager.find(User.class, userId);
+        List<Order> orders = user.getOrders();
+        for (Order order : orders) {
+            Set<OrderProduct> orderProducts = order.getOrderProducts();
+            for (OrderProduct orderProduct : orderProducts) {
+                System.out.println(orderProduct);
+            }
+        }
 
-    // for (Map.Entry<Integer, Integer> entry : cart.entrySet()) {
-    // product = entityManager.find(Product.class, entry.getKey());
-    // OrderProduct orderItem = new OrderProduct();
-    // orderItem.setProduct(product); // Set the product for the order item
-    // orderItem.setOrder(newOrder);
-    // orderItem.setQuantity(entry.getValue()); // Set the quantity for the order
-    // item
-    // orderItem.setPrice(new BigDecimal(product.getPrice().doubleValue() *
-    // entry.getValue()));
-    // orderItems.add(orderItem); // Add the order item to the list
-    // total += product.getPrice().doubleValue() * entry.getValue();
-    // }
-    // }
+    }
 }

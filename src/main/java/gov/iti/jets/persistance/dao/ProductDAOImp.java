@@ -29,10 +29,15 @@ public class ProductDAOImp implements ProductDaoInterface {
     @Override
     public boolean addProduct(Product product) {
         if (product != null) {
-            entityManager.getTransaction().begin();
-            entityManager.persist(product);
-            entityManager.getTransaction().commit();
-            return true;
+            try {
+
+                entityManager.getTransaction().begin();
+                entityManager.persist(product);
+                entityManager.getTransaction().commit();
+                return true;
+            } catch (Exception e) {
+                entityManager.getTransaction().rollback();
+            }
         }
         return false;
     }
@@ -41,10 +46,15 @@ public class ProductDAOImp implements ProductDaoInterface {
     public boolean deleteProductById(int productID) {
         Product product = entityManager.find(Product.class, productID);
         if (product != null) {
-            entityManager.getTransaction().begin();
-            entityManager.remove(product);
-            entityManager.getTransaction().commit();
-            return true;
+            try{
+                entityManager.getTransaction().begin();
+                entityManager.remove(product);
+                entityManager.getTransaction().commit();
+                return true;
+            } catch (Exception e) {
+                entityManager.getTransaction().rollback();
+            }
+                
         }
         return false;
     }
@@ -52,7 +62,8 @@ public class ProductDAOImp implements ProductDaoInterface {
     @Override
     public boolean updateProduct(Product updatedproduct, int id) {
         if (updatedproduct != null) {
-            entityManager.getTransaction().begin();
+            try{
+                entityManager.getTransaction().begin();
             Product product = entityManager.find(Product.class, id);
             System.out.println("before : " + product);
             applyNewDataIntoProductEntity(product, updatedproduct);
@@ -61,6 +72,9 @@ public class ProductDAOImp implements ProductDaoInterface {
             entityManager.getTransaction().commit();
             entityManager.clear();
             return true;
+            } catch (Exception e) {
+                entityManager.getTransaction().rollback();
+            }
         }
         return false;
     }
