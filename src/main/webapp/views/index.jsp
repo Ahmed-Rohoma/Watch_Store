@@ -164,7 +164,7 @@
                         <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"
                             data-aos="fade-up" data-aos-delay="0">
                             <div class="image">
-                                <img class="img-fluid" src="assets/images/product/default/omegaBrand.jpg" alt="">
+                                <img style="height: 300px;width: 600px;" class="img-fluid" src="../brandsImage/${item.getBrandName()}.png" alt="">
                             </div>
                         </div>
                     </a>
@@ -182,7 +182,7 @@
                         <div class="col-12">
                             <div class="section-content-gap">
                                 <div class="secton-content">
-                                    <h3 class="section-title">the New arrivals</h3>
+                                    <h3 class="section-title">Products</h3>
                                     <p>Preorder now to receive exclusive deals & gifts</p>
                                 </div>
                             </div>
@@ -201,15 +201,14 @@
                                     <!-- Additional required wrapper -->
                                     <div class="swiper-wrapper">
                                         <!-- Start Product Default Single Item -->
-                                            <c:forEach var="item" items="${allpros}">
+                                        <c:forEach var="item" items="${allpros}">
                                             <div class="product-default-single-item product-color--pink swiper-slide">
                                                 <div class="image-box">
                                                     <a href="/product-details?productId=${item.getProductId()}"
                                                         class="image-link">
-                                                        <img src="assets/images/product/default/home-3/default-1.jpg"
-                                                            alt="">
-                                                        <img src="assets/images/product/default/home-3/default-2.jpg"
-                                                            alt="">
+                                                        <img style="height: 350px;"
+                                                            src="../productsImage/${item.getImagePath()}" alt="">
+
                                                     </a>
                                                     <div class="tag">
                                                         <span>sale</span>
@@ -233,7 +232,7 @@
                                                 <div class="content">
                                                     <div class="content-left">
                                                         <h6 class="title"><a
-                                                                href="product-details.jsp">${item.getProductName()}</a>
+                                                                href="/product-details?productId=${item.getProductId()}">${item.getProductName()}</a>
                                                             <ul class="review-star">
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -1059,7 +1058,8 @@
                                 <div class="footer-copyright">
                                     <p class="copyright-text">&copy; 2021 <a href="index.html">therankme</a>. Made with
                                         <i class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
-                                            target="_blank">therankme</a> </p>
+                                            target="_blank">therankme</a>
+                                    </p>
 
                                 </div>
                             </div>

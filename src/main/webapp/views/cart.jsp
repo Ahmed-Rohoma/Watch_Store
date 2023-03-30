@@ -102,8 +102,8 @@
                                                                             class="fa fa-trash-o"></i></a>
                                                                 </td>
                                                                 <td class="product_thumb">
-                                                                    <a  href="/product-details?productId=${item.key}"><img
-                                                                            src="../assets/images/product/default/home-1/default-1.jpg"
+                                                                    <a  href="/product-details?productId=${item.key}"><img style="height:100px; width: 100px;"
+                                                                        src="../productsImage/${item.value.getImagePath()}"
                                                                             alt=""></a>
                                                                 </td>
                                                                 <td class="product_name"><a href="/product-details?productId=${item.key}">

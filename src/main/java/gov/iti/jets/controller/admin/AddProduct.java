@@ -82,7 +82,7 @@ public class AddProduct extends HttpServlet {
 
         System.out.println("| filename : " + fileNameWithoutExtension + "| fileExtension : " + fileExtension);
 
-        String fName = fileNameWithoutExtension + name + fileExtension ;
+        String fName = name + fileNameWithoutExtension + fileExtension ;
 
         System.out.println("product | " + name + " | " + description + " | " + price + " | " + quantity);
 

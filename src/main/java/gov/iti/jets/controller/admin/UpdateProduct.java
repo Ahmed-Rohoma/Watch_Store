@@ -96,7 +96,7 @@ public class UpdateProduct extends HttpServlet {
             String fileExtension = fileName.substring(fileName.lastIndexOf("."));
 
             System.out.println("| filename : " + fileNameWithoutExtension + "| fileExtension : " + fileExtension);
-            String fName = fileNameWithoutExtension + name + fileExtension;
+            String fName = name + fileNameWithoutExtension + fileExtension;
 
             System.out.println("path ======> " + savePath);
             System.out.println("fNAme ======> " + fName);

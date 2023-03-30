@@ -69,7 +69,7 @@
                                                     <div class="swiper-wrapper">
                                                         <div
                                                             class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                                            <img src="../assets/images/product/default/home-1/default-1.jpg"
+                                                            <img style="height : 400px" src="../productsImage/${ProductModel.getImagePath()}"
                                                                 alt="">
                                                         </div>
                                                         <div
