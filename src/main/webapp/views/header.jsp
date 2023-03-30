@@ -689,10 +689,13 @@
                                     </div>
                                     <div class="col-md-5 modal-border">
                                         <ul class="modal-add-cart-product-shipping-info">
-                                            <li> <strong><i class="icon-shopping-cart"></i> There Are ${cart.size()}
+                                            <li> <strong><i class="icon-shopping-cart"></i> 
+                                            <div id="ItemsNo">
+                                                There Are ${cart.size()}
                                                     Items In Your
-                                                    Cart.</strong></li>
-                                            <li> <strong>TOTAL PRICE: </strong> <span>${cartTotal}</span></li>
+                                                    Cart.
+                                            </div></strong></li>
+                                            <li> <strong>TOTAL PRICE: </strong> <span id ="TotalPrice">${cartTotal}</span></li>
                                             <li class="modal-continue-button"><a href="#"
                                                     data-bs-dismiss="modal">CONTINUE
                                                     SHOPPING</a></li>

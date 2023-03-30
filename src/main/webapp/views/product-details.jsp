@@ -25,37 +25,37 @@
         </head>
 
         <body>
-            aaaa${empty ProductModel}bbb${ProductModel}ccc
             <%@ include file="header.jsp" %>
                 <%@ page isELIgnored="false" %>
-                    <!-- ...:::: Start Breadcrumb Section:::... -->
-                    <div class="breadcrumb-section breadcrumb-bg-color--golden">
-                        <div class="breadcrumb-wrapper">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h3 class="breadcrumb-title">Product Details - Variable</h3>
-                                        <div
-                                            class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
-                                            <nav aria-label="breadcrumb">
-                                                <ul>
-                                                    <li><a href="index.html">Home</a></li>
-                                                    <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
-                                                    <li class="active" aria-current="page">Product Details
-                                                        Variable</li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- ...:::: End Breadcrumb Section:::... -->
+
                     <c:choose>
                         <c:when test="${empty ProductModel}">
                             <c:import url="unavailable-product.jsp" />
                         </c:when>
                         <c:otherwise>
+                            <!-- ...:::: Start Breadcrumb Section:::... -->
+                            <div class="breadcrumb-section breadcrumb-bg-color--golden">
+                                <div class="breadcrumb-wrapper">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h3 class="breadcrumb-title">Product Details - Variable</h3>
+                                                <div
+                                                    class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                                                    <nav aria-label="breadcrumb">
+                                                        <ul>
+                                                            <li><a href="index.html">Home</a></li>
+                                                            <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
+                                                            <li class="active" aria-current="page">Product Details
+                                                                Variable</li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- ...:::: End Breadcrumb Section:::... -->
                             <!-- Start Product Details Section -->
                             <div class="product-details-section">
                                 <div class="container">
@@ -223,7 +223,10 @@
                                     data: { action: 'add', productId: productId, quantity: quantity },
                                     success: function (response) {
                                         console.log("Added to cart successfully!");
-                                        console.log(response + "+++++");
+                                        var myArray = response.split("/");
+                                        console.log(myArray);
+                                        $('#ItemsNo').html("There Are " + myArray[0] + " Items In Your Cart.");
+                                        $('#TotalPrice').html(myArray[1]);
                                         $('#modalAddcart').modal('toggle');
                                     },
                                     error: function (jqXHR, textStatus, errorThrown) {

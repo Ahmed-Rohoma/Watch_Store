@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-12 col-md-10 offset-md-1 col-xl-6 offset-xl-3">
                     <div class="emptycart-content text-center">
+                        <br><br><br><br><br>
                         <div class="image">
                             <img class="img-fluid" src="../assets/images/product/default/watch.png" alt="">
                         </div>
