@@ -8,8 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>HONO - Multi Purpose HTML Template</title>
-
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
 
@@ -141,9 +139,7 @@
                                                                     <div class="image-box">
                                                                         <a href="/product-details?productId=${item.getProductId()}"
                                                                             class="image-link">
-                                                                            <img src="assets/images/product/default/home-1/default-9.jpg"
-                                                                                alt="">
-                                                                            <img src="assets/images/product/default/home-1/default-10.jpg"
+                                                                            <img src="../productsImage/${item.getImagePath()}"
                                                                                 alt="">
                                                                         </a>
                                                                         <div class="action-link">

@@ -6,8 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>HONO - Multi Purpose HTML Template</title>
-
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
 
@@ -164,7 +162,8 @@
                         <div class="banner-single-item banner-style-7 banner-animation banner-color--green float-left"
                             data-aos="fade-up" data-aos-delay="0">
                             <div class="image">
-                                <img style="height: 300px;width: 600px;" class="img-fluid" src="../brandsImage/${item.getBrandName()}.png" alt="">
+                                <img style="height: 300px;width: 600px;" class="img-fluid"
+                                    src="../brandsImage/${item.getBrandName()}.png" alt="">
                             </div>
                         </div>
                     </a>
@@ -209,6 +208,11 @@
                                                         <img style="height: 350px;"
                                                             src="../productsImage/${item.getImagePath()}" alt="">
 
+                                                            <c:forEach var="brand" items="${brands}">
+                                                                <c:if test="${brand.getId() eq item.getBrandId()}">
+                                                                    <img style="height: 350px;" src="../brandsImage/${brand.getBrandName()}.png" alt="">
+                                                                </c:if>
+                                                            </c:forEach>
                                                     </a>
                                                     <div class="tag">
                                                         <span>sale</span>

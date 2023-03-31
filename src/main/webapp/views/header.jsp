@@ -8,7 +8,7 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <title>HONO</title>
+            <title>Tick Tock</title>
 
             <!-- ::::::::::::::Favicon icon::::::::::::::-->
             <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
@@ -50,8 +50,7 @@
                                     <!-- Start Header Logo -->
                                     <div class="header-logo">
                                         <div class="logo">
-                                            <a href="/home"><img src="../assets/images/logo/logo_white.png"
-                                                    alt=""></a>
+                                            <h2 style="color: white;" >Tick Tock</h2>
                                         </div>
                                     </div>
                                     <!-- End Header Logo -->
